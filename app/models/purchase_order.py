@@ -1,5 +1,5 @@
 from .provider import Provider
-from .buy_order_status import Buy_Order_Status
+from .purchase_order_status import Buy_Order_Status
 
 
 class Buy_Order:

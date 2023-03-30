@@ -4,7 +4,7 @@ from .product import Product
 class Product_Detail:
     id = 0,
     quantity = 0.0
-    product_id = Product.id
+    product_id = Product
 
     def __init__(self, id, quantity, product_id):
         self.id = id

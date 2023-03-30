@@ -7,7 +7,7 @@ class Sale_Order_Detail:
     quantity = 0.0
     price = 0.0
     product_id = Product.id
-    sale_order_id = Sale_Order.id
+    sale_order_id = Sale_Order
 
     def __init__(self, id, quantity, price, product_id, sale_order_id):
         self.id = id

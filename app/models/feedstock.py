@@ -4,7 +4,6 @@ from .provider import Provider
 
 class Feedstock:
     id = 0,
-    sku = '',
     name = '',
     description = '',
     price = 0.0,
@@ -14,9 +13,8 @@ class Feedstock:
     unit_of_measurement_id = Unit_Of_Measurement.id
     provider_id = Provider.id
 
-    def __init__(self, id, sku, name, description, price, status, min_value, max_value, unit_of_measurement_id, provider_id):
+    def __init__(self, id, name, description, price, status, min_value, max_value, unit_of_measurement_id, provider_id):
         self.id = id
-        self.sku = sku
         self.name = name
         self.description = description
         self.price = price

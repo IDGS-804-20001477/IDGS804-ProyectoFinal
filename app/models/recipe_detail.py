@@ -5,7 +5,7 @@ from .recipe import Recipe
 class Recipe_Detail:
     id = 0,
     quantity = 0.0,
-    recipe_id = Recipe.id,
+    recipe_id = Recipe,
     feedstock_id = Feedstock.id
 
     def __init__(self, id, quantity, recipe_id, feedstock_id):

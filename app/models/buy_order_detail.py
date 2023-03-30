@@ -7,7 +7,7 @@ class Buy_Order_Detail:
     quantity = 0.0,
     price = 0.0,
     feedstock_id = Feedstock.id
-    buy_order_id = Buy_Order.id
+    buy_order_id = Buy_Order
 
     def __init__(self, id, quantity, price, feedstock_id, buy_order_id):
         self.id = id

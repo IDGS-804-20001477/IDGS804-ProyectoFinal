@@ -1,4 +1,4 @@
-from .unit_of_measurement import Unit_Of_Measurement
+from .measurement_unit import Measurement_Unit
 from .provider import Provider
 
 
@@ -10,10 +10,10 @@ class Feedstock:
     min_value = 0.0,
     max_value = 0.0,
     status = 0,
-    unit_of_measurement_id = Unit_Of_Measurement.id
+    measurement_unit_id = Measurement_Unit.id
     provider_id = Provider.id
 
-    def __init__(self, id, name, description, price, status, min_value, max_value, unit_of_measurement_id, provider_id):
+    def __init__(self, id, name, description, price, status, min_value, max_value, measurement_unit_id, provider_id):
         self.id = id
         self.name = name
         self.description = description
@@ -21,5 +21,5 @@ class Feedstock:
         self.min_value = min_value
         self.max_value = max_value
         self.status = status
-        self.unit_of_measurement_id = unit_of_measurement_id
+        self.measurement_unit_id = measurement_unit_id
         self.provider_id = provider_id

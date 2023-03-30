@@ -1,4 +1,4 @@
-class Unit_Of_Measurement:
+class Measurement_Unit:
     id = 0
     name = ''
 

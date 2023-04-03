@@ -549,6 +549,30 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getFeedstock
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstock`(IN pFeedstockId INT)
+BEGIN
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	FROM feedstocks
+	INNER JOIN feedstock_details
+		ON feedstock_details.feedstock_id = feedstocks.id
+	WHERE feedstocks.id = pFeedstockId;
+END
+
+-- ----------------------------
+-- Procedure structure for getFeedstocks
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstocks`(IN pStatus INT)
+BEGIN
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	FROM feedstocks
+	INNER JOIN feedstock_details
+		ON feedstock_details.feedstock_id = feedstocks.id
+	WHERE feedstocks.`status` = pStatus;
+END
+
+-- ----------------------------
 -- Procedure structure for getProvider
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getProvider`;
@@ -777,6 +801,39 @@ BEGIN
 END
 ;;
 delimiter ;
+
+
+-- ----------------------------
+-- Procedure structure for insertFeedstock
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertFeedstock`(IN pName VARCHAR(150),
+IN pDescription VARCHAR(255),
+IN pPrice FLOAT,
+IN pMinValue FLOAT,
+IN pMaxValue FLOAT,
+
+/*measurement_units data*/
+IN pMeasurement_unit_id INT,
+
+/*providers data*/
+IN pProvider_id INT,
+
+/*Feedstock Details data*/
+IN pQuantity FLOAT)
+BEGIN
+	DECLARE feedstock_id_generate INT;
+	
+	START TRANSACTION;
+		/*We insert a feedstock and get the id*/
+		INSERT INTO feedstocks(`name`, description, price, min_value, max_value, measurement_unit_id, provider_id, created_at)
+		VALUES(pName, pDescription, pPrice, pMinValue, pMaxValue, pMeasurement_unit_id, pProvider_id, NOW());
+		SET feedstock_id_generate = LAST_INSERT_ID();
+		
+		/*We insert a detail to feedstock*/
+		INSERT INTO feedstock_details(quantity, feedstock_id)
+		VALUES(pQuantity, feedstock_id_generate);
+	COMMIT;
+END
 
 -- ----------------------------
 -- Procedure structure for insertProvider

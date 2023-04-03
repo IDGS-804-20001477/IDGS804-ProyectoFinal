@@ -54,3 +54,13 @@ def deleteFeedstock(id):
         connection.close()
     except Exception as ex:
         return ex
+
+def deleteFeedstock(id):
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL deleteFeedstock(%s)', (id))
+        connection.commit()
+        connection.close()
+    except Exception as ex:
+        return ex

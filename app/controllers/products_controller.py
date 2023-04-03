@@ -48,7 +48,7 @@ def updateProduct(Product):
         connection = get_connection()
         with connection.cursor() as cursor:
             cursor.execute('CALL updateProduct(%s, %s, %s, %s, %s, %s, %s, %s, %s)', (Product.product_id.id, Product.product_id.sku, Product.product_id.name,
-                           Product.product_id.description, Product.product_id.price, Product.product_id.size, Product.product_id.min_value, Product.product_id.max_value, 
+                           Product.product_id.description, Product.product_id.price, Product.product_id.size, Product.product_id.min_value, Product.product_id.max_value,
                            Product.quantity))
         connection.commit()
         connection.close()

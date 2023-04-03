@@ -219,6 +219,39 @@ CREATE TABLE `roles_users`  (
 INSERT INTO `roles_users` VALUES (1, 1, 1, 1, '2023-04-05 12:04:56');
 
 -- ----------------------------
+-- Table structure for feedstock_details
+-- ----------------------------
+CREATE TABLE `feedstock_details` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` float NOT NULL,
+  `feedstock_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `feedstock_details_feedstock` (`feedstock_id`),
+  CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for feedstocks
+-- ----------------------------
+CREATE TABLE `feedstocks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `price` float NOT NULL,
+  `status` tinyint DEFAULT '1',
+  `measurement_unit_id` int NOT NULL,
+  `provider_id` int NOT NULL,
+  `min_value` float NOT NULL,
+  `max_value` float NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `feedstock_measurement` (`measurement_unit_id`),
+  KEY `feedstock_provider` (`provider_id`),
+  CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`),
+  CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
 -- Table structure for sale_orders
 -- ----------------------------
 DROP TABLE IF EXISTS `sale_orders`;
@@ -382,6 +415,23 @@ BEGIN
 	START TRANSACTION;
 		/*We eliminate logical form the product*/
 		UPDATE products
+		SET `status` = 0
+		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for deleteFeedstock
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `deleteFeedstock`;
+delimiter ;;
+CREATE PROCEDURE `deleteFeedstock`(IN pId INT)
+BEGIN
+	START TRANSACTION;
+		/*We eliminate logical form the feedstock*/
+		UPDATE Feedstocks
 		SET `status` = 0
 		WHERE id = pId;
 	COMMIT;

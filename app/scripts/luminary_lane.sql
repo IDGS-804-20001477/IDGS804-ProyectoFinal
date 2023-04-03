@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 31/03/2023 11:01:37
+ Date: 03/04/2023 16:46:03
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,11 @@ CREATE TABLE `measurement_units`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of measurement_units
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for product_details
@@ -40,7 +44,11 @@ CREATE TABLE `product_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_product_details_products`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_product_details_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of product_details
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for products
@@ -58,7 +66,11 @@ CREATE TABLE `products`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of products
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for providers
@@ -75,7 +87,11 @@ CREATE TABLE `providers`  (
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `contact_email_unique`(`contact_email` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of providers
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sale_orders
@@ -92,7 +108,11 @@ CREATE TABLE `sale_orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_sale_orders_sale_orders_status`(`sale_orders_status_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_sale_orders_status` FOREIGN KEY (`sale_orders_status_id`) REFERENCES `sale_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sale_orders
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sale_orders_details
@@ -109,19 +129,33 @@ CREATE TABLE `sale_orders_details`  (
   INDEX `fk_sale_orders_details_product`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_details_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_sale_orders_details_sale_orders` FOREIGN KEY (`sale_orders_id`) REFERENCES `sale_orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sale_orders_details
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sale_orders_status
 -- ----------------------------
 DROP TABLE IF EXISTS `sale_orders_status`;
 CREATE TABLE `sale_orders_status`  (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sale_orders_status
+-- ----------------------------
+INSERT INTO `sale_orders_status` VALUES (1, 'PEDIDO', 1, '2023-04-03 09:20:26');
+INSERT INTO `sale_orders_status` VALUES (2, 'ELABORANDO', 1, '2023-04-03 09:20:49');
+INSERT INTO `sale_orders_status` VALUES (3, 'EMPACANDO', 1, '2023-04-03 09:21:04');
+INSERT INTO `sale_orders_status` VALUES (4, 'ENVIANDO', 1, '2023-04-03 09:21:23');
+INSERT INTO `sale_orders_status` VALUES (5, 'ENTREGADO', 1, '2023-04-03 09:21:33');
+INSERT INTO `sale_orders_status` VALUES (6, 'CANCELADO', 1, '2023-04-03 09:47:45');
 
 -- ----------------------------
 -- Procedure structure for deleteProduct
@@ -151,6 +185,22 @@ BEGIN
 	UPDATE providers
 	SET `status` = 0
 	WHERE id = pId;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Function structure for generateProductSku
+-- ----------------------------
+DROP FUNCTION IF EXISTS `generateProductSku`;
+delimiter ;;
+CREATE FUNCTION `generateProductSku`(pName VARCHAR(50))
+ RETURNS varchar(20) CHARSET utf8mb4
+BEGIN
+	DECLARE _sku VARCHAR(20);
+	SELECT CONCAT(LEFT(UPPER(pName),2), (FLOOR(RAND() * 401) + 100), RIGHT(NOW(),8)) INTO _sku;
+	SELECT REPLACE(_sku,':','') INTO _sku;
+	RETURN _sku;
 END
 ;;
 delimiter ;
@@ -246,6 +296,59 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getSaleOrder
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getSaleOrder`;
+delimiter ;;
+CREATE PROCEDURE `getSaleOrder`(IN pId INT)
+BEGIN
+	SELECT sale_orders.id, sale_orders.reference_number, sale_orders.total, sale_orders.client_id, sale_orders_details.price, sale_orders_details.quantity, sale_orders_status.`name`, products.`name`
+	FROM sale_orders
+	INNER JOIN sale_orders_details
+		ON sale_orders_details.sale_orders_id = sale_orders.id
+	INNER JOIN sale_orders_status
+		ON sale_orders_status.id = sale_orders.sale_orders_status_id
+	INNER JOIN products
+		ON products.id = sale_orders_details.product_id
+	WHERE sale_orders.id = pId;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getSaleOrders
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getSaleOrders`;
+delimiter ;;
+CREATE PROCEDURE `getSaleOrders`()
+BEGIN
+	SELECT sale_orders.id, sale_orders.reference_number, sale_orders.total, sale_orders.client_id, sale_orders_details.price, sale_orders_details.quantity, sale_orders_status.`name`, products.`name`
+	FROM sale_orders
+	INNER JOIN sale_orders_details
+		ON sale_orders_details.sale_orders_id = sale_orders.id
+	INNER JOIN sale_orders_status
+		ON sale_orders_status.id = sale_orders.sale_orders_status_id
+	INNER JOIN products
+		ON products.id = sale_orders_details.product_id
+	WHERE sale_orders.`status` = 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getSaleOrderStatus
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getSaleOrderStatus`;
+delimiter ;;
+CREATE PROCEDURE `getSaleOrderStatus`()
+BEGIN
+	SELECT id, `name`
+	FROM sale_orders_status;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for insertProduct
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `insertProduct`;
@@ -265,7 +368,7 @@ BEGIN
 	START TRANSACTION;
 		/*We insert a product and get the id*/
 		INSERT INTO products(sku, `name`, description, price, size, min_value, max_value, created_at)
-		VALUES(pSku, pName, pDescription, pPrice, pSize, pMinValue, pMaxValue, NOW());
+		VALUES(generateProductSku(pName), pName, pDescription, pPrice, pSize, pMinValue, pMaxValue, NOW());
 		SET product_id_generate = LAST_INSERT_ID();
 		
 		/*We insert a detail to product*/
@@ -392,6 +495,23 @@ BEGIN
 				contact_email = pContact_email,
 				contact_phone = pContact_phone,
 				address = pAddress
+		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for updateSaleOrder
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `updateSaleOrder`;
+delimiter ;;
+CREATE PROCEDURE `updateSaleOrder`(IN pId INT, IN pStatus INT)
+BEGIN
+	START TRANSACTION;
+		/*We update the status of the sales order to the new one we obtain in the function parameters*/
+		UPDATE sale_orders
+		SET sale_orders_status_id = pStatus
 		WHERE id = pId;
 	COMMIT;
 END

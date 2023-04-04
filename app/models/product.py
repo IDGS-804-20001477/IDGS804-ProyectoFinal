@@ -9,7 +9,7 @@ class Product:
     max_value = 0.0
     quantity = 0.0
 
-    def __init__(self, id, sku, name, description, price, size, min_value, max_value):
+    def __init__(self, id, sku, name, description, price, size, min_value, max_value, quantity):
         self.id = id
         self.sku = sku
         self.name = name
@@ -18,3 +18,4 @@ class Product:
         self.size = size
         self.min_value = min_value
         self.max_value = max_value
+        self.quantity = quantity

@@ -8,7 +8,9 @@ providers = Blueprint('providers', __name__)
 
 @providers.route('/providers-index')
 def index():
-    return render_template('provider_index')
+    create_form = ProviderForm(request.form)
+    providers = getProviders(1)
+    return render_template('index_provider.html', providers=providers, form=create_form)
 
 
 @providers.route('/providers-insert', methods=['GET', 'POST'])

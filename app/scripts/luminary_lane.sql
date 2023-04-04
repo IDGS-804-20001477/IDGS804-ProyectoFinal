@@ -11,11 +11,54 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 03/04/2023 16:46:03
+ Date: 04/04/2023 14:35:21
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for feedstock_details
+-- ----------------------------
+DROP TABLE IF EXISTS `feedstock_details`;
+CREATE TABLE `feedstock_details`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` float NOT NULL,
+  `feedstock_id` int NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `feedstock_details_feedstock`(`feedstock_id` ASC) USING BTREE,
+  CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of feedstock_details
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for feedstocks
+-- ----------------------------
+DROP TABLE IF EXISTS `feedstocks`;
+CREATE TABLE `feedstocks`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `price` float NOT NULL,
+  `status` tinyint NULL DEFAULT 1,
+  `measurement_unit_id` int NOT NULL,
+  `provider_id` int NOT NULL,
+  `min_value` float NOT NULL,
+  `max_value` float NOT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `feedstock_measurement`(`measurement_unit_id` ASC) USING BTREE,
+  INDEX `feedstock_provider`(`provider_id` ASC) USING BTREE,
+  CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of feedstocks
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for measurement_units
@@ -27,7 +70,7 @@ CREATE TABLE `measurement_units`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of measurement_units
@@ -87,44 +130,50 @@ CREATE TABLE `providers`  (
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `contact_email_unique`(`contact_email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of providers
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for feedstock_details
+-- Table structure for recipe_details
 -- ----------------------------
-CREATE TABLE `feedstock_details` (
+DROP TABLE IF EXISTS `recipe_details`;
+CREATE TABLE `recipe_details`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `quantity` float NOT NULL,
+  `recipe_id` int NOT NULL,
   `feedstock_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `feedstock_details_feedstock` (`feedstock_id`),
-  CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `quantity` float NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_recipe_details_recipe_id_recipe_id`(`recipe_id` ASC) USING BTREE,
+  INDEX `fk_recipe_details_feedstock_id_feedstock_id`(`feedstock_id` ASC) USING BTREE,
+  CONSTRAINT `fk_recipe_details_feedstock_id_feedstock_id` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for feedstocks
+-- Records of recipe_details
 -- ----------------------------
-CREATE TABLE `feedstocks` (
+
+-- ----------------------------
+-- Table structure for recipes
+-- ----------------------------
+DROP TABLE IF EXISTS `recipes`;
+CREATE TABLE `recipes`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `price` float NOT NULL,
-  `status` tinyint DEFAULT '1',
-  `measurement_unit_id` int NOT NULL,
-  `provider_id` int NOT NULL,
-  `min_value` float NOT NULL,
-  `max_value` float NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `feedstock_measurement` (`measurement_unit_id`),
-  KEY `feedstock_provider` (`provider_id`),
-  CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`),
-  CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `product_id` int NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` tinyint NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_recipe_product_id_product_id`(`product_id` ASC) USING BTREE,
+  CONSTRAINT `fk_recipe_product_id_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of recipes
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sale_orders
@@ -141,7 +190,7 @@ CREATE TABLE `sale_orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_sale_orders_sale_orders_status`(`sale_orders_status_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_sale_orders_status` FOREIGN KEY (`sale_orders_status_id`) REFERENCES `sale_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sale_orders
@@ -162,7 +211,7 @@ CREATE TABLE `sale_orders_details`  (
   INDEX `fk_sale_orders_details_product`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_details_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_sale_orders_details_sale_orders` FOREIGN KEY (`sale_orders_id`) REFERENCES `sale_orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sale_orders_details
@@ -178,7 +227,7 @@ CREATE TABLE `sale_orders_status`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sale_orders_status
@@ -191,18 +240,16 @@ INSERT INTO `sale_orders_status` VALUES (5, 'ENTREGADO', 1, '2023-04-03 09:21:33
 INSERT INTO `sale_orders_status` VALUES (6, 'CANCELADO', 1, '2023-04-03 09:47:45');
 
 -- ----------------------------
--- Procedure structure for deleteProduct
+-- Function structure for checkFeedstockQuantity
 -- ----------------------------
-DROP PROCEDURE IF EXISTS `deleteProduct`;
+DROP FUNCTION IF EXISTS `checkFeedstockQuantity`;
 delimiter ;;
-CREATE PROCEDURE `deleteProduct`(IN pId INT)
+CREATE FUNCTION `checkFeedstockQuantity`(pId INT)
+ RETURNS float
 BEGIN
-	START TRANSACTION;
-		/*We eliminate logical form the product*/
-		UPDATE products
-		SET `status` = 0
-		WHERE id = pId;
-	COMMIT;
+	DECLARE feedstock_quantity FLOAT;
+	SELECT quantity FROM feedstock_details WHERE feedstock_id = pId INTO feedstock_quantity;
+	RETURN feedstock_quantity;
 END
 ;;
 delimiter ;
@@ -225,6 +272,23 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for deleteProduct
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `deleteProduct`;
+delimiter ;;
+CREATE PROCEDURE `deleteProduct`(IN pId INT)
+BEGIN
+	START TRANSACTION;
+		/*We eliminate logical form the product*/
+		UPDATE products
+		SET `status` = 0
+		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for deleteProvider
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `deleteProvider`;
@@ -235,6 +299,23 @@ BEGIN
 	UPDATE providers
 	SET `status` = 0
 	WHERE id = pId;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for deleteRecipe
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `deleteRecipe`;
+delimiter ;;
+CREATE PROCEDURE `deleteRecipe`(IN pId INT)
+BEGIN
+	START TRANSACTION;
+		/*We logically eliminate the recipe*/
+		UPDATE recipes
+		SET `status` = 0
+		WHERE id = pId;
+	COMMIT;
 END
 ;;
 delimiter ;
@@ -267,6 +348,38 @@ BEGIN
 	SELECT CONCAT('SO-',(FLOOR(RAND() * 401) + 100), RIGHT(NOW(),8)) INTO numberReference;
 	SELECT REPLACE(numberReference,':','') INTO numberReference;
 	RETURN numberReference;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getFeedstock
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getFeedstock`;
+delimiter ;;
+CREATE PROCEDURE `getFeedstock`(IN pFeedstockId INT)
+BEGIN
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	FROM feedstocks
+	INNER JOIN feedstock_details
+		ON feedstock_details.feedstock_id = feedstocks.id
+	WHERE feedstocks.id = pFeedstockId;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getFeedstocks
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getFeedstocks`;
+delimiter ;;
+CREATE PROCEDURE `getFeedstocks`(IN pStatus INT)
+BEGIN
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	FROM feedstocks
+	INNER JOIN feedstock_details
+		ON feedstock_details.feedstock_id = feedstocks.id
+	WHERE feedstocks.`status` = pStatus;
 END
 ;;
 delimiter ;
@@ -318,30 +431,6 @@ END
 delimiter ;
 
 -- ----------------------------
--- Procedure structure for getFeedstock
--- ----------------------------
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstock`(IN pFeedstockId INT)
-BEGIN
-	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
-	FROM feedstocks
-	INNER JOIN feedstock_details
-		ON feedstock_details.feedstock_id = feedstocks.id
-	WHERE feedstocks.id = pFeedstockId;
-END
-
--- ----------------------------
--- Procedure structure for getFeedstocks
--- ----------------------------
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstocks`(IN pStatus INT)
-BEGIN
-	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
-	FROM feedstocks
-	INNER JOIN feedstock_details
-		ON feedstock_details.feedstock_id = feedstocks.id
-	WHERE feedstocks.`status` = pStatus;
-END
-
--- ----------------------------
 -- Procedure structure for getProvider
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getProvider`;
@@ -365,6 +454,42 @@ BEGIN
 	SELECT id, business_name, contact_name, contact_email, contact_phone, address
 	FROM providers
 	WHERE `status` = pStatus;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getRecipe
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getRecipe`;
+delimiter ;;
+CREATE PROCEDURE `getRecipe`(IN pId INT)
+BEGIN
+	SELECT recipes.id, recipes.product_id, products.`name`, recipes.description, recipe_details.id as detail_id, recipe_details.feedstock_id, feedstocks.`name` as name_feedstock, recipe_details.quantity
+	FROM recipes
+	INNER JOIN products
+		ON products.id = recipes.product_id
+	INNER JOIN recipe_details
+		ON recipe_details.recipe_id = recipes.id
+	INNER JOIN feedstocks
+		ON feedstocks.id = recipe_details.feedstock_id
+	WHERE recipes.id = pId;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getRecipes
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getRecipes`;
+delimiter ;;
+CREATE PROCEDURE `getRecipes`(IN pStatus INT)
+BEGIN
+	SELECT recipes.id, products.`name`, recipes.description
+	FROM recipes
+	INNER JOIN products
+		ON products.id = recipes.product_id
+	WHERE recipes.`status` = pStatus;
 END
 ;;
 delimiter ;
@@ -423,6 +548,42 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for insertFeedstock
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `insertFeedstock`;
+delimiter ;;
+CREATE PROCEDURE `insertFeedstock`(IN pName VARCHAR(150),
+IN pDescription VARCHAR(255),
+IN pPrice FLOAT,
+IN pMinValue FLOAT,
+IN pMaxValue FLOAT,
+
+/*measurement_units data*/
+IN pMeasurement_unit_id INT,
+
+/*providers data*/
+IN pProvider_id INT,
+
+/*Feedstock Details data*/
+IN pQuantity FLOAT)
+BEGIN
+	DECLARE feedstock_id_generate INT;
+	
+	START TRANSACTION;
+		/*We insert a feedstock and get the id*/
+		INSERT INTO feedstocks(`name`, description, price, min_value, max_value, measurement_unit_id, provider_id, created_at)
+		VALUES(pName, pDescription, pPrice, pMinValue, pMaxValue, pMeasurement_unit_id, pProvider_id, NOW());
+		SET feedstock_id_generate = LAST_INSERT_ID();
+		
+		/*We insert a detail to feedstock*/
+		INSERT INTO feedstock_details(quantity, feedstock_id)
+		VALUES(pQuantity, feedstock_id_generate);
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for insertProduct
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `insertProduct`;
@@ -453,39 +614,6 @@ END
 ;;
 delimiter ;
 
-
--- ----------------------------
--- Procedure structure for insertFeedstock
--- ----------------------------
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertFeedstock`(IN pName VARCHAR(150),
-IN pDescription VARCHAR(255),
-IN pPrice FLOAT,
-IN pMinValue FLOAT,
-IN pMaxValue FLOAT,
-
-/*measurement_units data*/
-IN pMeasurement_unit_id INT,
-
-/*providers data*/
-IN pProvider_id INT,
-
-/*Feedstock Details data*/
-IN pQuantity FLOAT)
-BEGIN
-	DECLARE feedstock_id_generate INT;
-	
-	START TRANSACTION;
-		/*We insert a feedstock and get the id*/
-		INSERT INTO feedstocks(`name`, description, price, min_value, max_value, measurement_unit_id, provider_id, created_at)
-		VALUES(pName, pDescription, pPrice, pMinValue, pMaxValue, pMeasurement_unit_id, pProvider_id, NOW());
-		SET feedstock_id_generate = LAST_INSERT_ID();
-		
-		/*We insert a detail to feedstock*/
-		INSERT INTO feedstock_details(quantity, feedstock_id)
-		VALUES(pQuantity, feedstock_id_generate);
-	COMMIT;
-END
-
 -- ----------------------------
 -- Procedure structure for insertProvider
 -- ----------------------------
@@ -500,6 +628,43 @@ BEGIN
 	START TRANSACTION;
 		INSERT INTO providers(business_name, contact_name, contact_email, contact_phone, address, created_at)
 		VALUES(pBusiness_name, pContact_name, pContact_email, pContact_phone, pAddress, NOW());
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for insertRecipe
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `insertRecipe`;
+delimiter ;;
+CREATE PROCEDURE `insertRecipe`(IN pProduct_id INT,
+IN pDescription VARCHAR(255),
+
+/*Recipe detail*/
+IN pJson_details JSON)
+BEGIN
+	DECLARE recipe_header_id, i, _feedstock_id INT;
+	DECLARE _quantity FLOAT;
+	DECLARE recipe_detail_json VARCHAR(1000);
+
+	START TRANSACTION;
+		/*We insert the recipe header*/
+		INSERT INTO recipes(product_id, description, created_at)
+		VALUES(pProduct_id, pDescription, NOW());
+		SET recipe_header_id = LAST_INSERT_ID();
+		
+		/*Let's go through the detail arrangement of the recipe*/
+		SET i = 0;
+		WHILE i < JSON_LENGTH(pJson_details) DO
+			SELECT JSON_EXTRACT(pJson_Details, CONCAT( '$[', i, ']' )) INTO recipe_detail_json;
+			SELECT JSON_EXTRACT(recipe_detail_json, '$.quantity') INTO _quantity;
+			SELECT JSON_EXTRACT(recipe_detail_json, '$.feedstock_id') INTO _feedstock_id;
+			
+			/*We insert the recipe details*/
+			INSERT INTO recipe_details(recipe_id, feedstock_id, quantity)
+			VALUES(recipe_header_id, _feedstock_id, _quantity);
+		END WHILE;
 	COMMIT;
 END
 ;;
@@ -546,6 +711,48 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for updateFeedstock
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `updateFeedstock`;
+delimiter ;;
+CREATE PROCEDURE `updateFeedstock`(IN pId INT,
+IN pName VARCHAR(150),
+IN pDescription VARCHAR(255),
+IN pPrice FLOAT,
+IN pMinValue FLOAT,
+IN pMaxValue FLOAT,
+
+/*measurement_units data*/
+IN pMeasurement_unit_id INT,
+
+/*providers data*/
+IN pProvider_id INT,
+
+/*Product Details data*/
+IN pQuantity FLOAT)
+BEGIN
+	START TRANSACTION;
+		/*We update feedstocks header*/
+		UPDATE feedstocks 
+		SET `name` = pName,
+				description = pDescription,
+				price = pPrice,
+				min_value = pMinValue,
+				max_value = pMaxValue,
+				measurement_unit_id = pMeasurement_unit_id,
+				provider_id = pProvider_id
+		WHERE id = pId;
+		
+		/*We update feedstock details*/
+		UPDATE feedstock_details
+		SET quantity = pQuantity
+		WHERE feedstock_id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for updateProduct
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `updateProduct`;
@@ -584,44 +791,6 @@ END
 delimiter ;
 
 -- ----------------------------
--- Procedure structure for updateFeedstock
--- ----------------------------
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateFeedstock`(IN pId INT,
-IN pName VARCHAR(150),
-IN pDescription VARCHAR(255),
-IN pPrice FLOAT,
-IN pMinValue FLOAT,
-IN pMaxValue FLOAT,
-
-/*measurement_units data*/
-IN pMeasurement_unit_id INT,
-
-/*providers data*/
-IN pProvider_id INT,
-
-/*Product Details data*/
-IN pQuantity FLOAT)
-BEGIN
-	START TRANSACTION;
-		/*We update feedstocks header*/
-		UPDATE feedstocks 
-		SET `name` = pName,
-				description = pDescription,
-				price = pPrice,
-				min_value = pMinValue,
-				max_value = pMaxValue,
-				measurement_unit_id = pMeasurement_unit_id,
-				provider_id = pProvider_id
-		WHERE id = pId;
-		
-		/*We update feedstock details*/
-		UPDATE feedstock_details
-		SET quantity = pQuantity
-		WHERE feedstock_id = pId;
-	COMMIT;
-END
-
--- ----------------------------
 -- Procedure structure for updateProvider
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `updateProvider`;
@@ -641,6 +810,48 @@ BEGIN
 				contact_phone = pContact_phone,
 				address = pAddress
 		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for updateRecipe
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `updateRecipe`;
+delimiter ;;
+CREATE PROCEDURE `updateRecipe`(IN pId INT,
+IN pProduct_id INT,
+IN pDescription VARCHAR(255),
+
+/*Recipe detail*/
+IN pJson_details JSON)
+BEGIN
+	DECLARE i, _feedstock_id, _recipe_details_id INT;
+	DECLARE _quantity FLOAT;
+	DECLARE recipe_detail_json VARCHAR(1000);
+
+	START TRANSACTION;
+		/*We update the recipe header*/
+		UPDATE recipes
+		SET product_id = pProduct_id,
+				description = pDescription
+		WHERE id = pId;
+		
+		/*Let's go through the detail arrangement of the recipe*/
+		SET i = 0;
+		WHILE i < JSON_LENGTH(pJson_details) DO
+			SELECT JSON_EXTRACT(pJson_Details, CONCAT( '$[', i, ']' )) INTO recipe_detail_json;
+			SELECT JSON_EXTRACT(recipe_detail_json, '$.quantity') INTO _quantity;
+			SELECT JSON_EXTRACT(recipe_detail_json, '$.feedstock_id') INTO _feedstock_id;
+			SELECT JSON_EXTRACT(recipe_detail_json, '$.id') INTO _recipe_details_id;
+			
+			/*We update the recipe detail*/
+			UPDATE recipe_details
+			SET quantity = _quantity,
+					feedstock_id = _feedstock_id
+			WHERE id = _recipe_details_id;
+		END WHILE;
 	COMMIT;
 END
 ;;

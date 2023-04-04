@@ -1,6 +1,10 @@
-from wtforms import Form, StringField, IntegerField, EmailField, validators, DecimalField, SelectField, TextAreaField
+from wtforms import Form, StringField, IntegerField, EmailField, validators, DecimalField, SelectField, TextAreaField, Field
+
 
 class ProviderForm(Form):
+    class Meta:
+        csrf = False
+
     id = IntegerField('Id')
     business_name = StringField('Razón Social')
     contact_name = StringField('Nombre de contacto', [
@@ -16,8 +20,12 @@ class ProviderForm(Form):
     address = StringField('Direccion', [
         validators.DataRequired('Campo requerido')
     ])
-    
+
+
 class ProductForm(Form):
+    class Meta:
+        csrf = False
+
     id = IntegerField('Id')
     sku = StringField('Sku')
     name = StringField('Nombre', [
@@ -25,7 +33,8 @@ class ProductForm(Form):
     ])
     price = DecimalField('Precio', places=2, validators=[
         validators.DataRequired('Campo requerido'),
-        validators.number_range(min=0, max=3000, message='No puede exceder el precio estipulado por la empresa')
+        validators.number_range(
+            min=0, max=3000, message='No puede exceder el precio estipulado por la empresa')
     ])
     size = SelectField('Talla', [
         validators.DataRequired('Campo requerido')

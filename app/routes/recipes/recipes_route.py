@@ -2,16 +2,18 @@ from flask import Blueprint, request, redirect, url_for, render_template
 from ...models.recipe import Recipe
 from ...controllers.recipes_controller import getRecipes, getRecipeById, insertRecipe, updateRecipe, deleteRecipe
 from ...controllers.products_controller import getProducts
+from ...controllers.feedstocks_controller import getFeedstocks
 
 
-recipes = Blueprint('recipes', __name__)
+recipes = Blueprint('recipes', __name__, url_prefix='/recipes')
 
 
 @recipes.route('/recipes-index')
 def index():
     recipes = getRecipes(1)
     products = getProducts(1)
-    return render_template('index_recipe.html', recipes=recipes, products=products)
+    feedstocks = getFeedstocks(1)
+    return render_template('/recipes/index_recipe.html', recipes=recipes, products=products, feedstocks=feedstocks)
 
 
 @recipes.route('/recipes-insert', methods=['GET', 'POST'])
@@ -24,7 +26,7 @@ def insert():
         insertRecipe(recipe)
         return redirect(url_for('recipes.index'))
 
-    return render_template('insert_recipe.html')
+    return render_template('/recipes/insert_recipe.html')
 
 
 @recipes.route('/recipes-update', methods=['GET', 'POST'])
@@ -32,7 +34,7 @@ def update():
     if(request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        return render_template('update_recipe.html', recipe=recipe)
+        return render_template('/recipes/update_recipe.html', recipe=recipe)
     
     if(request.method == 'POST'):
         id = request.form.get('txtId')
@@ -49,7 +51,7 @@ def delete():
     if(request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        return render_template('delete_recipe.html', recipe=recipe)
+        return render_template('/recipes/delete_recipe.html', recipe=recipe)
     
     if(request.method == 'POST'):
         id = request.form.get('txtId')

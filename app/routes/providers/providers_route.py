@@ -1,56 +1,60 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from ...controllers.providers_controller import getProviders, getProvider, deleteProvider, insertProvider, updateProvider
+from ...controllers.providers_controller import getProviders, getProviderById, deleteProvider, insertProvider, updateProvider
 from ...models.provider import Provider
-from ...models.forms import ProviderForm
 
-providers = Blueprint('providers', __name__)
+providers = Blueprint('providers', __name__, url_prefix='/providers')
 
 
 @providers.route('/providers-index')
 def index():
-    create_form = ProviderForm(request.form)
     providers = getProviders(1)
-    return render_template('index_provider.html', providers=providers, form=create_form)
+    return render_template('/providers/index_provider.html', providers=providers)
 
 
 @providers.route('/providers-insert', methods=['GET', 'POST'])
 def insert():
-    create_form = ProviderForm(request.form)
-
     if (request.method == 'POST'):
-        provider = Provider(0, create_form.business_name.data, create_form.contact_name.data,
-                            create_form.contact_email.data, create_form.contact_phone.data, create_form.address.data)
+        business_name = request.form.get('txtBusinessName')
+        contact_name = request.form.get('txtContactName')
+        contact_email = request.form.get('txtContactEmail')
+        contact_phone = request.form.get('txtContactPhone')
+        address = request.form.get('txtAddress')
+        provider = Provider(0, business_name, contact_name,
+                            contact_email, contact_phone, address)
         insertProvider(provider)
         return redirect(url_for('providers.index'))
 
-    return render_template('insert_provider.html', form=create_form)
+    return render_template('/providers/insert_provider.html')
 
 
 @providers.route('/providers-update', methods=['GET', 'POST'])
 def update():
-    create_form = ProviderForm(request.form)
-
     if (request.method == 'GET'):
         id = request.args.get('id')
-        response = getProvider(id, create_form)
-        return render_template('update_provider.html', form=response)
+        response = getProviderById(id)
+        return render_template('/providers/update_provider.html', form=response)
 
     if (request.method == 'POST'):
-        provider = Provider(create_form.id.data, create_form.business_name.data, create_form.contact_name.data,
-                            create_form.contact_email.data, create_form.contact_phone.data, create_form.address.data)
+        id = request.form.get('txtId')
+        business_name = request.form.get('txtBusinessName')
+        contact_name = request.form.get('txtContactName')
+        contact_email = request.form.get('txtContactEmail')
+        contact_phone = request.form.get('txtContactPhone')
+        address = request.form.get('txtAddress')
+        provider = Provider(id, business_name, contact_name,
+                            contact_email, contact_phone, address)
         updateProvider(provider)
         return redirect(url_for('providers.index'))
 
 
 @providers.route('/providers-delete', methods=['GET', 'POST'])
 def delete():
-    create_form = ProviderForm(request.form)
-
     if (request.method == 'GET'):
         id = request.args.get('id')
-        response = getProvider(id, create_form)
-        return render_template('delete_provider.html', form=response)
+        response = getProviderById(id)
+        return render_template('/providers/delete_provider.html', form=response)
 
     if (request.method == 'POST'):
-        deleteProvider(create_form.id.data)
+        id = request.form.get('txtId')
+        deleteProvider(id)
         return redirect(url_for('providers.index'))

@@ -9,24 +9,14 @@ def getSalesOrders():
             return cursor.fetchall()
     except Exception as ex:
         return ex
-    
-    
-def getSaleOrderStatus():
-    try:
-        connection = get_connection()
-        with connection.cursor() as cursor:
-            cursor.execute('CALL getSaleOrderStatus()')
-            return cursor.fetchall()
-    except Exception as ex:
-        return ex
 
 
-def getSaleOrderById(id, create_form):
+def getSaleOrderById(id):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
             cursor.execute('CALL getSaleOrder(%s)', (id))
-            result_set = cursor.fetchall()
+            return cursor.fetchall()
     except Exception as ex:
         return ex
 

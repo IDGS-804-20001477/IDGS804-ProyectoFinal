@@ -11,22 +11,12 @@ def getProducts(status):
         return ex
 
 
-def getProductById(id, create_form):
+def getProductById(id):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
             cursor.execute('CALL getProduct(%s)', (id))
-            result_set = cursor.fetchall()
-            create_form.id.data = result_set[0][0]
-            create_form.sku.data = result_set[0][1]
-            create_form.name.data = result_set[0][2]
-            create_form.price.data = result_set[0][3]
-            create_form.size.data = result_set[0][4]
-            create_form.quantity.data = result_set[0][5]
-            create_form.min_value.data = result_set[0][6]
-            create_form.max_value.data = result_set[0][7]
-            create_form.description.data = result_set[0][8]
-            return create_form
+            return cursor.fetchall()
     except Exception as ex:
         return ex
 

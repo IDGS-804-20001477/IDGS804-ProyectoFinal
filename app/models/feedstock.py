@@ -11,9 +11,9 @@ class Feedstock:
     max_value = 0.0,
     measurement_unit_id = Measurement_Unit.id
     provider_id = Provider.id
-    feedstock_details = []
+    quantity = 0.0
 
-    def __init__(self, id, name, description, price, min_value, max_value, measurement_unit_id, provider_id, feedstock_details):
+    def __init__(self, id, name, description, price, min_value, max_value, measurement_unit_id, provider_id, quantity):
         self.id = id
         self.name = name
         self.description = description
@@ -22,4 +22,4 @@ class Feedstock:
         self.max_value = max_value
         self.measurement_unit_id = measurement_unit_id
         self.provider_id = provider_id
-        self.feedstock_details = feedstock_details
+        self.quantity = quantity

@@ -11,19 +11,12 @@ def getProviders(status):
         return ex
 
 
-def getProvider(id, create_form):
+def getProviderById(id):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
             cursor.execute('CALL getProvider(%s)', (id))
-            result_set = cursor.fetchall()
-            create_form.id.data = result_set[0][0]
-            create_form.business_name.data = result_set[0][1]
-            create_form.contact_name.data = result_set[0][2]
-            create_form.contact_email.data = result_set[0][3]
-            create_form.contact_phone.data = result_set[0][4]
-            create_form.address.data = result_set[0][5]
-            return create_form
+            return cursor.fetchall()
     except Exception as ex:
         return ex
 

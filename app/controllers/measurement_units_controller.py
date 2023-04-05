@@ -1,5 +1,6 @@
 from ..database.config_db import get_connection
 
+
 def getMeasurementUnits(status):
     try:
         connection = get_connection()

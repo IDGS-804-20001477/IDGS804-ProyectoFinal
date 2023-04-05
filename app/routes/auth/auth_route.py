@@ -36,15 +36,13 @@ def register():
     if (request.method == 'POST'):
         email = request.form.get('txtEmail')
         password = request.form.get('txtPassword')
-        remember = True if request.form.get('opcRemember') else False
         user = User.query.filter_by(email=email).first()
 
         if (user):
             flash('El correo ya tiene uso')
             return redirect(url_for('auth.login'))
 
-        userDataStore.create_user(email=email, password=generate_password_hash(
-            password, method='sha256', type=2))
+        userDataStore.create_user(email=email, password=generate_password_hash(password, method='sha256'), type=2)
         db.session.commit()
         return redirect(url_for('auth.login'))
 

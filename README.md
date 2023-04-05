@@ -41,4 +41,4 @@ flask run
 
 ## Paso 5
 
-Iniciar el servidor alojado localmente con la ruta **localhost:4000/**
+Iniciar el servidor alojado localmente con la ruta **http://127.0.0.1:5000**

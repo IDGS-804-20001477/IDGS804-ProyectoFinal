@@ -11,13 +11,14 @@ recipes = Blueprint('recipes', __name__, url_prefix='/recipes')
 @recipes.route('/recipes-index')
 def index():
     recipes = getRecipes(1)
-    products = getProducts(1)
-    feedstocks = getFeedstocks(1)
-    return render_template('/recipes/index_recipe.html', recipes=recipes, products=products, feedstocks=feedstocks)
+    return render_template('/recipes/index_recipe.html', recipes=recipes)
 
 
 @recipes.route('/recipes-insert', methods=['GET', 'POST'])
 def insert():
+    products = getProducts(1)
+    feedstocks = getFeedstocks(1)
+
     if (request.method == 'POST'):
         product_id = request.form.get('cmbProducts')
         description = request.form.get('txtDescription')
@@ -26,17 +27,19 @@ def insert():
         insertRecipe(recipe)
         return redirect(url_for('recipes.index'))
 
-    return render_template('/recipes/insert_recipe.html')
+    return render_template('/recipes/insert_recipe.html', products=products, feedstocks=feedstocks)
 
 
 @recipes.route('/recipes-update', methods=['GET', 'POST'])
 def update():
-    if(request.method == 'GET'):
+    if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        return render_template('/recipes/update_recipe.html', recipe=recipe)
-    
-    if(request.method == 'POST'):
+        products = getProducts(1)
+        feedstocks = getFeedstocks(1)
+        return render_template('/recipes/update_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
+
+    if (request.method == 'POST'):
         id = request.form.get('txtId')
         product_id = request.form.get('cmbProducts')
         description = request.form.get('txtDescription')
@@ -48,12 +51,12 @@ def update():
 
 @recipes.route('/recipes-delete', methods=['GET', 'POST'])
 def delete():
-    if(request.method == 'GET'):
+    if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
         return render_template('/recipes/delete_recipe.html', recipe=recipe)
-    
-    if(request.method == 'POST'):
+
+    if (request.method == 'POST'):
         id = request.form.get('txtId')
         deleteRecipe(id)
         return redirect(url_for('recipes.index'))

@@ -28,7 +28,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255), nullable=False)
-    type = db.Column(db.String(50), nullable=False, default=2)
+    type = db.Column(db.Integer(), nullable=False, default=2)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary='roles_users',

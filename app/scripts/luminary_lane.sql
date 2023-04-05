@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 05/04/2023 14:58:43
+ Date: 05/04/2023 17:52:45
 */
 
 SET NAMES utf8mb4;
@@ -150,7 +150,7 @@ CREATE TABLE `recipe_details`  (
   INDEX `fk_recipe_details_recipe_id_recipe_id`(`recipe_id` ASC) USING BTREE,
   INDEX `fk_recipe_details_feedstock_id_feedstock_id`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_details_feedstock_id_feedstock_id` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -1060,11 +1060,31 @@ DROP PROCEDURE IF EXISTS `updateSaleOrder`;
 delimiter ;;
 CREATE PROCEDURE `updateSaleOrder`(IN pId INT, IN pStatus INT)
 BEGIN
+	DECLARE quantity_ INT;
+
 	START TRANSACTION;
 		/*We update the status of the sales order to the new one we obtain in the function parameters*/
 		UPDATE sale_orders
 		SET sale_orders_status_id = pStatus
 		WHERE id = pId;
+		
+		IF(pStatus = 4) THEN
+			SELECT product_details.id, product_details.quantity
+			FROM product_details
+			INNER JOIN sale_orders_details
+				ON sale_orders_details.product_id = product_details.product_id
+			INNER JOIN sale_orders
+				ON sale_orders.id = sale_orders_details.sale_orders_id
+			WHERE sale_orders.id = pId;
+			
+			UPDATE product_details
+			SET quantity = quantity - quantity_
+			WHERE id = pId;
+			
+			UPDATE sale_orders
+			SET sale_orders_status_id = pStatus
+			WHERE id = pId;
+		END IF;
 	COMMIT;
 END
 ;;

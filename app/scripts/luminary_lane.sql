@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 04/04/2023 14:35:21
+ Date: 05/04/2023 14:58:43
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `feedstock_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `feedstock_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstock_details
@@ -55,7 +55,7 @@ CREATE TABLE `feedstocks`  (
   INDEX `feedstock_provider`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstocks
@@ -151,7 +151,7 @@ CREATE TABLE `recipe_details`  (
   INDEX `fk_recipe_details_feedstock_id_feedstock_id`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_details_feedstock_id_feedstock_id` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipe_details
@@ -170,11 +170,53 @@ CREATE TABLE `recipes`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_recipe_product_id_product_id`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_product_id_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipes
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` tinyint NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `name`(`name` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES (1, 'admin', NULL, 1, '2023-04-05 12:04:29');
+INSERT INTO `role` VALUES (2, 'client', NULL, 1, '2023-04-05 12:04:39');
+
+-- ----------------------------
+-- Table structure for roles_users
+-- ----------------------------
+DROP TABLE IF EXISTS `roles_users`;
+CREATE TABLE `roles_users`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NULL DEFAULT NULL,
+  `role_id` int NULL DEFAULT NULL,
+  `status` tinyint NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `user_id`(`user_id` ASC) USING BTREE,
+  INDEX `role_id`(`role_id` ASC) USING BTREE,
+  CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of roles_users
+-- ----------------------------
+INSERT INTO `roles_users` VALUES (1, 1, 1, 1, '2023-04-05 12:04:56');
 
 -- ----------------------------
 -- Table structure for sale_orders
@@ -239,6 +281,65 @@ INSERT INTO `sale_orders_status` VALUES (3, 'EMPACANDO', 1, '2023-04-03 09:21:04
 INSERT INTO `sale_orders_status` VALUES (4, 'ENVIANDO', 1, '2023-04-03 09:21:23');
 INSERT INTO `sale_orders_status` VALUES (5, 'ENTREGADO', 1, '2023-04-03 09:21:33');
 INSERT INTO `sale_orders_status` VALUES (6, 'CANCELADO', 1, '2023-04-03 09:47:45');
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `type` int NOT NULL,
+  `active` tinyint(1) NULL DEFAULT NULL,
+  `confirmed_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `email`(`email` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, 'garnicalunamauricio@gmail.com', 'sha256$E5nAz28zbf1xf6Xz$7972d265317d18ccf00badf45350ddf6c6226f688b1761d51eb13f775abe0f08', 2, 1, '2023-04-05 12:04:13');
+
+-- ----------------------------
+-- Table structure for user_profile
+-- ----------------------------
+DROP TABLE IF EXISTS `user_profile`;
+CREATE TABLE `user_profile`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `user_id`(`user_id` ASC) USING BTREE,
+  CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_profile
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user_types
+-- ----------------------------
+DROP TABLE IF EXISTS `user_types`;
+CREATE TABLE `user_types`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `status` tinyint NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_types
+-- ----------------------------
+INSERT INTO `user_types` VALUES (1, 'SUPERADMIN', 1, '2023-04-05 13:21:21');
+INSERT INTO `user_types` VALUES (2, 'CLIENTE', 1, '2023-04-05 13:21:36');
+INSERT INTO `user_types` VALUES (3, 'EMPLEADO', 1, '2023-04-05 13:21:46');
 
 -- ----------------------------
 -- Function structure for checkFeedstockQuantity
@@ -315,6 +416,23 @@ BEGIN
 		/*We logically eliminate the recipe*/
 		UPDATE recipes
 		SET `status` = 0
+		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for deleteUser
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `deleteUser`;
+delimiter ;;
+CREATE PROCEDURE `deleteUser`(IN pId INT)
+BEGIN
+	START TRANSACTION;
+		/*We logically eliminate the user*/
+		UPDATE `user`
+		SET active = 0
 		WHERE id = pId;
 	COMMIT;
 END
@@ -549,6 +667,52 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getUser
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getUser`;
+delimiter ;;
+CREATE PROCEDURE `getUser`(IN pId INT)
+BEGIN
+	SELECT `user`.id, `user`.email, `user`.`password`, user_profile.id as user_profile_id, user_profile.`name`, user_profile.lastname, user_profile.phone, user_profile.address
+	FROM `user`
+	LEFT JOIN user_profile
+		ON user_profile.user_id = `user`.id
+	WHERE `user`.id = pId;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getUsers
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getUsers`;
+delimiter ;;
+CREATE PROCEDURE `getUsers`(IN pStatus INT)
+BEGIN
+	SELECT `user`.id, `user`.email, `user`.`password`, user_profile.id as user_profile_id, user_profile.`name`, user_profile.lastname, user_profile.phone, user_profile.address
+	FROM `user`
+	LEFT JOIN user_profile
+		ON user_profile.user_id = `user`.id
+	WHERE `user`.active = pStatus;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getUserTypes
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getUserTypes`;
+delimiter ;;
+CREATE PROCEDURE `getUserTypes`(IN pStatus INT)
+BEGIN
+	SELECT id, `name`
+	FROM user_types
+	WHERE `status` = pStatus;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for insertFeedstock
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `insertFeedstock`;
@@ -706,6 +870,37 @@ BEGIN
 			
 			SET i = i + 1;
 		END WHILE;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for insertUser
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `insertUser`;
+delimiter ;;
+CREATE PROCEDURE `insertUser`(IN pEmail VARCHAR(100),
+IN pPassword VARCHAR(255),
+IN pType INT,
+
+/*Data user profile*/
+IN pName VARCHAR(50),
+IN pLastname VARCHAR(50),
+IN pAddress VARCHAR(100),
+IN pPhone VARCHAR(10))
+BEGIN
+	DECLARE user_id_generate INT;
+
+	START TRANSACTION;
+		/*We insert the user auth*/
+		INSERT INTO `user`(email, `password`, type, active, confirmed_at)
+		VALUES(pEmail, pPassword, pType, 1, NOW());
+		SET user_id_generate = LAST_INSERT_ID();
+		
+		/*We insert the user profile*/
+		INSERT INTO user_profile(`name`, lastname, address, phone, user_id)
+		VALUES(pName, pLastname, pAddress, pPhone, user_id_generate);
 	COMMIT;
 END
 ;;
@@ -870,6 +1065,42 @@ BEGIN
 		UPDATE sale_orders
 		SET sale_orders_status_id = pStatus
 		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for updateUser
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `updateUser`;
+delimiter ;;
+CREATE PROCEDURE `updateUser`(IN pId INT,
+IN pEmail VARCHAR(100),
+IN pPassword VARCHAR(255),
+IN pType INT,
+
+/*Data user profile*/
+IN pName VARCHAR(50),
+IN pLastname VARCHAR(50),
+IN pAddress VARCHAR(100),
+IN pPhone VARCHAR(10))
+BEGIN
+	START TRANSACTION;
+		/*We update the user auth*/
+		UPDATE `user`
+		SET email = pEmail,
+				`password` = pPassword,
+				type = pType
+		WHERE id = pId;
+		
+		/*We update the user profile*/
+		UPDATE user_profile
+		SET `name` = pName,
+				lastname = pLastname,
+				address = pAddress,
+				phone = pPhone
+		WHERE user_id = pId;
 	COMMIT;
 END
 ;;

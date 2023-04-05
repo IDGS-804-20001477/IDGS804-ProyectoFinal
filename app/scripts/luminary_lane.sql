@@ -177,6 +177,39 @@ CREATE TABLE `recipes`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for feedstock_details
+-- ----------------------------
+CREATE TABLE `feedstock_details` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` float NOT NULL,
+  `feedstock_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `feedstock_details_feedstock` (`feedstock_id`),
+  CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for feedstocks
+-- ----------------------------
+CREATE TABLE `feedstocks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `price` float NOT NULL,
+  `status` tinyint DEFAULT '1',
+  `measurement_unit_id` int NOT NULL,
+  `provider_id` int NOT NULL,
+  `min_value` float NOT NULL,
+  `max_value` float NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `feedstock_measurement` (`measurement_unit_id`),
+  KEY `feedstock_provider` (`provider_id`),
+  CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`),
+  CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
 -- Table structure for sale_orders
 -- ----------------------------
 DROP TABLE IF EXISTS `sale_orders`;
@@ -282,6 +315,23 @@ BEGIN
 	START TRANSACTION;
 		/*We eliminate logical form the product*/
 		UPDATE products
+		SET `status` = 0
+		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for deleteFeedstock
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `deleteFeedstock`;
+delimiter ;;
+CREATE PROCEDURE `deleteFeedstock`(IN pId INT)
+BEGIN
+	START TRANSACTION;
+		/*We eliminate logical form the feedstock*/
+		UPDATE Feedstocks
 		SET `status` = 0
 		WHERE id = pId;
 	COMMIT;
@@ -430,6 +480,30 @@ BEGIN
 END
 ;;
 delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getFeedstock
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstock`(IN pFeedstockId INT)
+BEGIN
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	FROM feedstocks
+	INNER JOIN feedstock_details
+		ON feedstock_details.feedstock_id = feedstocks.id
+	WHERE feedstocks.id = pFeedstockId;
+END
+
+-- ----------------------------
+-- Procedure structure for getFeedstocks
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstocks`(IN pStatus INT)
+BEGIN
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	FROM feedstocks
+	INNER JOIN feedstock_details
+		ON feedstock_details.feedstock_id = feedstocks.id
+	WHERE feedstocks.`status` = pStatus;
+END
 
 -- ----------------------------
 -- Procedure structure for getProvider
@@ -615,6 +689,39 @@ END
 ;;
 delimiter ;
 
+
+-- ----------------------------
+-- Procedure structure for insertFeedstock
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertFeedstock`(IN pName VARCHAR(150),
+IN pDescription VARCHAR(255),
+IN pPrice FLOAT,
+IN pMinValue FLOAT,
+IN pMaxValue FLOAT,
+
+/*measurement_units data*/
+IN pMeasurement_unit_id INT,
+
+/*providers data*/
+IN pProvider_id INT,
+
+/*Feedstock Details data*/
+IN pQuantity FLOAT)
+BEGIN
+	DECLARE feedstock_id_generate INT;
+	
+	START TRANSACTION;
+		/*We insert a feedstock and get the id*/
+		INSERT INTO feedstocks(`name`, description, price, min_value, max_value, measurement_unit_id, provider_id, created_at)
+		VALUES(pName, pDescription, pPrice, pMinValue, pMaxValue, pMeasurement_unit_id, pProvider_id, NOW());
+		SET feedstock_id_generate = LAST_INSERT_ID();
+		
+		/*We insert a detail to feedstock*/
+		INSERT INTO feedstock_details(quantity, feedstock_id)
+		VALUES(pQuantity, feedstock_id_generate);
+	COMMIT;
+END
+
 -- ----------------------------
 -- Procedure structure for insertProvider
 -- ----------------------------
@@ -790,6 +897,44 @@ BEGIN
 END
 ;;
 delimiter ;
+
+-- ----------------------------
+-- Procedure structure for updateFeedstock
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateFeedstock`(IN pId INT,
+IN pName VARCHAR(150),
+IN pDescription VARCHAR(255),
+IN pPrice FLOAT,
+IN pMinValue FLOAT,
+IN pMaxValue FLOAT,
+
+/*measurement_units data*/
+IN pMeasurement_unit_id INT,
+
+/*providers data*/
+IN pProvider_id INT,
+
+/*Product Details data*/
+IN pQuantity FLOAT)
+BEGIN
+	START TRANSACTION;
+		/*We update feedstocks header*/
+		UPDATE feedstocks 
+		SET `name` = pName,
+				description = pDescription,
+				price = pPrice,
+				min_value = pMinValue,
+				max_value = pMaxValue,
+				measurement_unit_id = pMeasurement_unit_id,
+				provider_id = pProvider_id
+		WHERE id = pId;
+		
+		/*We update feedstock details*/
+		UPDATE feedstock_details
+		SET quantity = pQuantity
+		WHERE feedstock_id = pId;
+	COMMIT;
+END
 
 -- ----------------------------
 -- Procedure structure for updateProvider

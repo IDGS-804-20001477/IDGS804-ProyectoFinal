@@ -1,15 +1,25 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_security import login_required, current_user
 from flask_security.decorators import roles_accepted, roles_required
 
-
 main = Blueprint('main', __name__)
-
 
 @main.route('/')
 def index():
     return render_template('index.html')
 
+@main.route('/about_us')
+def about_us():
+    return render_template('about_us.html')
+
+@main.route('/contact', methods=['POST', 'GET'])
+def contact():
+    current_app.config['WTF_CSRF_ENABLED'] = False
+    if request.method == 'POST':
+        flash('¡Gracias por contactarnos!')
+        return render_template('contact.html')
+    else:
+        return render_template('contact.html')
 
 @main.route('/profile')
 @login_required
@@ -23,8 +33,3 @@ def profile():
 @roles_accepted('admin', 'client')
 def information():
     return render_template('information.html')
-
-
-@main.route('/contact')
-def contact():
-    return render_template('contact.html')

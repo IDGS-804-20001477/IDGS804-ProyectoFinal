@@ -40,16 +40,19 @@
 				</a>
 				<ul class="navbar-nav col-lg-6 justify-content-lg-center">
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if request.path == url_for('main.index') else '' }}" aria-current="page" href="{{ url_for('main.index') }}">Inicio</a>
+						<a class="nav-link {{ 'active' if request.path == url_for('main.index') else '' }}"
+							aria-current="page" href="{{ url_for('main.index') }}">Inicio</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Productos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if request.path == url_for('main.about_us') else '' }}"" href="{{ url_for('main.about_us') }}">Nosotros</a>
+						<a class="nav-link {{ 'active' if request.path == url_for('main.about_us') else '' }}"" href="
+							{{ url_for('main.about_us') }}">Nosotros</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if request.path == url_for('main.contact') else '' }}" href="{{ url_for('main.contact') }}">Contacto</a>
+						<a class="nav-link {{ 'active' if request.path == url_for('main.contact') else '' }}"
+							href="{{ url_for('main.contact') }}">Contacto</a>
 					</li>
 				</ul>
 				<div class="d-lg-flex col-lg-3 justify-content-lg-end">
@@ -59,7 +62,8 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid {{ 'px-0' if request.path == url_for('main.index') else '' }}">
+	<div
+		class="container-fluid {{ 'px-0' if request.path == url_for('main.index') or request.path == url_for('main.about_us') else '' }}">
 		{% block content %}
 
 		{% endblock %}

@@ -11930,4 +11930,8 @@ textarea.form-control-lg {
   font-size: calc(2.2rem + 1.5vw);
 }
 
+.card {
+  border-radius: calc(var(--bs-border-radius) + 1rem);
+}
+
 /*# sourceMappingURL=styles.css.map */

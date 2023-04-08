@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary rounded sticky-top" aria-label="Thirteenth navbar example">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
 		<div class="container">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
 				aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,36 +35,31 @@
 			</button>
 
 			<div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-				<a class="navbar-brand col-lg-3 me-0 py-0" href="{{ url_for('main.index') }}">
+				<a class="navbar-brand col-lg-3 me-0 py-0" href="#">
 					<img src="../static/assets/media/icon/logo_medium.svg" class="img-fluid py-0" width="130px" />
 				</a>
 				<ul class="navbar-nav col-lg-6 justify-content-lg-center">
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if request.path == url_for('main.index') else '' }}"
-							aria-current="page" href="{{ url_for('main.index') }}">Inicio</a>
+						<a class="nav-link active" aria-current="page" href="#">Inicio</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Productos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if request.path == url_for('main.about_us') else '' }}"" href="
-							{{ url_for('main.about_us') }}">Nosotros</a>
+						<a class="nav-link" href="#">Nosotros</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if request.path == url_for('main.contact') else '' }}"
-							href="{{ url_for('main.contact') }}">Contacto</a>
+						<a class="nav-link" href="#">Contacto</a>
 					</li>
 				</ul>
-				<div class="d-lg-flex gap-3 col-lg-3 justify-content-lg-end">
-					<a href="{{ url_for('main.cart_resume') }}" type="button"><i class="bi bi-cart fs-4"></i></a>
-					<a href="{{url_for('auth.login')}}" type="button"><i class="bi bi-person fs-4"></i></a>
+				<div class="d-lg-flex col-lg-3 justify-content-lg-end">
+					<a href="#" type="button"><i class="bi bi-person fs-4"></i></a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
-	<div
-		class="container-fluid {{ 'px-0' if request.path == url_for('main.index') or request.path == url_for('main.about_us') else '' }}">
+	<div class="container-fluid px-0">
 		{% block content %}
 
 		{% endblock %}

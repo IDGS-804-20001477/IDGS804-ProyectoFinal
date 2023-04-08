@@ -11921,6 +11921,11 @@ textarea.form-control-lg {
   color: #F2F2F2;
 }
 
+.square-shape-80 {
+  width: 80px;
+  height: 80px;
+}
+
 .square-shape-140 {
   width: 140px;
   height: 140px;

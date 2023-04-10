@@ -365,8 +365,53 @@ CREATE TABLE `sale_orders_details`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of sale_orders_details
+-- Table structure for buy_orders
 -- ----------------------------
+CREATE TABLE `buy_orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `total` float NOT NULL,
+  `provider_id` int NOT NULL,
+  `buy_order_status_id` int NOT NULL DEFAULT '1',
+  `created_at` datetime DEFAULT NULL,
+  `status` tinyint DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `buy_order_provider` (`provider_id`),
+  KEY `buy_order_buy_order_status` (`buy_order_status_id`),
+  CONSTRAINT `buy_order_buy_order_status` FOREIGN KEY (`buy_order_status_id`) REFERENCES `buy_orders_status` (`id`),
+  CONSTRAINT `buy_order_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for buy_orders_details
+-- ----------------------------
+CREATE TABLE `buy_orders_details` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` float NOT NULL,
+  `price` float NOT NULL,
+  `feedstock_id` int NOT NULL,
+  `buy_order_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `buy_order_details_buy_order` (`buy_order_id`),
+  KEY `buy_order_details_feedstocks` (`feedstock_id`),
+  CONSTRAINT `buy_order_details_buy_order` FOREIGN KEY (`buy_order_id`) REFERENCES `buy_orders` (`id`),
+  CONSTRAINT `buy_order_details_feedstocks` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for buy_orders_status
+-- ----------------------------
+CREATE TABLE `buy_orders_details` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` float NOT NULL,
+  `price` float NOT NULL,
+  `feedstock_id` int NOT NULL,
+  `buy_order_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `buy_order_details_buy_order` (`buy_order_id`),
+  KEY `buy_order_details_feedstocks` (`feedstock_id`),
+  CONSTRAINT `buy_order_details_buy_order` FOREIGN KEY (`buy_order_id`) REFERENCES `buy_orders` (`id`),
+  CONSTRAINT `buy_order_details_feedstocks` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Table structure for sale_orders_status
@@ -496,6 +541,20 @@ BEGIN
 END
 ;;
 delimiter ;
+
+
+-- ----------------------------
+-- Procedure structure for deleteBuyOrder
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteBuyOrder`(IN pId INT)
+BEGIN
+	START TRANSACTION;
+		/*We eliminate logical form the buy_orders*/
+		UPDATE buy_orders
+		SET `status` = 0
+		WHERE id = pId;
+	COMMIT;
+END
 
 -- ----------------------------
 -- Procedure structure for deleteFeedstock
@@ -628,6 +687,49 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getBuyOrders
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getBuyOrders`()
+BEGIN
+
+	SELECT buy_orders.id, buy_orders.total, buy_orders_status.`name` as `type_status`, buy_orders_details.price, buy_orders_details.quantity, feedstocks.`name` as feedstock_name, providers.business_name, buy_orders.`status`
+	FROM buy_orders
+	INNER JOIN providers
+		ON buy_orders.provider_id = providers.id
+	INNER JOIN buy_orders_status
+		ON buy_orders.buy_order_status_id = buy_orders_status.id
+	INNER JOIN buy_orders_details
+		ON buy_orders_details.buy_order_id = buy_orders.id
+	INNER JOIN feedstocks
+		ON feedstocks.id = buy_orders_details.feedstock_id
+	WHERE buy_orders.`status` = 1;
+
+END
+
+-- ----------------------------
+-- Procedure structure for getBuyOrder
+-- ----------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getBuyOrder`(
+IN pBuyOrderId INT
+)
+BEGIN
+	
+	SELECT buy_orders.id, buy_orders.total, buy_orders_status.`name` as `status`, buy_orders_details.price, buy_orders_details.quantity, feedstocks.`name` as feedstock_name, feedstocks.price as price_feedstock, providers.business_name, providers.address, providers.contact_name, providers.contact_phone, providers.contact_email
+	FROM buy_orders
+	INNER JOIN providers
+		ON buy_orders.provider_id = providers.id
+	INNER JOIN buy_orders_status
+		ON buy_orders.buy_order_status_id = buy_orders_status.id
+	INNER JOIN buy_orders_details
+		ON buy_orders_details.buy_order_id = buy_orders.id
+	INNER JOIN feedstocks
+		ON buy_orders_details.feedstock_id = feedstocks.id
+	WHERE buy_orders.id = pBuyOrderId;
+
+END
+
+
+-- ----------------------------
 -- Procedure structure for getMeasurementUnits
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getMeasurementUnits`;
@@ -690,11 +792,15 @@ END
 -- ----------------------------
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getFeedstocks`(IN pStatus INT)
 BEGIN
-	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, measurement_units.`name` as measurement_unit, providers.business_name, providers.address, providers.contact_name, providers.contact_phone, providers.contact_email
 	FROM feedstocks
 	INNER JOIN feedstock_details
 		ON feedstock_details.feedstock_id = feedstocks.id
-	WHERE feedstocks.`status` = pStatus;
+	INNER JOIN providers
+		ON feedstocks.provider_id = providers.id
+	INNER JOIN measurement_units
+		ON feedstocks.measurement_unit_id = measurement_units.id
+	WHERE feedstocks.id = pFeedstockId;
 END
 
 -- ----------------------------

@@ -1,6 +1,7 @@
 env/
 app/.env
 node_modules
+db_data/
 *__pycache__
 package-lock.json
 package.json

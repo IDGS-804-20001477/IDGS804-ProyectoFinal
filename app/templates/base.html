@@ -35,7 +35,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-				<a class="navbar-brand col-lg-3 me-0 py-0" href="#">
+				<a class="navbar-brand col-lg-3 me-0 py-0" href="{{ url_for('main.index') }}">
 					<img src="../static/assets/media/icon/logo_medium.svg" class="img-fluid py-0" width="130px" />
 				</a>
 				<ul class="navbar-nav col-lg-6 justify-content-lg-center">
@@ -55,7 +55,8 @@
 							href="{{ url_for('main.contact') }}">Contacto</a>
 					</li>
 				</ul>
-				<div class="d-lg-flex col-lg-3 justify-content-lg-end">
+				<div class="d-lg-flex gap-3 col-lg-3 justify-content-lg-end">
+					<a href="{{ url_for('main.cart_resume') }}" type="button"><i class="bi bi-cart fs-4"></i></a>
 					<a href="#" type="button"><i class="bi bi-person fs-4"></i></a>
 				</div>
 			</div>

@@ -29,7 +29,7 @@ CREATE TABLE `feedstock_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `feedstock_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstock_details
@@ -55,7 +55,7 @@ CREATE TABLE `feedstocks`  (
   INDEX `feedstock_provider`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstocks
@@ -170,7 +170,7 @@ CREATE TABLE `recipes`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_recipe_product_id_product_id`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_product_id_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipes
@@ -345,7 +345,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'garnicalunamauricio@gmail.com', 'sha256$E5nAz28zbf1xf6Xz$7972d265317d18ccf00badf45350ddf6c6226f688b1761d51eb13f775abe0f08', 2, 1, '2023-04-05 12:04:13');
+INSERT INTO `user` VALUES (1, 'garnicalunamauricio@gmail.com', 'sha256$E5nAz28zbf1xf6Xz$7972d265317d18ccf00badf45350ddf6c6226f688b1761d51eb13f775abe0f08', 1, 1, '2023-04-05 12:04:13');
 
 -- ----------------------------
 -- Table structure for user_profile
@@ -359,8 +359,7 @@ CREATE TABLE `user_profile`  (
   `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `user_id`(`user_id` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -1394,6 +1393,16 @@ BEGIN
 		WHERE user_id = pId;
 	COMMIT;
 END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Triggers structure for table user
+-- ----------------------------
+DROP TRIGGER IF EXISTS `tr_insert_user_profile`;
+delimiter ;;
+CREATE TRIGGER `tr_insert_user_profile` AFTER INSERT ON `user` FOR EACH ROW INSERT INTO user_profile(`name`, lastname, address, phone, user_id)
+	VALUES('', '', '', '', NEW.id)
 ;;
 delimiter ;
 

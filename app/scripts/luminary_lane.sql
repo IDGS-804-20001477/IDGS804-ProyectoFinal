@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 10/04/2023 10:55:14
+ Date: 10/04/2023 14:32:46
 */
 
 SET NAMES utf8mb4;
@@ -900,6 +900,47 @@ BEGIN
 		/*We insert the user profile*/
 		INSERT INTO user_profile(`name`, lastname, address, phone, user_id)
 		VALUES(pName, pLastname, pAddress, pPhone, user_id_generate);
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for refillProducts
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `refillProducts`;
+delimiter ;;
+CREATE PROCEDURE `refillProducts`(IN pRecipe_id INT,
+IN pQuantity INT)
+BEGIN
+	DECLARE product_id_, feedstock_id_ INT;
+	DECLARE quantity_ FLOAT;
+	DECLARE listo BOOLEAN DEFAULT FALSE;
+	DECLARE products_details CURSOR FOR SELECT recipes.product_id, recipe_details.feedstock_id, (recipe_details.quantity * pQuantity) AS quantity_feedstock
+																			FROM recipes
+																			INNER JOIN recipe_details
+																				ON recipe_details.recipe_id = recipes.id
+																			WHERE recipes.id = pRecipe_id;
+	DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET listo = TRUE;
+																			
+	START TRANSACTION;
+		OPEN products_details;
+		products_details_loop: LOOP
+			FETCH products_details INTO product_id_, feedstock_id_, quantity_;
+			
+			IF listo THEN
+				LEAVE products_details_loop;
+			END IF;
+			
+			UPDATE product_details
+			SET quantity = quantity + pQuantity
+			WHERE product_id = product_id_;
+			
+			UPDATE feedstock_details
+			SET quantity = quantity - quantity_
+			WHERE feedstock_id = feedstock_id_;
+		END LOOP;
+		CLOSE products_details;
 	COMMIT;
 END
 ;;

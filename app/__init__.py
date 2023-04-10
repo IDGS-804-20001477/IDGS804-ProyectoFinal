@@ -30,11 +30,15 @@ def create_app():
     from .routes.products.products_route import products as products_blueprint
     from .routes.providers.providers_route import providers as providers_blueprint
     from .routes.recipes.recipes_route import recipes as recipes_blueprint
+    from .routes.Feedstocks.feedstocks_route import feedstocks as feedstocks_blueprint
+    from .routes.buy_orders.buy_orders_route import buyOrders as buyOrders_blueprint
 
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(main_blueprint)
     app.register_blueprint(products_blueprint)
     app.register_blueprint(providers_blueprint)
     app.register_blueprint(recipes_blueprint)
+    app.register_blueprint(feedstocks_blueprint)
+    app.register_blueprint(buyOrders_blueprint)
     
     return app

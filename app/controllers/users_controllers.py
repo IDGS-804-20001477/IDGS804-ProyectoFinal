@@ -54,6 +54,18 @@ def updateUser(User):
         return ex
 
 
+def updateProfile(User):
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL updateProfile(%s, %s, %s, %s, %s)',
+                           (User.id, User.name, User.lastname, User.address, User.phone))
+        connection.commit()
+        connection.close()
+    except Exception as ex:
+        return ex
+
+
 def deleteUser(id):
     try:
         connection = get_connection()

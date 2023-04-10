@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 05/04/2023 17:52:45
+ Date: 10/04/2023 10:55:14
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `feedstock_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `feedstock_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstock_details
@@ -55,7 +55,7 @@ CREATE TABLE `feedstocks`  (
   INDEX `feedstock_provider`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstocks
@@ -71,7 +71,7 @@ CREATE TABLE `measurement_units`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of measurement_units
@@ -88,7 +88,7 @@ CREATE TABLE `product_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_product_details_products`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_product_details_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of product_details
@@ -110,7 +110,7 @@ CREATE TABLE `products`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of products
@@ -131,7 +131,7 @@ CREATE TABLE `providers`  (
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `contact_email_unique`(`contact_email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of providers
@@ -151,7 +151,7 @@ CREATE TABLE `recipe_details`  (
   INDEX `fk_recipe_details_feedstock_id_feedstock_id`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_details_feedstock_id_feedstock_id` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipe_details
@@ -170,7 +170,7 @@ CREATE TABLE `recipes`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_recipe_product_id_product_id`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_product_id_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipes
@@ -233,7 +233,7 @@ CREATE TABLE `sale_orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_sale_orders_sale_orders_status`(`sale_orders_status_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_sale_orders_status` FOREIGN KEY (`sale_orders_status_id`) REFERENCES `sale_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sale_orders
@@ -254,7 +254,7 @@ CREATE TABLE `sale_orders_details`  (
   INDEX `fk_sale_orders_details_product`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_details_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_sale_orders_details_sale_orders` FOREIGN KEY (`sale_orders_id`) REFERENCES `sale_orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sale_orders_details
@@ -300,7 +300,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'garnicalunamauricio@gmail.com', 'sha256$E5nAz28zbf1xf6Xz$7972d265317d18ccf00badf45350ddf6c6226f688b1761d51eb13f775abe0f08', 2, 1, '2023-04-05 12:04:13');
+INSERT INTO `user` VALUES (1, 'garnicalunamauricio@gmail.com', 'sha256$E5nAz28zbf1xf6Xz$7972d265317d18ccf00badf45350ddf6c6226f688b1761d51eb13f775abe0f08', 1, 1, '2023-04-05 12:04:13');
 
 -- ----------------------------
 -- Table structure for user_profile
@@ -314,8 +314,7 @@ CREATE TABLE `user_profile`  (
   `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `user_id`(`user_id` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -987,6 +986,29 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for updateProfile
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `updateProfile`;
+delimiter ;;
+CREATE PROCEDURE `updateProfile`(IN pId INT,
+IN pName VARCHAR(50),
+IN pLastname VARCHAR(50),
+IN pAddress VARCHAR(255),
+IN pPhone VARCHAR(10))
+BEGIN
+	START TRANSACTION;
+		UPDATE user_profile
+		SET `name` = pName,
+				lastname = pLastname,
+				address = pAddress,
+				phone = pPhone
+		WHERE id = pId;
+	COMMIT;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for updateProvider
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `updateProvider`;
@@ -1060,8 +1082,17 @@ DROP PROCEDURE IF EXISTS `updateSaleOrder`;
 delimiter ;;
 CREATE PROCEDURE `updateSaleOrder`(IN pId INT, IN pStatus INT)
 BEGIN
-	DECLARE quantity_ INT;
-
+	DECLARE quantity_, detail_id_ INT;
+	DECLARE listo BOOLEAN DEFAULT FALSE;
+	DECLARE cursor_detail CURSOR FOR SELECT product_details.id, product_details.quantity
+																	 FROM product_details
+																	 INNER JOIN sale_orders_details
+																		 ON sale_orders_details.product_id = product_details.product_id
+																	 INNER JOIN sale_orders
+																		 ON sale_orders.id = sale_orders_details.sale_orders_id
+																	 WHERE sale_orders.id = pId;
+	DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET listo = TRUE;
+	
 	START TRANSACTION;
 		/*We update the status of the sales order to the new one we obtain in the function parameters*/
 		UPDATE sale_orders
@@ -1069,21 +1100,23 @@ BEGIN
 		WHERE id = pId;
 		
 		IF(pStatus = 4) THEN
-			SELECT product_details.id, product_details.quantity
-			FROM product_details
-			INNER JOIN sale_orders_details
-				ON sale_orders_details.product_id = product_details.product_id
-			INNER JOIN sale_orders
-				ON sale_orders.id = sale_orders_details.sale_orders_id
-			WHERE sale_orders.id = pId;
-			
-			UPDATE product_details
-			SET quantity = quantity - quantity_
-			WHERE id = pId;
-			
 			UPDATE sale_orders
 			SET sale_orders_status_id = pStatus
 			WHERE id = pId;
+		
+			OPEN cursor_detail;
+			cursor_detail_loop: LOOP
+				FETCH cursor_detail INTO detail_id_, quantity_;
+				IF listo THEN
+					LEAVE cursor_detail_loop;
+				END IF;
+			
+				UPDATE product_details
+				SET quantity = quantity - quantity_
+				WHERE id = detail_id_;
+			
+			END LOOP;
+			CLOSE cursor_detail;
 		END IF;
 	COMMIT;
 END
@@ -1123,6 +1156,16 @@ BEGIN
 		WHERE user_id = pId;
 	COMMIT;
 END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Triggers structure for table user
+-- ----------------------------
+DROP TRIGGER IF EXISTS `tr_insert_user_profile`;
+delimiter ;;
+CREATE TRIGGER `tr_insert_user_profile` AFTER INSERT ON `user` FOR EACH ROW INSERT INTO user_profile(`name`, lastname, address, phone, user_id)
+	VALUES('', '', '', '', NEW.id)
 ;;
 delimiter ;
 

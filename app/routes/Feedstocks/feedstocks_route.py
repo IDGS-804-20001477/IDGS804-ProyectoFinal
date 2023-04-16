@@ -2,13 +2,13 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from ...models.feedstock import Feedstock
 from ...controllers.feedstocks_controller import getFeedstocks, getFeedstockById, insertFeedstock, updateFeedstock, deleteFeedstock
 
-feedstocks = Blueprint('feedstocks', __name__, url_prefix='/feedstocks')
+feedstocks = Blueprint('feedstocks', __name__, url_prefix='/admin/feedstocks')
 
 
 @feedstocks.route('/feedstocks-index')
 def index():
     feedstocks = getFeedstocks(1)
-    return render_template('/feedstocks/index_feedstock.html', feedstocks=feedstocks)
+    return render_template('/admin/feedstocks/index_feedstock.html', feedstocks=feedstocks)
 
 
 @feedstocks.route('/feedstocks-insert', methods=['GET', 'POST'])
@@ -27,7 +27,7 @@ def insert():
         insertFeedstock(feedstock)
         return redirect(url_for('feedstocks.index'))
 
-    return render_template('/feedstocks/insert-feedstock.html')
+    return render_template('/admin/feedstocks/insert-feedstock.html')
 
 
 @feedstocks.route('/feedstocks-update', methods=['GET', 'POST'])
@@ -35,7 +35,7 @@ def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
         response = getFeedstockById(id)
-        return render_template('/feedstocks/update_feedstock.html', form=response)
+        return render_template('/admin/feedstocks/update_feedstock.html', form=response)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')
@@ -58,7 +58,7 @@ def delete():
     if (request.method == 'GET'):
         id = request.args.get('id')
         response = getFeedstockById(id)
-        return render_template('/feedstocks/delete_feedstock.html', form=response)
+        return render_template('/admin/feedstocks/delete_feedstock.html', form=response)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')

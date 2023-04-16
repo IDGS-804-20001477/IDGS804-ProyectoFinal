@@ -3,13 +3,13 @@ from ...models.user import User
 from ...controllers.users_controllers import getUsers, getUserById, getUserTypes, insertUser, updateUser, deleteUser
 from werkzeug.security import generate_password_hash
 
-users = Blueprint('users', __name__, url_prefix='/users')
+users = Blueprint('users', __name__, url_prefix='/admin/users')
 
 
 @users.route('/users-index')
 def index():
     users = getUsers(1)
-    return render_template('/users/index_user.html', users=users)
+    return render_template('/admin/users/index_user.html', users=users)
 
 
 @users.route('/users-insert', methods=['GET', 'POST'])
@@ -29,7 +29,7 @@ def insert():
         insertUser(user)
         return redirect(url_for('users.index'))
 
-    return render_template('/users/index_user.html', user_types=user_types)
+    return render_template('/admin/users/index_user.html', user_types=user_types)
 
 
 @users.route('/users-update', methods=['GET', 'POST'])
@@ -38,7 +38,7 @@ def update():
         id = request.args.get('id')
         user_types = getUserTypes(1)
         user = getUserById(id)
-        return render_template('/users/update_user.html', user=user, user_types=user_types)
+        return render_template('/admin/users/update_user.html', user=user, user_types=user_types)
     
     if(request.method == 'POST'):
         id = request.form.get('txtId')
@@ -59,7 +59,7 @@ def delete():
     if(request.method == 'GET'):
         id = request.args.get('id')
         user = getUserById(id)
-        return render_template('/users/delete_user.html', user=user)
+        return render_template('/admin/users/delete_user.html', user=user)
     
     if(request.method == 'POST'):
         id = request.form.get('txtId')

@@ -5,13 +5,13 @@ from ...controllers.products_controller import getProducts
 from ...controllers.feedstocks_controller import getFeedstocks
 
 
-recipes = Blueprint('recipes', __name__, url_prefix='/recipes')
+recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
 
 @recipes.route('/recipes-index')
 def index():
     recipes = getRecipes(1)
-    return render_template('/recipes/index_recipe.html', recipes=recipes)
+    return render_template('/admin/recipes/index_recipe.html', recipes=recipes)
 
 
 @recipes.route('/recipes-insert', methods=['GET', 'POST'])
@@ -27,7 +27,7 @@ def insert():
         insertRecipe(recipe)
         return redirect(url_for('recipes.index'))
 
-    return render_template('/recipes/insert_recipe.html', products=products, feedstocks=feedstocks)
+    return render_template('/admin/recipes/insert_recipe.html', products=products, feedstocks=feedstocks)
 
 
 @recipes.route('/recipes-update', methods=['GET', 'POST'])
@@ -37,7 +37,7 @@ def update():
         recipe = getRecipeById(id)
         products = getProducts(1)
         feedstocks = getFeedstocks(1)
-        return render_template('/recipes/update_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
+        return render_template('/admin/recipes/update_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')
@@ -54,7 +54,7 @@ def delete():
     if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        return render_template('/recipes/delete_recipe.html', recipe=recipe)
+        return render_template('/admin/recipes/delete_recipe.html', recipe=recipe)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')

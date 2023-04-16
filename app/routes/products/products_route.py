@@ -2,13 +2,13 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from ...models.product import Product
 from ...controllers.products_controller import getProducts, getProductById, insertProduct, updateProduct, deleteProduct
 
-products = Blueprint('products', __name__, url_prefix='/products')
+products = Blueprint('products', __name__, url_prefix='/admin/products')
 
 
 @products.route('/products-index')
 def index():
     products = getProducts(1)
-    return render_template('/products/index_product.html', products=products)
+    return render_template('/admin/products/index_product.html', products=products)
 
 
 @products.route('/products-insert', methods=['GET', 'POST'])
@@ -26,7 +26,7 @@ def insert():
         insertProduct(product)
         return redirect(url_for('products.index'))
 
-    return render_template('/products/insert_product.html')
+    return render_template('/admin/products/insert_product.html')
 
 
 @products.route('/products-update', methods=['GET', 'POST'])
@@ -34,7 +34,7 @@ def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
         response = getProductById(id)
-        return render_template('/products/update_product.html', form=response)
+        return render_template('/admin/products/update_product.html', form=response)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')
@@ -57,7 +57,7 @@ def delete():
     if (request.method == 'GET'):
         id = request.args.get('id')
         response = getProductById(id)
-        return render_template('/products/delete_product.html', form=response)
+        return render_template('/admin/products/delete_product.html', form=response)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')

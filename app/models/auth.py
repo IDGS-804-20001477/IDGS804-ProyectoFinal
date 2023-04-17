@@ -26,9 +26,10 @@ class Role(db.Model, RoleMixin):
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255), nullable=False)
-    type = db.Column(db.String(50), nullable=False, default=2)
+    type = db.Column(db.Integer(), nullable=False, default=2)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary='roles_users',
@@ -38,7 +39,6 @@ class User(db.Model, UserMixin):
 class User_Profile(db.Model):
     __tablename__ = 'user_profile'
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
     lastname = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(255), nullable=False)
     phone = db.Column(db.String(10), nullable=False)

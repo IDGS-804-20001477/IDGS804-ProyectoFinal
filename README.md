@@ -41,4 +41,15 @@ flask run
 
 ## Paso 5
 
+Debes tener el archivo .env con los siguientes atributos
+
+```
+MYSQL_HOST=127.0.0.1
+MYSQL_DB='luminary_lane'
+MYSQL_USER='root'
+MYSQL_PASSWORD='root'
+```
+
+## Paso 6
+
 Iniciar el servidor alojado localmente con la ruta **http://127.0.0.1:5000**

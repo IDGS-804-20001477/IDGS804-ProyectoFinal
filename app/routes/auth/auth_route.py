@@ -25,7 +25,7 @@ def login():
             return redirect(url_for('auth.login'))
 
         login_user(user, remember=remember)
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('providers.index'))
 
 
 @auth.route('/register', methods=['GET', 'POST'])

@@ -44,11 +44,11 @@ def update():
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')
-        business_name = request.form.get('txtBusinessName')
-        contact_name = request.form.get('txtContactName')
-        contact_email = request.form.get('txtContactEmail')
-        contact_phone = request.form.get('txtContactPhone')
-        address = request.form.get('txtAddress')
+        business_name = request.form['txtBusinessName']
+        contact_name = request.form['txtContactName']
+        contact_email = request.form['txtContactEmail']
+        contact_phone = request.form['txtContactPhone']
+        address = request.form['txtAddress']
         provider = Provider(id, business_name, contact_name,
                             contact_email, contact_phone, address)
         updateProvider(provider)

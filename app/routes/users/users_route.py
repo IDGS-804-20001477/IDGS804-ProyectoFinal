@@ -2,17 +2,23 @@ from flask import Blueprint, request, redirect, url_for, render_template
 from ...models.user import User
 from ...controllers.users_controllers import getUsers, getUserById, getUserTypes, insertUser, updateUser, deleteUser
 from werkzeug.security import generate_password_hash
+from flask_security import login_required
+from flask_security.decorators import roles_required
 
 users = Blueprint('users', __name__, url_prefix='/admin/users')
 
 
 @users.route('/users-index')
+@login_required
+@roles_required('admin')
 def index():
     users = getUsers(1)
     return render_template('/admin/users/index_user.html', users=users)
 
 
 @users.route('/users-insert', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def insert():
     user_types = getUserTypes(1)
 
@@ -33,6 +39,8 @@ def insert():
 
 
 @users.route('/users-update', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def update():
     if(request.method == 'GET'):
         id = request.args.get('id')
@@ -55,6 +63,8 @@ def update():
     
 
 @users.route('/users-delete', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def delete():
     if(request.method == 'GET'):
         id = request.args.get('id')

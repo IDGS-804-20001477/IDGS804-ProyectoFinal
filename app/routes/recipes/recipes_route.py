@@ -3,18 +3,23 @@ from ...models.recipe import Recipe
 from ...controllers.recipes_controller import getRecipes, getRecipeById, insertRecipe, updateRecipe, deleteRecipe
 from ...controllers.products_controller import getProducts
 from ...controllers.feedstocks_controller import getFeedstocks
-
+from flask_security import login_required
+from flask_security.decorators import roles_required
 
 recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
 
 @recipes.route('/recipes-index')
+@login_required
+@roles_required('admin')
 def index():
     recipes = getRecipes(1)
     return render_template('/admin/recipes/index_recipe.html', recipes=recipes)
 
 
 @recipes.route('/recipes-insert', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def insert():
     products = getProducts(1)
     feedstocks = getFeedstocks(1)
@@ -31,6 +36,8 @@ def insert():
 
 
 @recipes.route('/recipes-update', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
@@ -50,6 +57,8 @@ def update():
 
 
 @recipes.route('/recipes-delete', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def delete():
     if (request.method == 'GET'):
         id = request.args.get('id')

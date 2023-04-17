@@ -2,17 +2,23 @@ from flask import Blueprint, request, redirect, url_for, render_template
 from ...models.sale_order import Sale_Order
 from ...controllers.sales_orders_controller import getSalesOrders, getSaleOrderById, insertSaleOrder, updateSaleOrder
 from ...models.sale_order import Sale_Order
+from flask_security import login_required
+from flask_security.decorators import roles_required
 
 sale_orders = Blueprint('sale_orders', __name__, url_prefix='/admin/sale-orders')
 
 
 @sale_orders.route('/sale-orders-index')
+@login_required
+@roles_required('admin')
 def index():
     sale_orders = getSalesOrders()
     return render_template('/admin/sale-orders/index_sale_order.html', sale_orders=sale_orders)
 
 
 @sale_orders.route('/shopping-cart-insert', methods=['GET', 'POST'])
+@login_required
+@roles_required('client')
 def insert():
     if (request.method == 'POST'):
         client_id = request.cookies.get('user_id')
@@ -27,6 +33,8 @@ def insert():
 
 
 @sale_orders.route('/sale-orders-update', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
@@ -41,6 +49,8 @@ def update():
 
 
 @sale_orders.route('/sale-orders-delete', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def delete():
     if(request.method == 'GET'):
         id = request.args.get('id')

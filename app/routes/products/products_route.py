@@ -1,17 +1,23 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from ...models.product import Product
 from ...controllers.products_controller import getProducts, getProductById, insertProduct, updateProduct, deleteProduct
+from flask_security import login_required
+from flask_security.decorators import roles_required
 
 products = Blueprint('products', __name__, url_prefix='/admin/products')
 
 
 @products.route('/products-index')
+@login_required
+@roles_required('admin')
 def index():
     products = getProducts(1)
     return render_template('/admin/products/index_product.html', products=products)
 
 
 @products.route('/products-insert', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def insert():
     if (request.method == 'POST'):
         name = request.form.get('txtName')
@@ -30,6 +36,8 @@ def insert():
 
 
 @products.route('/products-update', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
@@ -53,6 +61,8 @@ def update():
 
 
 @products.route('/products-delete', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
 def delete():
     if (request.method == 'GET'):
         id = request.args.get('id')

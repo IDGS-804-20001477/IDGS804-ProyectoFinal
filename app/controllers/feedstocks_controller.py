@@ -55,6 +55,7 @@ def deleteFeedstock(id):
     except Exception as ex:
         return ex
 
+
 def deleteFeedstock(id):
     try:
         connection = get_connection()

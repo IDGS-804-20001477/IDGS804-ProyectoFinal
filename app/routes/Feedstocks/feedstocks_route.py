@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from ...models.feedstock import Feedstock
 from ...controllers.feedstocks_controller import getFeedstocks, getFeedstockById, insertFeedstock, updateFeedstock, deleteFeedstock
+from ...controllers.providers_controller import getProvidersForFeedstock
+from ...controllers.measurement_units_controller import getMeasurementUnits
 from flask_security import login_required
 from flask_security.decorators import roles_required
 
@@ -19,6 +21,9 @@ def index():
 @login_required
 @roles_required('admin')
 def insert():
+    providers = getProvidersForFeedstock()
+    measurement_units = getMeasurementUnits(1)
+
     if (request.method == 'POST'):
         name = request.form.get('txtName')
         description = request.form.get('txtDescription')
@@ -28,12 +33,12 @@ def insert():
         min_value = request.form.get('txtMinValue')
         max_value = request.form.get('txtMaxValue')
         quantity = request.form.get('txtQuantity')
-        feedstock = Feedstock(0, name, description, price,
-                              provider_id, measurement_unit_id, min_value, max_value, quantity)
-        insertFeedstock(feedstock)
+        feedstock = Feedstock(0, name, description, price, min_value,
+                              max_value, measurement_unit_id, provider_id, quantity)
+        print(insertFeedstock(feedstock))
         return redirect(url_for('feedstocks.index'))
 
-    return render_template('/admin/feedstocks/insert_feedstock.html')
+    return render_template('/admin/feedstocks/insert_feedstock.html', providers=providers, measurement_units=measurement_units)
 
 
 @feedstocks.route('/feedstocks-update', methods=['GET', 'POST'])
@@ -41,9 +46,11 @@ def insert():
 @roles_required('admin')
 def update():
     if (request.method == 'GET'):
+        providers = getProvidersForFeedstock()
+        measurement_units = getMeasurementUnits(1)
         id = request.args.get('id')
         response = getFeedstockById(id)
-        return render_template('/admin/feedstocks/update_feedstock.html', form=response)
+        return render_template('/admin/feedstocks/update_feedstock.html', form=response, providers=providers, measurement_units=measurement_units)
 
     if (request.method == 'POST'):
         id = request.form.get('txtId')
@@ -55,8 +62,7 @@ def update():
         min_value = request.form.get('txtMinValue')
         max_value = request.form.get('txtMaxValue')
         quantity = request.form.get('txtQuantity')
-        feedstock = Feedstock(id, name, description, price,
-                              provider_id, measurement_unit_id, min_value, max_value, quantity)
+        feedstock = Feedstock(id, name, description, price, min_value, max_value, measurement_unit_id, provider_id, quantity)
         updateFeedstock(feedstock)
         return redirect(url_for('feedstocks.index'))
 

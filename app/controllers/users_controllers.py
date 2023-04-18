@@ -26,6 +26,7 @@ def getUserTypes(status):
         connection = get_connection()
         with connection.cursor() as cursor:
             cursor.execute('CALL getUserTypes(%s)', (status))
+            return cursor.fetchall()
     except Exception as ex:
         return ex
 

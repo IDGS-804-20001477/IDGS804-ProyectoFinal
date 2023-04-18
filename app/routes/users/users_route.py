@@ -35,7 +35,7 @@ def insert():
         insertUser(user)
         return redirect(url_for('users.index'))
 
-    return render_template('/admin/users/index_user.html', user_types=user_types)
+    return render_template('/admin/users/insert_user.html', user_types=user_types)
 
 
 @users.route('/users-update', methods=['GET', 'POST'])
@@ -46,7 +46,7 @@ def update():
         id = request.args.get('id')
         user_types = getUserTypes(1)
         user = getUserById(id)
-        return render_template('/admin/users/update_user.html', user=user, user_types=user_types)
+        return render_template('/admin/users/update_user.html', form=user, user_types=user_types)
     
     if(request.method == 'POST'):
         id = request.form.get('txtId')
@@ -69,7 +69,7 @@ def delete():
     if(request.method == 'GET'):
         id = request.args.get('id')
         user = getUserById(id)
-        return render_template('/admin/users/delete_user.html', user=user)
+        return render_template('/admin/users/delete_user.html', form=user)
     
     if(request.method == 'POST'):
         id = request.form.get('txtId')

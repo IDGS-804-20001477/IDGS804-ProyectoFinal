@@ -27,9 +27,11 @@ def insert():
         min_value = request.form.get('txtMinValue')
         max_value = request.form.get('txtMaxValue')
         quantity = request.form.get('txtQuantity')
+        filename = request.files['photo']
         product = Product(0, '', name, description, price,
-                          size, min_value, max_value, quantity)
+                          size, min_value, max_value, quantity, filename.filename)
         insertProduct(product)
+        
         return redirect(url_for('products.index'))
 
     return render_template('/admin/products/insert_product.html')
@@ -54,8 +56,9 @@ def update():
         min_value = request.form.get('txtMinValue')
         max_value = request.form.get('txtMaxValue')
         quantity = request.form.get('txtQuantity')
+        filename = request.files['photo']
         product = Product(id, sku, name, description, price,
-                          size, min_value, max_value, quantity)
+                          size, min_value, max_value, quantity, filename)
         updateProduct(product)
         return redirect(url_for('products.index'))
 

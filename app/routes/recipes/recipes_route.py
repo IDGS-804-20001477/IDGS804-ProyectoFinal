@@ -1,12 +1,10 @@
 from flask import Blueprint, request, redirect, url_for, render_template
 from ...models.recipe import Recipe
-from ...controllers.recipes_controller import getRecipes, getRecipeById, insertRecipe, updateRecipe, deleteRecipe
+from ...controllers.recipes_controller import getRecipes, getRecipeById, insertRecipe, updateRecipe, deleteRecipe, refillProductByRecipe
 from ...controllers.products_controller import getProductsForRecipe
 from ...controllers.feedstocks_controller import getFeedstocksForRecipe
 from flask_security import login_required
 from flask_security.decorators import roles_required
-import pandas as pd
-import requests
 
 recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
@@ -32,7 +30,7 @@ def insert():
         description = data['description']
         details = data['array']
         recipe = Recipe(0, product_id, description, details)
-        print(insertRecipe(recipe))
+        insertRecipe(recipe)
         return redirect(url_for('recipes.index'))
 
     return render_template('/admin/recipes/insert_recipe.html', products=products, feedstocks=feedstocks)
@@ -50,12 +48,13 @@ def update():
         return render_template('/admin/recipes/update_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
 
     if (request.method == 'POST'):
-        id = request.form.get('txtId')
-        product_id = request.form.get('cmbProducts')
-        description = request.form.get('txtDescription')
-        details = request.form.get('<<agregar un nombre>>')
-        recipe = Recipe(id, description, product_id, details)
-        updateRecipe(recipe)
+        data = request.get_json()
+        id = int(data['id'])
+        product_id = int(data['product_id'])
+        description = data['description']
+        details = data['array']
+        recipe = Recipe(id, product_id, description, details)
+        print(updateRecipe(recipe))
         return redirect(url_for('recipes.index'))
 
 
@@ -72,3 +71,22 @@ def delete():
         id = request.form.get('txtId')
         deleteRecipe(id)
         return redirect(url_for('recipes.index'))
+
+
+@recipes.route('/recipes-refill', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin')
+def refill():
+    if(request.method == 'GET'):
+        id = request.args.get('id')
+        recipe = getRecipeById(id)
+        products = getProductsForRecipe()
+        feedstocks = getFeedstocksForRecipe()
+        return render_template('/admin/recipes/refill_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
+    
+    if(request.method == 'POST'):
+        id = request.form['txtId']
+        quantity = request.form['txtQuantity']
+        print(refillProductByRecipe(id, quantity))
+        return  redirect(url_for('recipes.index'))
+        

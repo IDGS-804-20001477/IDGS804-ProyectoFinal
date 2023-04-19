@@ -11,12 +11,11 @@
  Target Server Version : 80033 (8.0.33)
  File Encoding         : 65001
 
- Date: 18/04/2023 11:34:14
+ Date: 19/04/2023 11:36:25
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-SET GLOBAL log_bin_trust_function_creators = 1;
 
 -- ----------------------------
 -- Table structure for buy_order_details
@@ -93,11 +92,14 @@ CREATE TABLE `feedstock_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `feedstock_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstock_details
 -- ----------------------------
+INSERT INTO `feedstock_details` VALUES (1, 42, 1);
+INSERT INTO `feedstock_details` VALUES (2, 400.25, 2);
+INSERT INTO `feedstock_details` VALUES (3, 20, 3);
 
 -- ----------------------------
 -- Table structure for feedstocks
@@ -119,11 +121,14 @@ CREATE TABLE `feedstocks`  (
   INDEX `feedstock_provider`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of feedstocks
 -- ----------------------------
+INSERT INTO `feedstocks` VALUES (1, 'a', 'a', 100, 1, 1, 1, 10, 100, '2023-04-18 12:33:29');
+INSERT INTO `feedstocks` VALUES (2, 'Prueba', 'Prueba', 10.5, 0, 2, 1, 150.75, 500, '2023-04-18 12:55:49');
+INSERT INTO `feedstocks` VALUES (3, 'Alfiler', 'Es un accesorio para sostener los trozos de tela para coserla', 5, 1, 1, 1, 10, 200, '2023-04-19 11:34:00');
 
 -- ----------------------------
 -- Table structure for measurement_units
@@ -135,11 +140,13 @@ CREATE TABLE `measurement_units`  (
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of measurement_units
 -- ----------------------------
+INSERT INTO `measurement_units` VALUES (1, 'PIEZA', 1, '2023-04-18 12:18:15');
+INSERT INTO `measurement_units` VALUES (2, 'CM', 1, '2023-04-18 12:18:15');
 
 -- ----------------------------
 -- Table structure for product_details
@@ -157,7 +164,7 @@ CREATE TABLE `product_details`  (
 -- ----------------------------
 -- Records of product_details
 -- ----------------------------
-INSERT INTO `product_details` VALUES (1, 10, 1);
+INSERT INTO `product_details` VALUES (1, 14, 1);
 INSERT INTO `product_details` VALUES (2, 5, 2);
 
 -- ----------------------------
@@ -224,11 +231,15 @@ CREATE TABLE `recipe_details`  (
   INDEX `fk_recipe_details_feedstock_id_feedstock_id`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_details_feedstock_id_feedstock_id` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipe_details
 -- ----------------------------
+INSERT INTO `recipe_details` VALUES (3, 2, 1, 5);
+INSERT INTO `recipe_details` VALUES (4, 2, 1, 6.66);
+INSERT INTO `recipe_details` VALUES (6, 1, 1, 6);
+INSERT INTO `recipe_details` VALUES (7, 1, 3, 20);
 
 -- ----------------------------
 -- Table structure for recipes
@@ -243,11 +254,13 @@ CREATE TABLE `recipes`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_recipe_product_id_product_id`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_product_id_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recipes
 -- ----------------------------
+INSERT INTO `recipes` VALUES (1, 1, 'Es una prueba de update', 1, '2023-04-19 01:34:06');
+INSERT INTO `recipes` VALUES (2, 1, 'Prueba', 0, '2023-04-19 02:09:52');
 
 -- ----------------------------
 -- Table structure for role
@@ -261,7 +274,7 @@ CREATE TABLE `role`  (
   `created_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of role
@@ -284,7 +297,7 @@ CREATE TABLE `roles_users`  (
   INDEX `role_id`(`role_id` ASC) USING BTREE,
   CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of roles_users
@@ -369,7 +382,7 @@ CREATE TABLE `user`  (
   `confirmed_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `email`(`email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -396,7 +409,7 @@ CREATE TABLE `user_profile`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_profile
@@ -613,11 +626,31 @@ DROP PROCEDURE IF EXISTS `getFeedstocks`;
 delimiter ;;
 CREATE PROCEDURE `getFeedstocks`(IN pStatus INT)
 BEGIN
-	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, feedstocks.description, feedstocks.measurement_unit_id, feedstocks.provider_id
+	SELECT feedstocks.id, feedstocks.`name`, feedstocks.price, feedstock_details.quantity, feedstocks.min_value, feedstocks.max_value, measurement_units.`name` as measurement_unit_name, providers.business_name
 	FROM feedstocks
 	INNER JOIN feedstock_details
 		ON feedstock_details.feedstock_id = feedstocks.id
+	INNER JOIN measurement_units
+		ON measurement_units.id = feedstocks.measurement_unit_id
+	INNER JOIN providers
+		ON providers.id = feedstocks.provider_id
 	WHERE feedstocks.`status` = pStatus;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getFeedstocksForRecipe
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getFeedstocksForRecipe`;
+delimiter ;;
+CREATE PROCEDURE `getFeedstocksForRecipe`()
+BEGIN
+	SELECT feedstocks.id, CONCAT(feedstocks.`name`,' - ',measurement_units.`name`)
+	FROM feedstocks
+	INNER JOIN measurement_units
+		ON measurement_units.id = feedstocks.measurement_unit_id
+	WHERE feedstocks.`status` = 1;
 END
 ;;
 delimiter ;
@@ -669,6 +702,20 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getProductsForRecipe
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getProductsForRecipe`;
+delimiter ;;
+CREATE PROCEDURE `getProductsForRecipe`()
+BEGIN
+	SELECT products.id, CONCAT(products.`name`,' - ',products.size)
+	FROM products
+	WHERE products.`status` = 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for getProvider
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getProvider`;
@@ -692,6 +739,20 @@ BEGIN
 	SELECT id, business_name, contact_name, contact_email, contact_phone, address
 	FROM providers
 	WHERE `status` = pStatus;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getProvidersForFeedstock
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getProvidersForFeedstock`;
+delimiter ;;
+CREATE PROCEDURE `getProvidersForFeedstock`()
+BEGIN
+	SELECT providers.id, providers.business_name
+	FROM providers
+	WHERE providers.`status` = 1;
 END
 ;;
 delimiter ;
@@ -736,7 +797,7 @@ DROP PROCEDURE IF EXISTS `getRecipe`;
 delimiter ;;
 CREATE PROCEDURE `getRecipe`(IN pId INT)
 BEGIN
-	SELECT recipes.id, recipes.product_id, products.`name`, recipes.description, recipe_details.id as detail_id, recipe_details.feedstock_id, feedstocks.`name` as name_feedstock, recipe_details.quantity
+	SELECT recipes.id, CONCAT(products.`name`,' - ',products.size), recipes.description, recipe_details.feedstock_id, CONCAT(feedstocks.`name`,' - ',measurement_units.`name`) as name_feedstock, recipe_details.quantity
 	FROM recipes
 	INNER JOIN products
 		ON products.id = recipes.product_id
@@ -744,6 +805,8 @@ BEGIN
 		ON recipe_details.recipe_id = recipes.id
 	INNER JOIN feedstocks
 		ON feedstocks.id = recipe_details.feedstock_id
+	INNER JOIN measurement_units
+		ON measurement_units.id = feedstocks.measurement_unit_id
 	WHERE recipes.id = pId;
 END
 ;;
@@ -756,7 +819,7 @@ DROP PROCEDURE IF EXISTS `getRecipes`;
 delimiter ;;
 CREATE PROCEDURE `getRecipes`(IN pStatus INT)
 BEGIN
-	SELECT recipes.id, products.`name`, recipes.description
+	SELECT recipes.id, CONCAT(products.`name`,' - ',products.size), recipes.description
 	FROM recipes
 	INNER JOIN products
 		ON products.id = recipes.product_id
@@ -998,9 +1061,7 @@ IN pDescription VARCHAR(255),
 /*Recipe detail*/
 IN pJson_details JSON)
 BEGIN
-	DECLARE recipe_header_id, i, _feedstock_id INT;
-	DECLARE _quantity FLOAT;
-	DECLARE recipe_detail_json VARCHAR(1000);
+	DECLARE recipe_header_id, i INT;
 
 	START TRANSACTION;
 		/*We insert the recipe header*/
@@ -1011,13 +1072,14 @@ BEGIN
 		/*Let's go through the detail arrangement of the recipe*/
 		SET i = 0;
 		WHILE i < JSON_LENGTH(pJson_details) DO
-			SELECT JSON_EXTRACT(pJson_Details, CONCAT( '$[', i, ']' )) INTO recipe_detail_json;
-			SELECT JSON_EXTRACT(recipe_detail_json, '$.quantity') INTO _quantity;
-			SELECT JSON_EXTRACT(recipe_detail_json, '$.feedstock_id') INTO _feedstock_id;
+			SET @json_detail = JSON_EXTRACT(pJson_Details, CONCAT('$[', i, ']'));
+			SET @quantity = JSON_EXTRACT(@json_detail, '$.quantity');
+			SET @feedstock_id = JSON_EXTRACT(@json_detail, '$.feedstock_id');
 			
 			/*We insert the recipe details*/
 			INSERT INTO recipe_details(recipe_id, feedstock_id, quantity)
-			VALUES(recipe_header_id, _feedstock_id, _quantity);
+			VALUES(recipe_header_id, @feedstock_id, @quantity);
+			SET i = i + 1;
 		END WHILE;
 	COMMIT;
 END
@@ -1327,9 +1389,7 @@ IN pDescription VARCHAR(255),
 /*Recipe detail*/
 IN pJson_details JSON)
 BEGIN
-	DECLARE i, _feedstock_id, _recipe_details_id INT;
-	DECLARE _quantity FLOAT;
-	DECLARE recipe_detail_json VARCHAR(1000);
+	DECLARE i INT;
 
 	START TRANSACTION;
 		/*We update the recipe header*/
@@ -1338,19 +1398,20 @@ BEGIN
 				description = pDescription
 		WHERE id = pId;
 		
+		DELETE FROM recipe_details
+		WHERE recipe_id = pId;
+		
 		/*Let's go through the detail arrangement of the recipe*/
 		SET i = 0;
 		WHILE i < JSON_LENGTH(pJson_details) DO
-			SELECT JSON_EXTRACT(pJson_Details, CONCAT( '$[', i, ']' )) INTO recipe_detail_json;
-			SELECT JSON_EXTRACT(recipe_detail_json, '$.quantity') INTO _quantity;
-			SELECT JSON_EXTRACT(recipe_detail_json, '$.feedstock_id') INTO _feedstock_id;
-			SELECT JSON_EXTRACT(recipe_detail_json, '$.id') INTO _recipe_details_id;
+			SET @recipe_detail_json = JSON_EXTRACT(pJson_Details, CONCAT( '$[', i, ']' ));
+			SET @_quantity = JSON_EXTRACT(@recipe_detail_json, '$.quantity');
+			SET @_feedstock_id = JSON_EXTRACT(@recipe_detail_json, '$.feedstock_id');
 			
-			/*We update the recipe detail*/
-			UPDATE recipe_details
-			SET quantity = _quantity,
-					feedstock_id = _feedstock_id
-			WHERE id = _recipe_details_id;
+			/*We insert the new recipe detail*/
+			INSERT INTO recipe_details(recipe_id, feedstock_id, quantity)
+			VALUES(pId, @_feedstock_id, @_quantity);
+			SET i = i + 1;
 		END WHILE;
 	COMMIT;
 END

@@ -138,6 +138,14 @@ def create_preference():
     return redirect(preference_url)
 
 
+@main.route('/payment/success')
+def success_screen():
+    return render_template('status/payment/success.html')
+
+@main.route('/payment/failure')
+def failure_screen():
+    return render_template('status/payment/failure.html')
+
 @main.route('/profile')
 @login_required
 @roles_accepted('admin', 'client')

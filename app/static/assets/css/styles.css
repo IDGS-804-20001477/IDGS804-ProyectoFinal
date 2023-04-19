@@ -11939,4 +11939,8 @@ textarea.form-control-lg {
   border-radius: calc(var(--bs-border-radius) + 1rem);
 }
 
+.top-negative-40 {
+  top: -40px !important;
+}
+
 /*# sourceMappingURL=styles.css.map */

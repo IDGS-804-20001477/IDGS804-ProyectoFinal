@@ -13,7 +13,7 @@ $font-family-sans-serif: 'Quicksand',
 sans-serif;
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
-@import '../../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
 
 .btn {
     @include border-radius(50rem);
@@ -51,4 +51,8 @@ sans-serif;
 
 .card {
     border-radius: calc($card-border-radius + 1rem);
+}
+
+.top-negative-40 {
+    top: -40px !important;
 }

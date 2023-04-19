@@ -21,6 +21,16 @@ def getFeedstockById(id):
         return ex
 
 
+def getFeedstocksForRecipe():
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL getFeedstocksForRecipe()')
+            return cursor.fetchall()
+    except Exception as ex:
+        return ex
+
+
 def insertFeedstock(Feedstock):
     try:
         connection = get_connection()

@@ -1,10 +1,12 @@
 from flask import Blueprint, request, redirect, url_for, render_template
 from ...models.recipe import Recipe
 from ...controllers.recipes_controller import getRecipes, getRecipeById, insertRecipe, updateRecipe, deleteRecipe
-from ...controllers.products_controller import getProducts
-from ...controllers.feedstocks_controller import getFeedstocks
+from ...controllers.products_controller import getProductsForRecipe
+from ...controllers.feedstocks_controller import getFeedstocksForRecipe
 from flask_security import login_required
 from flask_security.decorators import roles_required
+import pandas as pd
+import requests
 
 recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
@@ -21,15 +23,16 @@ def index():
 @login_required
 @roles_required('admin')
 def insert():
-    products = getProducts(1)
-    feedstocks = getFeedstocks(1)
+    products = getProductsForRecipe()
+    feedstocks = getFeedstocksForRecipe()
 
     if (request.method == 'POST'):
-        product_id = request.form.get('cmbProducts')
-        description = request.form.get('txtDescription')
-        details = request.form.get('<<agregar un nombre>>')
-        recipe = Recipe(0, description, product_id, details)
-        insertRecipe(recipe)
+        data = request.get_json()
+        product_id = int(data['product_id'])
+        description = data['description']
+        details = data['array']
+        recipe = Recipe(0, product_id, description, details)
+        print(insertRecipe(recipe))
         return redirect(url_for('recipes.index'))
 
     return render_template('/admin/recipes/insert_recipe.html', products=products, feedstocks=feedstocks)
@@ -42,8 +45,8 @@ def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        products = getProducts(1)
-        feedstocks = getFeedstocks(1)
+        products = getProductsForRecipe()
+        feedstocks = getFeedstocksForRecipe()
         return render_template('/admin/recipes/update_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
 
     if (request.method == 'POST'):

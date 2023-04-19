@@ -35,7 +35,7 @@ def insert():
         quantity = request.form.get('txtQuantity')
         feedstock = Feedstock(0, name, description, price, min_value,
                               max_value, measurement_unit_id, provider_id, quantity)
-        print(insertFeedstock(feedstock))
+        insertFeedstock(feedstock)
         return redirect(url_for('feedstocks.index'))
 
     return render_template('/admin/feedstocks/insert_feedstock.html', providers=providers, measurement_units=measurement_units)

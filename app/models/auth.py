@@ -1,8 +1,7 @@
 from flask_security import UserMixin, RoleMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.mysql import TINYINT
-
-db = SQLAlchemy()
+from .db import db
 
 
 class RolesUsers(db.Model):

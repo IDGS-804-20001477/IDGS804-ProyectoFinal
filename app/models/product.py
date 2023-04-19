@@ -1,3 +1,6 @@
+from .db import db
+
+
 class Product:
     id = 0
     sku = ''
@@ -21,3 +24,29 @@ class Product:
         self.max_value = max_value
         self.quantity = quantity
         self.photo = photo
+
+
+class ProductModel(db.Model):
+    __tablename__ = 'products'
+    id = db.Column(db.Integer(), primary_key=True)
+    sku = db.Column(db.String())
+    name = db.Column(db.String())
+    photo = db.Column(db.String())
+    description = db.Column(db.String())
+    price = db.Column(db.Double())
+    status = db.Column(db.Integer())
+    size = db.Column(db.String())
+    min_value = db.Column(db.Integer())
+    max_value = db.Column(db.Integer())
+
+    def columns_to_dict(self):
+        dict_ = {}
+        for key in self.__mapper__.c.keys():
+            dict_[key] = getattr(self, key)
+        return dict_
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'quantity': 1
+        }

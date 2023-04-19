@@ -9,6 +9,11 @@ from ... import userDataStore
 auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 
+@auth.get('/password')
+def get_password():
+    return generate_password_hash('admin', method='sha256')
+
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if (request.method == 'GET'):
@@ -19,13 +24,18 @@ def login():
         password = request.form.get('txtPassword')
         remember = True if request.form.get('opcRemember') else False
         user = User.query.filter_by(email=email).first()
+        print(user.name)
 
         if (not user or not check_password_hash(user.password, password)):
             flash('EL usuario o contraseña son incorrectos')
             return redirect(url_for('auth.login'))
 
         login_user(user, remember=remember)
-        return redirect(url_for('providers.index'))
+
+        if user.type == 2:
+            return redirect(url_for('main.index'))
+        else:
+            return redirect(url_for('providers.index'))
 
 
 @auth.route('/register', methods=['GET', 'POST'])
@@ -42,12 +52,13 @@ def register():
             flash('El correo ya tiene uso')
             return redirect(url_for('auth.login'))
 
-        userDataStore.create_user(email=email, password=generate_password_hash(password, method='sha256'), type=2)
+        userDataStore.create_user(email=email, password=generate_password_hash(
+            password, method='sha256'), type=2)
         db.session.commit()
         return redirect(url_for('auth.login'))
 
 
-@auth.route('/logout')
+@auth.post('/logout')
 @login_required
 def logout():
     logout_user()

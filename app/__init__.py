@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_security import Security, SQLAlchemySessionUserDatastore
-from .models.auth import db, User, Role
+from .models.db import db
+from .models.auth import User, Role
 from flask_wtf.csrf import CSRFProtect
 import os
 

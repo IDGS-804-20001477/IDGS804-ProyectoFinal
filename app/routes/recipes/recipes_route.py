@@ -5,8 +5,8 @@ from ...controllers.products_controller import getProductsForRecipe
 from ...controllers.feedstocks_controller import getFeedstocksForRecipe
 from flask_security import login_required
 from flask_security.decorators import roles_required
-from ...models.product import ProductSize
-from flask_cors import cross_origin
+from ...models.product import ProductSize, ProductDetail
+from ...models.db import db
 
 recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
@@ -21,26 +21,26 @@ def index():
 
 @recipes.route('/recipes-insert', methods=['GET', 'POST'])
 @login_required
-@cross_origin(supports_credentials=True)
 @roles_required('admin')
 def insert():
-    print('worrweorujiop')
-    products = getProductsForRecipe()
-    feedstocks = getFeedstocksForRecipe()
-    product_sizes = ProductSize.query.all()
 
     if (request.method == 'POST'):
-        print('working')
         data = request.get_json()
         product_id = int(data['product_id'])
         description = data['description']
         product_size_id = data['product_size_id']
-        print(product_size_id)
         details = data['array']
         recipe = Recipe(0, product_id, description, details, product_size_id)
-        print(data)
         insertRecipe(recipe)
+        product_detail = ProductDetail(quantity=0, product_id=product_id,
+                                       product_size_id=product_size_id)
+        db.session.add(product_detail)
+        db.session.commit()
         return redirect(url_for('recipes.index'))
+
+    products = getProductsForRecipe()
+    feedstocks = getFeedstocksForRecipe()
+    product_sizes = ProductSize.query.all()
 
     return render_template('/admin/recipes/insert_recipe.html', products=products, feedstocks=feedstocks, product_sizes=product_sizes)
 

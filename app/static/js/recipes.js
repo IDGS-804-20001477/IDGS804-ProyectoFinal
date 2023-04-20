@@ -14,7 +14,7 @@ const insertRecipe = () => {
     let table = $('table tbody');
     let data = [];
     let product_id = document.getElementById('cmbProducts').value;
-    //let product_size_id = document.getElementById('cmbProductSize').value;
+    let product_size_id = document.getElementById('cmbProductSize').value;
     let description = document.getElementById('txtDescription').value;
     let token = document.getElementById('csrf_token').value;
     console.log(token)
@@ -35,13 +35,12 @@ const insertRecipe = () => {
         method: 'POST',
         body: JSON.stringify({
             product_id: product_id,
-            //product_size_id,
+            product_size_id,
             description: description,
             array: JSON.stringify(data)
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
-            'Access-Control-Allow-Origin':'*',
             'X-CSRF-Token': token
         }
     });

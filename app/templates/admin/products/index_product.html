@@ -20,21 +20,21 @@
             </tr>
         </thead>
         <tbody>
-            {%for id, sku, name, price, size, quantity, min_value, max_value, photo in products%}
+            {%for product in products %}
             <tr>
-                <th>{{sku}}</th>
-                <th>{{name}}</th>
-                <th>{{price}}</th>
-                <th>{{quantity}}</th>
-                <th>{{min_value}}</th>
-                <th>{{max_value}}</th>
-                <th><img src="data:image/png;base64,{{photo}}" width="100"></th>
+                <th>{{ product.sku }}</th>
+                <th>{{ product.name }}</th>
+                <th>{{ product.price }}</th>
+                <th>{{ product.get_quantity() }}</th>
+                <th>{{ product.min_value }}</th>
+                <th>{{ product.max_value}}</th>
+                <th><img src="data:image/png;base64,{{ product.photo}}" width="100"></th>
                 <th>
                     <span>
-                        <a href="{{url_for('products.update')}}?id={{id}}" type="button" class="pe-2">
+                        <a href="{{url_for('products.update', id = product.id) }}" type="button" class="pe-2">
                             <i class="bi bi-pencil"></i>
                         </a>
-                        <a href="{{url_for('products.delete')}}?id={{id}}" type="button">
+                        <a href="{{url_for('products.delete', product_id = product.id) }}" type="button">
                             <i class="bi bi-trash3"></i>
                         </a>
                     </span>

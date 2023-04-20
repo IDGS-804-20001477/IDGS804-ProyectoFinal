@@ -1,3 +1,4 @@
+/*
 const insertDataDetail = () => {
     let provider = document.getElementById('cmbProvider').value;
     let _name = document.getElementById('cmbProvider');
@@ -63,3 +64,4 @@ const tableClick = (e) => {
 window.onload = function () {
     document.getElementById('tblDetail').addEventListener('click', tableClick, false);
 };
+*/

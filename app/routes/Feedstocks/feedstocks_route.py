@@ -3,17 +3,25 @@ from ...models.feedstock import Feedstock
 from ...controllers.feedstocks_controller import getFeedstocks, getFeedstockById, insertFeedstock, updateFeedstock, deleteFeedstock, getFeedstocksByProvider
 from ...controllers.providers_controller import getProvidersForFeedstock
 from ...controllers.measurement_units_controller import getMeasurementUnits
-from flask_security import login_required
+from flask_security import login_required, current_user
 from flask_security.decorators import roles_required
+import logging
 
 feedstocks = Blueprint('feedstocks', __name__, url_prefix='/admin/feedstocks')
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler = logging.FileHandler('app.log')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 @feedstocks.route('/feedstocks-index')
 @login_required
 @roles_required('admin')
 def index():
     feedstocks = getFeedstocks(1)
+    logger.info('Listado de materia prima para: %s', current_user.name)    
     return render_template('/admin/feedstocks/index_feedstock.html', feedstocks=feedstocks)
 
 
@@ -36,6 +44,7 @@ def insert():
         feedstock = Feedstock(0, name, description, price, min_value,
                               max_value, measurement_unit_id, provider_id, quantity)
         insertFeedstock(feedstock)
+        logger.info('Se inserto correctamente la materia prima: %s', current_user.name)
         return redirect(url_for('feedstocks.index'))
 
     return render_template('/admin/feedstocks/insert_feedstock.html', providers=providers, measurement_units=measurement_units)
@@ -51,6 +60,7 @@ def feedstocks_by_provider():
     for i in getFeedstocksByProvider(provider_id):
         object_ = {"id": i[0], "name": i[1]}
         response.append(object_)
+        logger.info('Listado de materia prima por proveedor: %s', current_user.name)
     return response
 
 
@@ -78,6 +88,7 @@ def update():
         feedstock = Feedstock(id, name, description, price, min_value,
                               max_value, measurement_unit_id, provider_id, quantity)
         updateFeedstock(feedstock)
+        logger.info('Se actualizo materia prima correctamente: %s', current_user.name)
         return redirect(url_for('feedstocks.index'))
 
 
@@ -93,4 +104,5 @@ def delete():
     if (request.method == 'POST'):
         id = request.form.get('txtId')
         deleteFeedstock(id)
+        logger.info('Se elimino materia prima correctamente: %s', current_user.name)
         return redirect(url_for('feedstocks.index'))

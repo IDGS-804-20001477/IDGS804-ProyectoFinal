@@ -3,19 +3,27 @@ from ...models.recipe import Recipe
 from ...controllers.recipes_controller import getRecipes, getRecipeById, insertRecipe, updateRecipe, deleteRecipe, refillProductByRecipe
 from ...controllers.products_controller import getProductsForRecipe
 from ...controllers.feedstocks_controller import getFeedstocksForRecipe
-from flask_security import login_required
+from flask_security import login_required, current_user
 from flask_security.decorators import roles_required
 from ...models.product import ProductSize, ProductDetail
 from ...models.db import db
+import logging
 
 recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler = logging.FileHandler('app.log')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 @recipes.route('/recipes-index')
 @login_required
 @roles_required('admin')
 def index():
     recipes = getRecipes(1)
+    logger.info('Se muestran las recetas activas: %s', current_user.name)
     return render_template('/admin/recipes/index_recipe.html', recipes=recipes)
 
 
@@ -35,6 +43,7 @@ def insert():
         product_detail = ProductDetail(quantity=0, product_id=product_id,
                                        product_size_id=product_size_id)
         db.session.add(product_detail)
+        logger.info('Se inserta receta correctamente: %s', current_user.name)
         db.session.commit()
         return redirect(url_for('recipes.index'))
 
@@ -63,6 +72,7 @@ def update():
         description = data['description']
         details = data['array']
         recipe = Recipe(id, product_id, description, details)
+        logger.info('Se modifica receta correctamente: %s', current_user.name)
         print(updateRecipe(recipe))
         return redirect(url_for('recipes.index'))
 
@@ -79,6 +89,7 @@ def delete():
     if (request.method == 'POST'):
         id = request.form.get('txtId')
         deleteRecipe(id)
+        logger.info('Se elimina receta correctamente: %s', current_user.name)
         return redirect(url_for('recipes.index'))
 
 
@@ -97,4 +108,5 @@ def refill(id):
 
         # TODO: check if there are the feedstock enoght for make this recipe
         print(refillProductByRecipe(id, quantity))
+        logger.info('Se recargan los productos por receta: %s', current_user.name)
         return redirect(url_for('recipes.index'))

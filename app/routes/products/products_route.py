@@ -2,13 +2,20 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from ...models.product import Product, ProductModel, ProductSize
 from ...controllers.products_controller import getProducts, getProductById, insertProduct, updateProduct, deleteProduct
 from ...models.db import db
-from flask_security import login_required
+from flask_security import login_required, current_user
 from flask_security.decorators import roles_required
 from ...controllers.products_controller import convertImageToBase64
 import base64
+import logging
 
 products = Blueprint('products', __name__, url_prefix='/admin/products')
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler = logging.FileHandler('app.log')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 @products.route('/products-index')
 @login_required
@@ -16,6 +23,7 @@ products = Blueprint('products', __name__, url_prefix='/admin/products')
 def index():
     # products = getProducts(1)
     products = ProductModel.query.filter_by(status=1)
+    logger.info('Se muestran los productos activos: %s', current_user.name)
     return render_template('/admin/products/index_product.html', products=products)
 
 
@@ -50,6 +58,7 @@ def insert():
         )
 
         db.session.add(product)
+        logger.info('Se agrega correctamente un producto: %s', current_user.name)
         db.session.commit()
 
         return redirect(url_for('products.index'))
@@ -80,6 +89,7 @@ def update(id):
         product = Product(id, sku, name, description, price,
                           size, min_value, max_value, quantity, filename)
         updateProduct(product)
+        logger.info('Se modifica correctamente un producto: %s', current_user.name)
         return redirect(url_for('products.index'))
 
 
@@ -88,4 +98,5 @@ def update(id):
 @roles_required('admin')
 def delete(product_id):
     deleteProduct(product_id)
+    logger.info('Se elimina correctamente un producto: %s', current_user.name)
     return redirect(url_for('products.index'))

@@ -3,18 +3,26 @@ from ...models.auth import User, Role
 from ...models.db import db
 from ...controllers.users_controllers import getUsers, getUserById, getUserTypes, insertUser, updateUser, deleteUser
 from werkzeug.security import generate_password_hash
-from flask_security import login_required
+from flask_security import login_required, current_user
 from flask_security.decorators import roles_required
 from app import userDataStore
+import logging
 
 users = Blueprint('users', __name__, url_prefix='/admin/users')
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler = logging.FileHandler('app.log')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 @users.route('/users-index')
 @login_required
 @roles_required('admin')
 def index():
     users = getUsers(1)
+    logger.info('Se muestra el usuario: %s', current_user.name)
     return render_template('/admin/users/index_user.html', users=users)
 
 
@@ -42,6 +50,7 @@ def insert():
             name=name,
             roles=[role]
         )
+        logger.info('Se inserta usuario correctamente: %s', current_user.name)
         db.session.commit()
         return redirect(url_for('users.index'))
 
@@ -71,6 +80,7 @@ def update():
         phone = request.form.get('txtPhone')
         # user = User(id, email, generate_password_hash(password, method='sha256'), type, name, lastname, address, phone)
         # updateUser(user)
+        logger.info('Se modifica usuario correctamente: %s', current_user.name)
         return redirect(url_for('users.index'))
 
 
@@ -86,4 +96,5 @@ def delete():
     if (request.method == 'POST'):
         id = request.form.get('txtId')
         deleteUser(id)
+        logger.info('Se elimina usuario correctamente: %s', current_user.name)
         return redirect(url_for('users.index'))

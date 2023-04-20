@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<div class="row justify-content-center py-5 overflow-x-hidden">
+    <div class="col-lg-10">
+        <div class="card bg-body-tertiary rounded-card border-0 shadow-sm">
+            <div class="card-body px-lg-5 py-lg-5">
+                <div class="d-flex align-items-center justify-content-start pb-2">
+                    <h1 class="display-6 text-primary fw-bold">Mis pedidos</h1>
+                </div>
+                <ul class="d-grid gap-4 my-3 list-unstyled small border-top pt-4">
+                    {% for item in sale_orders %}
+                    <li class="d-flex gap-4 border-bottom pb-4">
+                        <i class="bi bi-twitter fs-4"></i>
+                        <div>
+                            <h5 class="mb-0 text-primary fw-bold">{{ item.reference_number }}</h5>
+                            {{ item.total }}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 pb-0 my-4 border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 justify-content-start align-content-center d-flex mt-3">
+                <ul class="nav justify-content-end list-unstyled">
+                    <li class="ms-4">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi bi-twitter fs-4"></i>
+                        </a>
+                    </li>
+                    <li class="ms-4">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi bi-facebook fs-4"></i>
+                        </a>
+                    </li>
+                    <li class="ms-4">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi bi-instagram fs-4"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4 justify-content-end d-flex">
+                <a class="text-body-secondary" href="#">
+                    <img src="../static/assets/media/icon/logo_small.svg" class="img-fluid py-0" width="60px" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+{%endblock%}

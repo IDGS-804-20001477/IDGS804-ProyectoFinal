@@ -148,6 +148,13 @@ def profile():
     return render_template('profile.html', name=current_user.email)
 
 
+@main.route('/my_orders')
+@login_required
+# @roles_accepted('admin', 'client')
+def my_orders():
+    sale_orders = SaleOrder.query.filter_by(client_id=current_user.id).all()
+    return render_template('client/my_orders.html', sale_orders = sale_orders)
+
 @main.route('/information')
 @login_required
 @roles_accepted('admin', 'client')

@@ -6,9 +6,8 @@ from datetime import datetime
 
 dashboard = Blueprint('dashboard', __name__, url_prefix='/admin/dashboard')
 
-dashboard.route('/dashboard-index')
 
-
+@dashboard.route('/dashboard-index')
 @login_required
 @roles_required('admin')
 def index():

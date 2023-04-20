@@ -1,9 +1,8 @@
 {%extends '/admin/base_admin.html'%}
 {%block content%}
-<div class="row">
-    <div class="col-sm-12 text-end pe-5 pt-1 pb-1">
-        <a href="{{url_for('feedstocks.insert')}}" class="btn btn-primary"><i class="bi bi-plus-square"></i> Insert Feedstock</a>
-    </div>
+<div class="col-sm-12 text-end py-3">
+    <a href="{{url_for('feedstocks.insert')}}" class="btn btn-primary"><i class="bi bi-plus"></i> Insert
+        Feedstock</a>
 </div>
 <div class="table-responsive">
     <table class="table">
@@ -23,24 +22,24 @@
         <tbody>
             {%for id, name, price, quantity, min_value, max_value, measurement_unit_name, business_name in feedstocks%}
             <tr>
-                <th>{{id}}</th>
-                <th>{{name}}</th>
-                <th>{{price}}</th>
-                <th>{{quantity}}</th>
-                <th>{{min_value}}</th>
-                <th>{{max_value}}</th>
-                <th>{{measurement_unit_name}}</th>
-                <th>{{business_name}}</th>
-                <th>
+                <td class="align-middle">{{id}}</td>
+                <td class="align-middle">{{name}}</td>
+                <td class="align-middle">{{price}}</td>
+                <td class="align-middle">{{quantity}}</td>
+                <td class="align-middle">{{min_value}}</td>
+                <td class="align-middle">{{max_value}}</td>
+                <td class="align-middle">{{measurement_unit_name}}</td>
+                <td class="align-middle">{{business_name}}</td>
+                <td class="align-middle">
                     <span>
-                        <a href="{{url_for('feedstocks.update')}}?id={{id}}" type="button" class="pe-2">
+                        <a href="{{url_for('feedstocks.update')}}?id={{id}}" type="button" class="btn btn-success rounded-circle p-2 lh-1 me-3">
                             <i class="bi bi-pencil"></i>
                         </a>
-                        <a href="{{url_for('feedstocks.delete')}}?id={{id}}" type="button">
+                        <a href="{{url_for('feedstocks.delete')}}?id={{id}}" type="button" class="btn btn-danger rounded-circle p-2 lh-1">
                             <i class="bi bi-trash3"></i>
                         </a>
                     </span>
-                </th>
+                </td>
             </tr>
             {%endfor%}
         </tbody>

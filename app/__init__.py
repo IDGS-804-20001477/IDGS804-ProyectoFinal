@@ -11,6 +11,7 @@ csrf = CSRFProtect()
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECURITY_LOGIN_USER_TEMPLATE'] = '/auth/login.html'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = os.urandom(24)
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@127.0.0.1/luminary_lane"

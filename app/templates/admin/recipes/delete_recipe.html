@@ -4,7 +4,7 @@
 		<div class="col-sm-8">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="text-center">Delete recipe to {{ recipe[0][1] }}</h3>
+					<h3 class="text-center text-primary fw-bold">Delete recipe to {{ recipe[0][1] }}</h3>
 				</div>
 				<div class="card-body">
 					<form action="/admin/recipes/recipes-delete" method="post" enctype="multipart/form-data">
@@ -15,22 +15,22 @@
 						<div class="form-group pb-2">
 							<label for="cmbProducts">Product:</label>
 							<select name="cmbProducts" id="cmbProducts" class="form-select" disabled>
-								<option value="N/A" selected disabled>Select a option</option>
+								<option value="N/A" selected disabled>Select an option</option>
 								{% for id, name in products %}
 									<option value="{{ id }}">{{ name }}</option>
 								{% endfor %}
 							</select>
 						</div>
-						<div class="input-group pb-2">
-							<span class="input-group-text">Description:</span>
-							<textarea name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" disabled>{{ recipe[0][2] }}</textarea>
+						<div class="form-group pb-2">
+							<label>Description:</label>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" disabled>{{ recipe[0][2] }}</textarea>
 						</div>
 						<div class="form-group pb-2">
 							<div class="row">
 								<div class="col-sm-5">
 									<label for="cmbFeedstocks">Feedstock:</label>
 									<select name="cmbFeedstocks" id="cmbFeedstocks" class="form-select" disabled>
-										<option value="N/A" selected disabled>Select a option</option>
+										<option value="N/A" selected disabled>Select an option</option>
 										{% for id, name in feedstocks %}
 											<option value="{{ id }}">{{ name }}</option>
 										{% endfor %}

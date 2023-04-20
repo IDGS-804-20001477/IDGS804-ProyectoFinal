@@ -1,4 +1,4 @@
-{%extends 'base.html' %} 
+{%extends 'base.html' %}
 {%block content%}
 
 <header class="d-flex flex-column mb-5 justify-content-center pt-5">
@@ -7,28 +7,27 @@
 <hr>
 <div class="container-lg pt-3 pb-5">
     <div class="text-end">
-        <span class="text-muted">{{ products|length }} Articulos</span>   
+        <span class="text-muted">{{ products|length }} Articulos</span>
     </div>
-	<div class="row">
+    <div class="row">
         {% for product in products %}
         <div class="col-sm-6 col-lg-3">
-            <a class="text-decoration-none" href="{{ url_for('main.product_detail', product_id=product.id) }}">
-                <figure class="p-4 bg-light">
-                    <img 
-                        class="w-100" 
-                        style="width: 250px; height: 300px; object-fit: cover"
-                        src="data:image/png;base64,{{ product.photo }}" 
-                        alt="{{ product.name }}">
-                    <figcaption class="pt-4 pb-2">
-                        <p class="text-primary fs-5 lh-1 mb-1 fw-semibold text-uppercase">
-                            {{ product.name }}
-                        </p>
-                        <p class="text-muted">$ {{ product.price }}</p>
-                    </figcaption>
-                </figure>
-            </a>
+            <div class="card bg-body-tertiary rounded-card border-0 shadow-sm">
+                <a class="text-decoration-none" href="{{ url_for('main.product_detail', product_id=product.id) }}">
+                    <figure class="p-4">
+                        <img class="w-100" style="width: 250px; height: 300px; object-fit: cover"
+                            src="data:image/png;base64,{{ product.photo }}" alt="{{ product.name }}">
+                        <figcaption class="pt-4 pb-2">
+                            <p class="text-primary fs-5 lh-1 mb-1 fw-semibold text-uppercase">
+                                {{ product.name }}
+                            </p>
+                            <p class="text-muted">$ {{ product.price }} MXN</p>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
         </div>
         {% endfor %}
-	</div>
+    </div>
 </div>
 {%endblock%}

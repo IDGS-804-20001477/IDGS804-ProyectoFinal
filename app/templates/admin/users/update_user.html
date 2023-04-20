@@ -4,7 +4,7 @@
     <div class="col-sm-7">
         <div class="card">
             <div class="card-header">
-                <h3 class="text-center">
+                <h3 class="text-center text-primary fw-bold">
                     Update User
                 </h3>
             </div>
@@ -48,7 +48,7 @@
                     <div class="form-group pb-2">
                         <label for="cmbTypes">Type user:</label>
                         <select name="cmbTypes" class="form-select">
-                            <option value="N/A" selected disabled>Select a option</option>
+                            <option value="N/A" selected disabled>Select an option</option>
                             {%for id, name in user_types%}
                             <option value="{{id}}">{{name}}</option>
                             {%endfor%}

@@ -33,7 +33,7 @@ CREATE TABLE `buy_order_details`  (
   INDEX `fk_buy_order_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_buy_order_details_buy_orders` FOREIGN KEY (`buy_order_id`) REFERENCES `buy_orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_buy_order_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of buy_order_details
@@ -46,7 +46,7 @@ INSERT INTO `buy_order_details` VALUES (1, 4.5, 60, 3, 1);
 DROP TABLE IF EXISTS `buy_orders`;
 CREATE TABLE `buy_orders`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `reference_number` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `reference_number` varchar(100) NOT NULL,
   `total` float NOT NULL,
   `provider_id` int NOT NULL,
   `buy_order_status_id` int NOT NULL DEFAULT 1,
@@ -57,7 +57,7 @@ CREATE TABLE `buy_orders`  (
   INDEX `fk_buy_orders_providers`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `fk_buy_orders_buy_orders_status` FOREIGN KEY (`buy_order_status_id`) REFERENCES `buy_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_buy_orders_providers` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of buy_orders
@@ -70,11 +70,11 @@ INSERT INTO `buy_orders` VALUES (1, 'BO-270124413', 270, 1, 3, '2023-04-19 12:44
 DROP TABLE IF EXISTS `buy_orders_status`;
 CREATE TABLE `buy_orders_status`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `status` tinyint NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of buy_orders_status
@@ -95,7 +95,7 @@ CREATE TABLE `feedstock_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `feedstock_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of feedstock_details
@@ -110,8 +110,8 @@ INSERT INTO `feedstock_details` VALUES (3, 80, 3);
 DROP TABLE IF EXISTS `feedstocks`;
 CREATE TABLE `feedstocks`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `name` varchar(150) NOT NULL,
+  `description` varchar(255) NULL DEFAULT NULL,
   `price` float NOT NULL,
   `status` tinyint NULL DEFAULT 1,
   `measurement_unit_id` int NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE `feedstocks`  (
   INDEX `feedstock_provider`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `feedstock_measurement` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_units` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `feedstock_provider` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of feedstocks
@@ -139,11 +139,11 @@ INSERT INTO `feedstocks` VALUES (3, 'Alfiler', 'Es un accesorio para sostener lo
 DROP TABLE IF EXISTS `measurement_units`;
 CREATE TABLE `measurement_units`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(50) NOT NULL,
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of measurement_units
@@ -162,7 +162,7 @@ CREATE TABLE `product_details`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_product_details_products`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_product_details_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of product_details
@@ -176,19 +176,19 @@ INSERT INTO `product_details` VALUES (2, 5, 2);
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `sku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `sku` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(255) NULL DEFAULT NULL,
   `price` float NOT NULL,
-  `size` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `size` varchar(5) NOT NULL,
   `min_value` int NOT NULL,
   `max_value` int NOT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `photo` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `file_name` varchar(255) NULL DEFAULT NULL,
+  `photo` longtext NULL,
   `status` tinyint NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of products
@@ -202,16 +202,16 @@ INSERT INTO `products` VALUES (2, 'PR388182506', 'Prueba de producto 2', 'Prueba
 DROP TABLE IF EXISTS `providers`;
 CREATE TABLE `providers`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `business_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `contact_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `contact_email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `contact_phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `business_name` varchar(50) NOT NULL,
+  `contact_name` varchar(100) NOT NULL,
+  `contact_email` varchar(50) NOT NULL,
+  `contact_phone` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `contact_email_unique`(`contact_email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of providers
@@ -234,7 +234,7 @@ CREATE TABLE `recipe_details`  (
   INDEX `fk_recipe_details_feedstock_id_feedstock_id`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_details_feedstock_id_feedstock_id` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_recipe_details_recipe_id_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of recipe_details
@@ -251,13 +251,13 @@ DROP TABLE IF EXISTS `recipes`;
 CREATE TABLE `recipes`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `product_id` int NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` varchar(255) NULL DEFAULT NULL,
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_recipe_product_id_product_id`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_recipe_product_id_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of recipes
@@ -271,13 +271,13 @@ INSERT INTO `recipes` VALUES (2, 1, 'Prueba', 0, '2023-04-19 02:09:52');
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `name` varchar(20) NULL DEFAULT NULL,
+  `description` varchar(255) NULL DEFAULT NULL,
   `status` tinyint NULL DEFAULT NULL,
   `created_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of role
@@ -300,7 +300,7 @@ CREATE TABLE `roles_users`  (
   INDEX `role_id`(`role_id` ASC) USING BTREE,
   CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of roles_users
@@ -313,7 +313,7 @@ INSERT INTO `roles_users` VALUES (1, 1, 1, 1, '2023-04-05 12:04:56');
 DROP TABLE IF EXISTS `sale_orders`;
 CREATE TABLE `sale_orders`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `reference_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `reference_number` varchar(20) NOT NULL,
   `total` float NOT NULL,
   `client_id` int NOT NULL,
   `sale_orders_status_id` int NOT NULL,
@@ -322,7 +322,7 @@ CREATE TABLE `sale_orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_sale_orders_sale_orders_status`(`sale_orders_status_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_sale_orders_status` FOREIGN KEY (`sale_orders_status_id`) REFERENCES `sale_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of sale_orders
@@ -343,7 +343,7 @@ CREATE TABLE `sale_orders_details`  (
   INDEX `fk_sale_orders_details_product`(`product_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_details_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_sale_orders_details_sale_orders` FOREIGN KEY (`sale_orders_id`) REFERENCES `sale_orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of sale_orders_details
@@ -355,11 +355,11 @@ CREATE TABLE `sale_orders_details`  (
 DROP TABLE IF EXISTS `sale_orders_status`;
 CREATE TABLE `sale_orders_status`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(50) NOT NULL,
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of sale_orders_status
@@ -377,15 +377,15 @@ INSERT INTO `sale_orders_status` VALUES (6, 'CANCELADO', 1, '2023-04-03 09:47:45
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(50) NULL DEFAULT NULL,
+  `email` varchar(100) NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `type` int NOT NULL,
   `active` tinyint(1) NULL DEFAULT NULL,
   `confirmed_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `email`(`email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of user
@@ -403,16 +403,16 @@ INSERT INTO `user` VALUES (6, 'Prueba 5', 'prueba5@gmail.com', 'sha256$dTX7JqwvZ
 DROP TABLE IF EXISTS `user_profile`;
 CREATE TABLE `user_profile`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(10) NOT NULL,
   `status` tinyint NULL DEFAULT NULL,
   `created_at` datetime NULL DEFAULT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of user_profile
@@ -430,11 +430,11 @@ INSERT INTO `user_profile` VALUES (6, 'Prueba 5', 'prueba', '4775555555', 1, '20
 DROP TABLE IF EXISTS `user_types`;
 CREATE TABLE `user_types`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(20) NOT NULL,
   `status` tinyint NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ;
 
 -- ----------------------------
 -- Records of user_types

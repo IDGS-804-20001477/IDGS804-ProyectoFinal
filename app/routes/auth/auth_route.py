@@ -58,7 +58,7 @@ def register():
         return redirect(url_for('auth.login'))
 
 
-@auth.post('/logout')
+@auth.get('/logout')
 @login_required
 def logout():
     logout_user()

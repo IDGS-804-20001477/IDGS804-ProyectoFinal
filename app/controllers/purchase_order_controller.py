@@ -25,7 +25,7 @@ def insertPurchaseOrder(PurchaseOrder):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('CALL insertBuyOrder(%s, %s, %s)', (PurchaseOrder.total,
+            cursor.execute('CALL insertPurchaseOrder(%s, %s, %s)', (PurchaseOrder.total,
                            PurchaseOrder.provider_id, PurchaseOrder.purchase_order_details))
         connection.commit()
         connection.close()

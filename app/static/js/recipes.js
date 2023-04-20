@@ -4,6 +4,8 @@ const insertDataRecipeDetail = () => {
     let text = name.options[name.selectedIndex].innerHTML;
     let quantity = document.getElementById('txtQuantity').value;
 
+    document.getElementById('tBodyDetails').innerHTML = "";
+
     document.getElementById('tBodyDetails').innerHTML += "<tr><td>" + feedstock + "</td><td>" + text + "</td><td>" + quantity + "</td><td><input type='button' value='Delete' class='btn btn-danger'></td></tr>";
 
     document.getElementById('txtQuantity').value = '';

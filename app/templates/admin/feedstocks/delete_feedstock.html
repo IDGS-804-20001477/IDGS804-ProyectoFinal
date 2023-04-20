@@ -4,7 +4,7 @@
 		<div class="col-sm-7">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="text-center">Delete Feedstock</h3>
+					<h3 class="text-center text-primary fw-bold">Delete Feedstock</h3>
 				</div>
 				<div class="card-body">
 					<form action="/admin/feedstocks/feedstocks-delete" method="post" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
 						<div class="form-group pb-2">
 							<label for="cmbProvider">Provider:</label>
 							<select name="cmbProvider" class="form-select" disabled>
-								<option value="N/A" selected disabled>Select a option</option>
+								<option value="N/A" selected disabled>Select an option</option>
 								{% for id, name in providers %}
 									<option value="{{ id }}">{{ name }}</option>
 								{% endfor %}
@@ -32,7 +32,7 @@
 						<div class="form-group pb-2">
 							<label for="cmbMeasurement_unit">Measurement unit:</label>
 							<select name="cmbMeasurement_unit" class="form-select" disabled>
-								<option value="N/A" selected disabled>Select a option</option>
+								<option value="N/A" selected disabled>Select an option</option>
 								{% for id, name in measurement_units %}
 									<option value="{{ id }}">{{ name }}</option>
 								{% endfor %}
@@ -50,9 +50,9 @@
 							<label for="txtQuantity">Quantity:</label>
 							<input type="number" step="any" class="form-control" id="txtQuantity" name="txtQuantity" placeholder="Enter quantity" min="1" value="{{form[0][3]}}" disabled/>
 						</div>
-						<div class="input-group pb-2">
-							<span class="input-group-text">Description:</span>
-							<textarea name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" disabled>{{form[0][6]}}</textarea>
+						<div class="form-group pb-2">
+							<label>Description:</label>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" disabled>{{form[0][6]}}</textarea>
 						</div>
 						<div class="form-group text-center">
 							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />

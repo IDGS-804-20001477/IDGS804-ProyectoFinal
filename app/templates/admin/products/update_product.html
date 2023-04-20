@@ -5,8 +5,8 @@
     <div class="col-sm-7">
         <div class="card">
             <div class="card-header">
-                <h3 class="text-center">
-                    New Product
+                <h3 class="text-center text-primary fw-bold">
+                    Update Product
                 </h3>
             </div>
             <div class="card-body">
@@ -41,6 +41,10 @@
                         <span class="input-group-text">Description:</span>
                         <textarea name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;">{{ product.description }}</textarea>
                     </div>
+                    <div class="form-group pb-2">
+                        <label>Description:</label>
+                        <textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;">{{ product.description }}</textarea>
+                    </div>
                     <hr>
                     <div class="mb-5">
                         <h5 class="mb-4">Details:</h5>
@@ -62,15 +66,11 @@
                             </div>
                         </div>
                         {% endfor %}
-                    </div>
                     <div class="form-group pb-2">
                         <label for="photo">Photo:</label>
-                        <input type="file" name="photo" id="photo" accept="image/*"
+                        <input class="form-control" type="file" name="photo" id="photo" accept="image/*"
                             onchange="document.getElementById('photo_render').src = window.URL.createObjectURL(this.files[0])"
                             value="{{ product.photo }}">
-                    </div>
-                    <div class="form-group pb-2 text-center">
-                        <img class="w-100" id="photo_render" src="data:image/png;base64,{{ product.photo }}">
                     </div>
                     <div class="form-group text-center">
                         <input type="hidden" name="csrf_token" value="{{csrf_token()}}">

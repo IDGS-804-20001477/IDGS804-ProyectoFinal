@@ -1,17 +1,21 @@
 {% extends '/admin/base_admin.html' %}
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript" src="../../static/js/recipes.js"></script>
+{% endblock %}
 {% block content %}
 	<div class="row justify-content-center">
 		<div class="col-sm-8">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="text-center">New Recipe</h3>
+					<h3 class="text-center text-primary fw-bold">New Recipe</h3>
 				</div>
 				<div class="card-body">
 					<form action="/admin/recipes/recipes-insert" method="post" enctype="multipart/form-data">
 						<div class="form-group pb-2">
 							<label for="cmbProducts">Product:</label>
 							<select name="cmbProducts" id="cmbProducts" class="form-select">
-								<option value="N/A" selected disabled>Select a option</option>
+								<option value="N/A" selected disabled>Select an option</option>
 								{% for id, name in products %}
 									<option value="{{ id }}">{{ name }}</option>
 								{% endfor %}
@@ -26,16 +30,16 @@
 								{% endfor %}
 							</select>
 						</div>
-						<div class="input-group pb-2">
-							<span class="input-group-text">Description:</span>
-							<textarea name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;"></textarea>
+						<div class="form-group pb-2">
+							<label>Description:</label>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;"></textarea>
 						</div>
 						<div class="form-group pb-2">
 							<div class="row">
 								<div class="col-sm-5">
 									<label for="cmbFeedstocks">Feedstock:</label>
 									<select name="cmbFeedstocks" id="cmbFeedstocks" class="form-select">
-										<option value="N/A" selected disabled>Select a option</option>
+										<option value="N/A" selected disabled>Select an option</option>
 										{% for id, name in feedstocks %}
 											<option value="{{ id }}">{{ name }}</option>
 										{% endfor %}
@@ -45,9 +49,9 @@
 									<label for="txtQuantity">Quantity:</label>
 									<input type="number" step="0.01" class="form-control" id="txtQuantity" name="txtQuantity" placeholder="Enter quantity" min="1" />
 								</div>
-                                <div class="col-sm-2 pt-4">
-                                    <button class="btn btn-primary" type="button" name="btnAdd" id="btnAdd" onclick="insertDataRecipeDetail()"><i class="bi bi-arrow-down-square"></i> ADD</button>
-                                </div>
+								<div class="col-sm-2 pt-4">
+									<button class="btn btn-primary" type="button" name="btnAdd" id="btnAdd" onclick="insertDataRecipeDetail()"><i class="bi bi-arrow-down-square"></i> ADD</button>
+								</div>
 							</div>
 						</div>
                         <div class="form-group pb-3 pt-3">
@@ -61,7 +65,9 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tBodyDetails">
-
+									<tr>
+										<td class="text-center" colspan="4">No data</td>
+									</tr>
                                 </tbody>
                             </table>
                         </div>

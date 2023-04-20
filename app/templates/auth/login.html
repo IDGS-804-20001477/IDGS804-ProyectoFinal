@@ -1,28 +1,68 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="text-center">Login</h4>
-        </div>
-        <div class="card-body">
-          <form method="post" action="/auth/login">
-            <div class="form-group pb-2">
-              <label for="txtEmail">Email:</label>
-              <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Enter email">
-            </div>
-            <div class="form-group pb-3">
-              <label for="txtPassword">Password:</label>
-              <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Enter password">
-            </div>
-            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="row justify-content-center py-5 overflow-x-hidden">
+	<div class="col-lg-5">
+		<div class="card bg-body-tertiary rounded-card border-0 shadow-sm">
+			<div class="card-body px-lg-5 py-lg-5">
+				<div class="d-flex align-items-center justify-content-start pb-2">
+					<h1 class="display-6 text-primary fw-bold">Login</h1>
+				</div>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<div class="notification is-success">
+					<div class="w-100">
+						<div class="alert alert-success rounded-pill text-dark text-center" role="alert">
+							{{ messages[0] }}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endwith %}
+				<form method="post" action="/auth/login">
+					<div class="form-group pb-3">
+						<label for="txtEmail">Email:</label>
+						<input type="text" class="form-control" id="txtEmail" name="txtEmail" required>
+					</div>
+					<div class="form-group pb-3">
+						<label for="txtPassword">Contraseña:</label>
+						<input type="password" class="form-control" id="txtPassword" name="txtPassword" required>
+					</div>
+					<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+					<button type="submit" class="btn btn-primary btn-block">Acceder</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 pb-0 my-4 border-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-8 justify-content-start align-content-center d-flex mt-3">
+				<ul class="nav justify-content-end list-unstyled">
+					<li class="ms-4">
+						<a class="text-body-secondary" href="#">
+							<i class="bi bi-twitter fs-4"></i>
+						</a>
+					</li>
+					<li class="ms-4">
+						<a class="text-body-secondary" href="#">
+							<i class="bi bi-facebook fs-4"></i>
+						</a>
+					</li>
+					<li class="ms-4">
+						<a class="text-body-secondary" href="#">
+							<i class="bi bi-instagram fs-4"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-4 justify-content-end d-flex">
+				<a class="text-body-secondary" href="#">
+					<img src="../static/assets/media/icon/logo_small.svg" class="img-fluid py-0" width="60px" />
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>
 {% endblock %}

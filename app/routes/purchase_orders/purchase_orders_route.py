@@ -27,12 +27,12 @@ def insert():
     providers = getProvidersForFeedstock()
     
     if (request.method == 'POST'):
-        total = request.form.get('txtTotal')
-        provider_id = request.form.get('cmbProvider')
-        purchase_order_detail = request.form.get('tblDetails')
-        purchase_order = Purchase_Order(
-            0, '', total, provider_id, purchase_order_detail)
-        insertPurchaseOrder(purchase_order)
+        data = request.get_json()
+        provider_id = int(data['provider_id'])
+        total = float(data['total'])
+        details = data['array']
+        purchase_order = Purchase_Order(0, '', total, provider_id, details)
+        print(insertPurchaseOrder(purchase_order))
         return redirect(url_for('purchase_orders.index'))
 
     return render_template('/admin/purchase-orders/insert_purchase_order.html', providers=providers)

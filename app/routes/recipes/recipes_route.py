@@ -77,16 +77,13 @@ def delete():
 @login_required
 @roles_required('admin')
 def refill():
-    if(request.method == 'GET'):
+    if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        products = getProductsForRecipe()
-        feedstocks = getFeedstocksForRecipe()
-        return render_template('/admin/recipes/refill_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
-    
-    if(request.method == 'POST'):
+        return render_template('/admin/recipes/refill_recipe.html', recipe=recipe)
+
+    if (request.method == 'POST'):
         id = request.form['txtId']
         quantity = request.form['txtQuantity']
-        print(refillProductByRecipe(id, quantity))
-        return  redirect(url_for('recipes.index'))
-        
+        refillProductByRecipe(id, quantity)
+        return redirect(url_for('recipes.index'))

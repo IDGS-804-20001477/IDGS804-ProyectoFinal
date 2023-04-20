@@ -41,6 +41,11 @@ const insertRecipe = () => {
             'Content-type': 'application/json; charset=UTF-8',
             'X-CSRF-Token': token
         }
+    }).then((response) => {
+        response.text().then((data) => {
+            console.log(data);
+            window.location = 'http://127.0.0.1:5000/admin/recipes/recipes-index'
+        });
     });
 };
 

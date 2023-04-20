@@ -56,8 +56,9 @@ const insertPurchaseOrder = () => {
             'X-CSRF-Token': token
         }
     }).then((response) => {
-        response.json().then((data) => {
+        response.text().then((data) => {
             console.log(data);
+            window.location = 'http://127.0.0.1:5000/admin/purchase-orders/purchase-orders-index'
         });
     });
 };

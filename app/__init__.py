@@ -29,7 +29,7 @@ def create_app():
 
     from .routes.auth.auth_route import auth as auth_blueprint
     from .routes.dashboard.dashboard_route import dashboard as dashboard_blueprint
-    from .routes.feedstocks.feedstocks_route import feedstocks as feedstocks_blueprint
+    from .routes.Feedstocks.feedstocks_route import feedstocks as feedstocks_blueprint
     from .routes.main.main_route import main as main_blueprint
     from .routes.products.products_route import products as products_blueprint
     from .routes.providers.providers_route import providers as providers_blueprint

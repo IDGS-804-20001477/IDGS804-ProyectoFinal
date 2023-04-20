@@ -5,6 +5,8 @@ from ...controllers.products_controller import getProductsForRecipe
 from ...controllers.feedstocks_controller import getFeedstocksForRecipe
 from flask_security import login_required
 from flask_security.decorators import roles_required
+from ...models.product import ProductSize
+from flask_cors import cross_origin
 
 recipes = Blueprint('recipes', __name__, url_prefix='/admin/recipes')
 
@@ -19,21 +21,28 @@ def index():
 
 @recipes.route('/recipes-insert', methods=['GET', 'POST'])
 @login_required
+@cross_origin(supports_credentials=True)
 @roles_required('admin')
 def insert():
+    print('worrweorujiop')
     products = getProductsForRecipe()
     feedstocks = getFeedstocksForRecipe()
+    product_sizes = ProductSize.query.all()
 
     if (request.method == 'POST'):
+        print('working')
         data = request.get_json()
         product_id = int(data['product_id'])
         description = data['description']
+        product_size_id = data['product_size_id']
+        print(product_size_id)
         details = data['array']
-        recipe = Recipe(0, product_id, description, details)
+        recipe = Recipe(0, product_id, description, details, product_size_id)
+        print(data)
         insertRecipe(recipe)
         return redirect(url_for('recipes.index'))
 
-    return render_template('/admin/recipes/insert_recipe.html', products=products, feedstocks=feedstocks)
+    return render_template('/admin/recipes/insert_recipe.html', products=products, feedstocks=feedstocks, product_sizes=product_sizes)
 
 
 @recipes.route('/recipes-update', methods=['GET', 'POST'])
@@ -77,16 +86,15 @@ def delete():
 @login_required
 @roles_required('admin')
 def refill():
-    if(request.method == 'GET'):
+    if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
         products = getProductsForRecipe()
         feedstocks = getFeedstocksForRecipe()
         return render_template('/admin/recipes/refill_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
-    
-    if(request.method == 'POST'):
+
+    if (request.method == 'POST'):
         id = request.form['txtId']
         quantity = request.form['txtQuantity']
         print(refillProductByRecipe(id, quantity))
-        return  redirect(url_for('recipes.index'))
-        
+        return redirect(url_for('recipes.index'))

@@ -17,6 +17,15 @@
 								{% endfor %}
 							</select>
 						</div>
+						<div class="pb-2">
+							<label for="cmbProductSize">Tamaño:</label>
+							<select name="cmbProductSize" id="cmbProductSize" class="form-select">
+								<option value="N/A" selected disabled>Select a option</option>
+								{% for product_size in product_sizes %}
+									<option value="{{ product_size.id }}">{{ product_size.size }}</option>
+								{% endfor %}
+							</select>
+						</div>
 						<div class="input-group pb-2">
 							<span class="input-group-text">Description:</span>
 							<textarea name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;"></textarea>

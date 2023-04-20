@@ -14,8 +14,10 @@ const insertRecipe = () => {
     let table = $('table tbody');
     let data = [];
     let product_id = document.getElementById('cmbProducts').value;
+    //let product_size_id = document.getElementById('cmbProductSize').value;
     let description = document.getElementById('txtDescription').value;
     let token = document.getElementById('csrf_token').value;
+    console.log(token)
 
     table.find('tr').each(function (i) {
         let object = { "feedstock_id": 0, "quantity": 0.0 };
@@ -28,15 +30,18 @@ const insertRecipe = () => {
         data.push(object);
     });
 
+    console.log('works')
     fetch('http://127.0.0.1:5000/admin/recipes/recipes-insert', {
         method: 'POST',
         body: JSON.stringify({
             product_id: product_id,
+            //product_size_id,
             description: description,
             array: JSON.stringify(data)
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin':'*',
             'X-CSRF-Token': token
         }
     });
@@ -47,6 +52,7 @@ const updateRecipe = () => {
     let data = [];
     let id = document.getElementById('txtId').value;
     let product_id = document.getElementById('cmbProducts').value;
+    //let product_size_id = document.getElementById('cmbProductSize').value;
     let description = document.getElementById('txtDescription').value;
     let token = document.getElementById('csrf_token').value;
 
@@ -66,6 +72,7 @@ const updateRecipe = () => {
         body: JSON.stringify({
             id: id,
             product_id: product_id,
+            //product_size_id,
             description: description,
             array: JSON.stringify(data)
         }),

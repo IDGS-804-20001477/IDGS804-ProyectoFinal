@@ -3,6 +3,7 @@ from flask_security import Security, SQLAlchemySessionUserDatastore
 from .models.db import db
 from .models.auth import User, Role
 from flask_wtf.csrf import CSRFProtect
+from flask_cors import CORS
 import os
 
 userDataStore = SQLAlchemySessionUserDatastore(db.session, User, Role)
@@ -11,6 +12,7 @@ csrf = CSRFProtect()
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = os.urandom(24)
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@127.0.0.1/luminary_lane"

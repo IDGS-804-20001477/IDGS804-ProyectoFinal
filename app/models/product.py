@@ -50,3 +50,9 @@ class ProductModel(db.Model):
             'id': self.id,
             'quantity': 1
         }
+
+
+class ProductSize(db.Model):
+    __tablename__ = 'product_sizes'
+    id = db.Column(db.Integer(), primary_key=True)
+    size = db.Column(db.String())

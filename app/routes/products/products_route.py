@@ -31,7 +31,8 @@ def insert():
         product = Product(0, '', name, description, price,
                           size, min_value, max_value, quantity, filename.filename)
         insertProduct(product)
-        
+        print('inserting product')
+
         return redirect(url_for('products.index'))
 
     return render_template('/admin/products/insert_product.html')

@@ -54,3 +54,14 @@ def deleteRecipe(id):
         connection.close()
     except Exception as ex:
         return ex
+
+
+def refillProductByRecipe(id, quantity):
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL refillProducts(%s, %s)', (id, quantity))
+        connection.commit()
+        connection.close()
+    except Exception as ex:
+        return ex

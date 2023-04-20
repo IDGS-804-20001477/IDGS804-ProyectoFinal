@@ -25,6 +25,16 @@ def getProductById(id):
         return ex
 
 
+def getProductsForRecipe():
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL getProductsForRecipe()')
+            return cursor.fetchall()
+    except Exception as ex:
+        return ex
+
+
 def insertProduct(Product):
     try:
         connection = get_connection()

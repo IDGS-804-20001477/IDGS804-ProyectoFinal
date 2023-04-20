@@ -82,19 +82,19 @@ def delete():
         return redirect(url_for('recipes.index'))
 
 
-@recipes.route('/recipes-refill', methods=['GET', 'POST'])
+@recipes.route('/recipes-refill/<int:id>', methods=['GET', 'POST'])
 @login_required
 @roles_required('admin')
-def refill():
+def refill(id):
     if (request.method == 'GET'):
-        id = request.args.get('id')
         recipe = getRecipeById(id)
         products = getProductsForRecipe()
         feedstocks = getFeedstocksForRecipe()
         return render_template('/admin/recipes/refill_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
 
     if (request.method == 'POST'):
-        id = request.form['txtId']
         quantity = request.form['txtQuantity']
+
+        # TODO: check if there are the feedstock enoght for make this recipe
         print(refillProductByRecipe(id, quantity))
         return redirect(url_for('recipes.index'))

@@ -5,7 +5,8 @@ from ...models.sale_order import Sale_Order
 from flask_security import login_required
 from flask_security.decorators import roles_required
 
-sale_orders = Blueprint('sale_orders', __name__, url_prefix='/admin/sale-orders')
+sale_orders = Blueprint('sale_orders', __name__,
+                        url_prefix='/admin/sale-orders')
 
 
 @sale_orders.route('/sale-orders-index')
@@ -13,6 +14,7 @@ sale_orders = Blueprint('sale_orders', __name__, url_prefix='/admin/sale-orders'
 @roles_required('admin')
 def index():
     sale_orders = getSalesOrders()
+    print(sale_orders)
     return render_template('/admin/sale-orders/index_sale_order.html', sale_orders=sale_orders)
 
 
@@ -40,8 +42,8 @@ def update():
         id = request.args.get('id')
         sale_order = getSaleOrderById(id)
         return render_template('/admin/sale-orders/update_sale_order.html', sale_order=sale_order)
-    
-    if(request.method == 'POST'):
+
+    if (request.method == 'POST'):
         new_status = int(request.args.get('status') + 1)
         id = request.form.get('txtId')
         updateSaleOrder(id, new_status)
@@ -52,12 +54,12 @@ def update():
 @login_required
 @roles_required('admin')
 def delete():
-    if(request.method == 'GET'):
+    if (request.method == 'GET'):
         id = request.args.get('id')
         sale_order = getSaleOrderById(id)
         return render_template('/admin/sale-orders/delete_sale_order.html', sale_order=sale_order)
-    
-    if(request.method == 'POST'):
+
+    if (request.method == 'POST'):
         new_status = 6
         id = request.form.get('txtId')
         updateSaleOrder(id, new_status)

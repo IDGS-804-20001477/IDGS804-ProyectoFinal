@@ -37,10 +37,6 @@
                         <input type="number" class="form-control" id="txtMaxValue" name="txtMaxValue"
                             placeholder="Enter max value" min="1" value="{{ product.max_value }}" required>
                     </div>
-                    <div class="input-group pb-2">
-                        <span class="input-group-text">Description:</span>
-                        <textarea name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;">{{ product.description }}</textarea>
-                    </div>
                     <div class="form-group pb-2">
                         <label>Description:</label>
                         <textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;">{{ product.description }}</textarea>
@@ -66,7 +62,7 @@
                             </div>
                         </div>
                         {% endfor %}
-                    <div class="form-group pb-2">
+                    <div class="form-group mb-5">
                         <label for="photo">Photo:</label>
                         <input class="form-control" type="file" name="photo" id="photo" accept="image/*"
                             onchange="document.getElementById('photo_render').src = window.URL.createObjectURL(this.files[0])"

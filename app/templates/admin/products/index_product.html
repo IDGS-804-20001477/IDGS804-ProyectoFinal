@@ -21,11 +21,10 @@
         <tbody>
             {%for product in products %}
             <tr>
-                <td class="align-middle"><img src="data:image/png;base64,{{photo}}" height="40"></th>
+                <td class="align-middle text-center"><img src="data:image/png;base64,{{product.photo}}" height="40"></th>
                 <td class="align-middle">{{ product.sku }}</td>
                 <td class="align-middle">{{ product.name }}</td>
                 <td class="align-middle">{{ product.price }}</td>
-                <td class="align-middle">{{ product.size }}</td>
                 <td class="align-middle">{{ product.get_quantity() }}</td>
                 <td class="align-middle">{{ product.min_value }}</td>
                 <td class="align-middle">{{ product.max_value }}</td>

@@ -28,6 +28,7 @@ def create_app():
     security = Security(app, userDataStore)
 
     from .routes.auth.auth_route import auth as auth_blueprint
+    from .routes.dashboard.dashboard_route import dashboard as dashboard_blueprint
     from .routes.Feedstocks.feedstocks_route import feedstocks as feedstocks_blueprint
     from .routes.main.main_route import main as main_blueprint
     from .routes.products.products_route import products as products_blueprint
@@ -38,6 +39,7 @@ def create_app():
     from .routes.users.users_route import users as users_blueprint
 
     app.register_blueprint(auth_blueprint)
+    app.register_blueprint(dashboard_blueprint)
     app.register_blueprint(feedstocks_blueprint)
     app.register_blueprint(main_blueprint)
     app.register_blueprint(products_blueprint)

@@ -11,7 +11,7 @@
  Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 20/04/2023 00:27:35
+ Date: 20/04/2023 04:34:24
 */
 
 SET NAMES utf8mb4;
@@ -33,12 +33,14 @@ CREATE TABLE `buy_order_details`  (
   INDEX `fk_buy_order_details_feedstock`(`feedstock_id` ASC) USING BTREE,
   CONSTRAINT `fk_buy_order_details_buy_orders` FOREIGN KEY (`buy_order_id`) REFERENCES `buy_orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_buy_order_details_feedstock` FOREIGN KEY (`feedstock_id`) REFERENCES `feedstocks` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-);
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of buy_order_details
 -- ----------------------------
 INSERT INTO `buy_order_details` VALUES (1, 4.5, 60, 3, 1);
+INSERT INTO `buy_order_details` VALUES (2, 30, 15, 1, 2);
+INSERT INTO `buy_order_details` VALUES (3, 5, 100, 3, 2);
 
 -- ----------------------------
 -- Table structure for buy_orders
@@ -57,12 +59,13 @@ CREATE TABLE `buy_orders`  (
   INDEX `fk_buy_orders_providers`(`provider_id` ASC) USING BTREE,
   CONSTRAINT `fk_buy_orders_buy_orders_status` FOREIGN KEY (`buy_order_status_id`) REFERENCES `buy_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_buy_orders_providers` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-);
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of buy_orders
 -- ----------------------------
 INSERT INTO `buy_orders` VALUES (1, 'BO-270124413', 270, 1, 3, '2023-04-19 12:44:13', 1);
+INSERT INTO `buy_orders` VALUES (2, 'BO-307004607', 950, 1, 4, '2023-04-20 00:46:07', 1);
 
 -- ----------------------------
 -- Table structure for buy_orders_status
@@ -322,7 +325,7 @@ CREATE TABLE `sale_orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_sale_orders_sale_orders_status`(`sale_orders_status_id` ASC) USING BTREE,
   CONSTRAINT `fk_sale_orders_sale_orders_status` FOREIGN KEY (`sale_orders_status_id`) REFERENCES `sale_orders_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-);
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sale_orders
@@ -676,6 +679,26 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getLeadingProduct
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getLeadingProduct`;
+delimiter ;;
+CREATE PROCEDURE `getLeadingProduct`(IN pMonth VARCHAR(5))
+BEGIN
+	SELECT SUM(sale_orders_details.quantity) as product_total, products.`name`
+	FROM products
+	INNER JOIN sale_orders_details
+		ON sale_orders_details.product_id = products.id
+	INNER JOIN sale_orders
+		ON sale_orders.id = sale_orders_details.sale_orders_id
+	WHERE MONTH(products.created_at) = pMonth
+		AND sale_orders.sale_orders_status_id = 5
+	GROUP BY products.`name`;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for getMeasurementUnits
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getMeasurementUnits`;
@@ -816,6 +839,20 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getPurchasesPerMonth
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getPurchasesPerMonth`;
+delimiter ;;
+CREATE PROCEDURE `getPurchasesPerMonth`(IN pMonth VARCHAR(5))
+BEGIN
+	SELECT SUM(buy_orders.total)
+	FROM buy_orders
+	WHERE MONTH(buy_orders.created_at) = pMonth;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for getRecipe
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getRecipe`;
@@ -860,14 +897,14 @@ DROP PROCEDURE IF EXISTS `getSaleOrder`;
 delimiter ;;
 CREATE PROCEDURE `getSaleOrder`(IN pId INT)
 BEGIN
-	SELECT sale_orders.id, sale_orders.reference_number, sale_orders.total, sale_orders.client_id, sale_orders_details.price, sale_orders_details.quantity, sale_orders_status.`name`, products.`name`
+	SELECT sale_orders.id, sale_orders.reference_number, sale_orders.total, `user`.`name`, sale_orders_details.product_id, CONCAT(products.`name`, ' - ', products.size) as product_name, sale_orders_details.quantity, sale_orders_details.price, sale_orders.`status`
 	FROM sale_orders
 	INNER JOIN sale_orders_details
 		ON sale_orders_details.sale_orders_id = sale_orders.id
-	INNER JOIN sale_orders_status
-		ON sale_orders_status.id = sale_orders.sale_orders_status_id
 	INNER JOIN products
 		ON products.id = sale_orders_details.product_id
+	INNER JOIN `user`
+		ON `user`.id = sale_orders.client_id
 	WHERE sale_orders.id = pId;
 END
 ;;
@@ -878,17 +915,17 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getSaleOrders`;
 delimiter ;;
-CREATE PROCEDURE `getSaleOrders`()
+CREATE PROCEDURE `getSaleOrders`(IN pStatus INT)
 BEGIN
-	SELECT sale_orders.id, sale_orders.reference_number, sale_orders.total, sale_orders.client_id, sale_orders_details.price, sale_orders_details.quantity, sale_orders_status.`name`, products.`name`
+	SELECT sale_orders.id, sale_orders.reference_number, sale_orders.total, `user`.`name`, user_profile.phone
 	FROM sale_orders
 	INNER JOIN sale_orders_details
 		ON sale_orders_details.sale_orders_id = sale_orders.id
-	INNER JOIN sale_orders_status
-		ON sale_orders_status.id = sale_orders.sale_orders_status_id
-	INNER JOIN products
-		ON products.id = sale_orders_details.product_id
-	WHERE sale_orders.`status` = 1;
+	INNER JOIN `user`
+		ON `user`.id = sale_orders.client_id
+	LEFT JOIN user_profile
+		ON user_profile.user_id = `user`.id
+	WHERE sale_orders.`status` = pStatus;
 END
 ;;
 delimiter ;
@@ -902,6 +939,20 @@ CREATE PROCEDURE `getSaleOrderStatus`()
 BEGIN
 	SELECT id, `name`
 	FROM sale_orders_status;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getSalesPerMonth
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getSalesPerMonth`;
+delimiter ;;
+CREATE PROCEDURE `getSalesPerMonth`(IN pMonth VARCHAR(5))
+BEGIN
+	SELECT SUM(sale_orders.total)
+	FROM sale_orders
+	WHERE MONTH(sale_orders.created_at) = pMonth;
 END
 ;;
 delimiter ;

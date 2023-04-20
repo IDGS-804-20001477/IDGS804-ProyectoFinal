@@ -1,3 +1,255 @@
 {%extends '/admin/base_admin.html'%}
 {%block content%}
+    <div class="row">
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="requested-tab" data-bs-toggle="tab" data-bs-target="#requested" type="button" role="tab" aria-controls="requested" aria-selected="true">Requested</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="elaborating-tab" data-bs-toggle="tab" data-bs-target="#elaborating" type="button" role="tab" aria-controls="elaborating" aria-selected="false">Elaborating</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="packing-tab" data-bs-toggle="tab" data-bs-target="#packing" type="button" role="tab" aria-controls="packing" aria-selected="false">Packing</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="sending-tab" data-bs-toggle="tab" data-bs-target="#sending" type="button" role="tab" aria-controls="sending" aria-selected="false">Sending</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="delivered-tab" data-bs-toggle="tab" data-bs-target="#delivered" type="button" role="tab" aria-controls="delivered" aria-selected="false">Delivered</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="canceled-tab" data-bs-toggle="tab" data-bs-target="#canceled" type="button" role="tab" aria-controls="canceled" aria-selected="false">Canceled</button>
+            </li>
+        </ul>
+        <div class="tab-content w-100" id="myTabContent">
+            <div class="w-100 tab-pane fade show active" id="requested" role="tabpanel" aria-labelledby="requested-tab">
+                <div class="table-responsive w-100">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Reference number</th>
+                                <th>Client name</th>
+                                <th>Telefono</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for id, reference_number, total, name, phone in sale_orders_requested%}
+                            <tr>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
+                                    <span>
+                                        <a href="{{url_for('sale_orders.see_detail')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.update')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-box-arrow-in-up-right"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.delete')}}?id={{id}}" type="button">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade w-100 w-100" id="elaborating" role="tabpanel" aria-labelledby="elaborating-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Reference number</th>
+                                <th>Client name</th>
+                                <th>Telefono</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for id, reference_number, total, name, phone in sale_orders_elaborating%}
+                            <tr>
+                                <th>{{id}}</th>
+                                <th>{{reference_number}}</th>
+                                <th>{{name}}</th>
+                                <th>{{phone}}</th>
+                                <th>{{total}}</th>
+                                <th>
+                                    <span>
+                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.update')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-box-arrow-in-up-right"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.delete')}}?id={{id}}" type="button">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade w-100" id="packing" role="tabpanel" aria-labelledby="packing-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Reference number</th>
+                                <th>Client name</th>
+                                <th>Telefono</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for id, reference_number, total, name, phone in sale_orders_packing%}
+                            <tr>
+                                <th>{{id}}</th>
+                                <th>{{reference_number}}</th>
+                                <th>{{name}}</th>
+                                <th>{{phone}}</th>
+                                <th>{{total}}</th>
+                                <th>
+                                    <span>
+                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.update')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-box-arrow-in-up-right"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.delete')}}?id={{id}}" type="button">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade w-100" id="sending" role="tabpanel" aria-labelledby="sending-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Reference number</th>
+                                <th>Client name</th>
+                                <th>Telefono</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for id, reference_number, total, name, phone in sale_orders_sending%}
+                            <tr>
+                                <th>{{id}}</th>
+                                <th>{{reference_number}}</th>
+                                <th>{{name}}</th>
+                                <th>{{phone}}</th>
+                                <th>{{total}}</th>
+                                <th>
+                                    <span>
+                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.update')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-box-arrow-in-up-right"></i>
+                                        </a>
+                                        <a href="{{url_for('sale_orders.delete')}}?id={{id}}" type="button">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade w-100" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Reference number</th>
+                                <th>Client name</th>
+                                <th>Telefono</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for id, reference_number, total, name, phone in sale_orders_delivered%}
+                            <tr>
+                                <th>{{id}}</th>
+                                <th>{{reference_number}}</th>
+                                <th>{{name}}</th>
+                                <th>{{phone}}</th>
+                                <th>{{total}}</th>
+                                <th>
+                                    <span>
+                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade w-100" id="canceled" role="tabpanel" aria-labelledby="canceled-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Reference number</th>
+                                <th>Client name</th>
+                                <th>Telefono</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for id, reference_number, total, name, phone in sale_orders_canceled%}
+                            <tr>
+                                <th>{{id}}</th>
+                                <th>{{reference_number}}</th>
+                                <th>{{name}}</th>
+                                <th>{{phone}}</th>
+                                <th>{{total}}</th>
+                                <th>
+                                    <span>
+                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {%endblock%}

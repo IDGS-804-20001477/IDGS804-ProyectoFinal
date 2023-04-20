@@ -45,7 +45,6 @@ def see_order():
     if (request.method == 'GET'):
         id = request.args.get('id')
         response = getPurchaseOrderById(id)
-        print(response)
         return render_template('/admin/purchase-orders/see_detail_purchase_order.html', form=response)
 
     if (request.method == 'POST'):

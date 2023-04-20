@@ -14,7 +14,7 @@
 					<form action="/admin/recipes/recipes-insert" method="post" enctype="multipart/form-data">
 						<div class="form-group pb-2">
 							<label for="cmbProducts">Product:</label>
-							<select name="cmbProducts" id="cmbProducts" class="form-select">
+							<select name="cmbProducts" id="cmbProducts" class="form-select" required>
 								<option value="N/A" selected disabled>Select an option</option>
 								{% for id, name in products %}
 									<option value="{{ id }}">{{ name }}</option>
@@ -23,7 +23,7 @@
 						</div>
 						<div class="form-group pb-2">
 							<label>Description:</label>
-							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;"></textarea>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" required></textarea>
 						</div>
 						<div class="form-group pb-2">
 							<div class="row">

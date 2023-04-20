@@ -17,16 +17,16 @@
                     </div>
                     <div class="form-group pb-2">
                         <label for="txtName">Name:</label>
-                        <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Enter name">
+                        <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Enter name" required>
                     </div>
                     <div class="form-group pb-2">
                         <label for="txtPrice">Price:</label>
                         <input type="number" class="form-control" id="txtPrice" name="txtPrice"
-                            placeholder="Enter price" min="1">
+                            placeholder="Enter price" min="1" required>
                     </div>
                     <div class="form-group pb-2">
                         <label for="cmbSize">Size:</label>
-                        <select name="cmbSize" class="form-select">
+                        <select name="cmbSize" class="form-select" required>
                             <option value="N/A" selected disabled>Select an option</option>
                             <option value="XS">XS</option>
                             <option value="S">S</option>
@@ -40,21 +40,21 @@
                     <div class="form-group pb-2">
                         <label for="txtMinValue">Min value:</label>
                         <input type="number" class="form-control" id="txtMinValue" name="txtMinValue"
-                            placeholder="Enter min value" min="1">
+                            placeholder="Enter min value" min="1" required>
                     </div>
                     <div class="form-group pb-2">
                         <label for="txtMaxValue">Max value:</label>
                         <input type="number" class="form-control" id="txtMaxValue" name="txtMaxValue"
-                            placeholder="Enter max value" min="1">
+                            placeholder="Enter max value" min="1" required>
                     </div>
                     <div class="form-group pb-2">
                         <label for="txtQuantity">Quantity:</label>
                         <input type="number" class="form-control" id="txtQuantity" name="txtQuantity"
-                            placeholder="Enter quantity" min="1">
+                            placeholder="Enter quantity" min="1" required>
                     </div>
                     <div class="form-group pb-2">
                         <label>Description:</label>
-                        <textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;"></textarea>
+                        <textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;" required></textarea>
                     </div>
                     <div class="form-group pb-2">
                         <label for="photo">Photo:</label>

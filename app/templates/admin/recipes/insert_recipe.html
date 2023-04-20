@@ -8,29 +8,29 @@
 		<div class="col-sm-8">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="text-center">New Recipe</h3>
+					<h3 class="text-center text-primary fw-bold">New Recipe</h3>
 				</div>
 				<div class="card-body">
 					<form action="/admin/recipes/recipes-insert" method="post" enctype="multipart/form-data">
 						<div class="form-group pb-2">
 							<label for="cmbProducts">Product:</label>
 							<select name="cmbProducts" id="cmbProducts" class="form-select">
-								<option value="N/A" selected disabled>Select a option</option>
+								<option value="N/A" selected disabled>Select an option</option>
 								{% for id, name in products %}
 									<option value="{{ id }}">{{ name }}</option>
 								{% endfor %}
 							</select>
 						</div>
-						<div class="input-group pb-2">
-							<span class="input-group-text">Description:</span>
-							<textarea name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;"></textarea>
+						<div class="form-group pb-2">
+							<label>Description:</label>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;"></textarea>
 						</div>
 						<div class="form-group pb-2">
 							<div class="row">
 								<div class="col-sm-5">
 									<label for="cmbFeedstocks">Feedstock:</label>
 									<select name="cmbFeedstocks" id="cmbFeedstocks" class="form-select">
-										<option value="N/A" selected disabled>Select a option</option>
+										<option value="N/A" selected disabled>Select an option</option>
 										{% for id, name in feedstocks %}
 											<option value="{{ id }}">{{ name }}</option>
 										{% endfor %}

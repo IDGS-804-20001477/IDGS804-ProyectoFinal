@@ -19,6 +19,12 @@
 	<!-- Bootstrap CSS -->
 	<link href="../../static/assets/css/styles.css" rel="stylesheet" />
 
+	<!-- Sidebar CSS -->
+	<link href="../../static/assets/css/layout.css" rel="stylesheet" />
+
+	<!-- Boxicons CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
+
 	<!-- Icons -->
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
@@ -30,53 +36,64 @@
 	{%endblock%}
 </head>
 
-<body>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary rounded sticky-top" aria-label="Thirteenth navbar example">
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-				aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+<body id="body-pd">
+	<header class="header" id="header">
+		<div class="header_toggle"> <i class="bx bx-menu" id="header-toggle"></i> </div>
+	</header>
 
-			<div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-				<a class="navbar-brand col-lg-3 me-0 py-0">
-					<img src="../../static/assets/media/icon/logo_medium.svg" class="img-fluid py-0" width="130px" />
+	<div class="l-navbar" id="nav-bar">
+		<nav class="custom-nav">
+			<div>
+				<a href="#" class="nav_logo">
+					<img src="../../static/assets/media/icon/logo_white_small.svg" class="p-0" width="20px" />
+					<span class="nav_logo-name">Luminary Lane</span>
 				</a>
-				<ul class="navbar-nav col-lg-6 justify-content-lg-center">
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('dashboard.index') }}">Dashboard</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('feedstocks.index') }}">Materia Prima</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{url_for('products.index')}}">Productos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('providers.index') }}">Proveedores</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('purchase_orders.index') }}">Ordenes de compra</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('recipes.index') }}">Recetas</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('sale_orders.index') }}">Ordenes de venta</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('users.index') }}">Usuarios</a>
-					</li>
-				</ul>
-				<div class="d-lg-flex gap-3 col-lg-3 justify-content-lg-end">
-					<a href="{{url_for('auth.logout')}}" type="button"><i class="bi bi-person fs-4"></i></a>
+				<div class="nav_list">
+					<a href="{{ url_for('feedstocks.index') }}"
+						class="nav_link {{ 'active' if 'feedstocks' in request.path else '' }}">
+						<i class="bi bi-box-seam nav_icon"></i>
+						<span class="nav_name">Feedstock</span>
+					</a>
+					<a href="{{url_for('products.index')}}"
+						class="nav_link {{ 'active' if 'products' in request.path else '' }}">
+						<i class="bi bi-tag nav_icon"></i>
+						<span class="nav_name">Products</span>
+					</a>
+					<a href="{{ url_for('providers.index') }}"
+						class="nav_link {{ 'active' if 'providers' in request.path else '' }}">
+						<i class="bi bi-minecart nav_icon"></i>
+						<span class="nav_name">Providers</span>
+					</a>
+					<a href="{{ url_for('purchase_orders.index') }}"
+						class="nav_link {{ 'active' if 'purchase-orders' in request.path else '' }}">
+						<i class="bi bi-cart4 nav_icon"></i>
+						<span class="nav_name">Purchase Orders</span>
+					</a>
+					<a href="{{ url_for('recipes.index') }}"
+						class="nav_link {{ 'active' if 'recipes' in request.path else '' }}">
+						<i class="bi bi-receipt nav_icon"></i>
+						<span class="nav_name">Recipes</span>
+					</a>
+					<a href="{{ url_for('sale_orders.index') }}"
+						class="nav_link {{ 'active' if 'sale-orders' in request.path else '' }}">
+						<i class="bi bi-bag nav_icon"></i>
+						<span class="nav_name">Sale Orders</span>
+					</a>
+					<a href="{{ url_for('users.index') }}"
+						class="nav_link {{ 'active' if 'users' in request.path else '' }}">
+						<i class="bi bi-person-up nav_icon"></i>
+						<span class="nav_name">Users</span>
+					</a>
 				</div>
 			</div>
-		</div>
-	</nav>
+			<a href="{{url_for('auth.logout')}}" class="nav_link">
+				<i class="bx bx-log-out nav_icon"></i>
+				<span class="nav_name">Sign out</span>
+			</a>
+		</nav>
+	</div>
 
-	<div
-		class="container-fluid {{ 'px-0' if request.path == url_for('main.index') or request.path == url_for('main.about_us') else '' }}">
+	<div class="w-100 py-3">
 		{% block content %}
 
 		{% endblock %}
@@ -85,7 +102,13 @@
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-		</script>
+	</script>
+
+	<!-- Sidebar JS -->
+	<script type="text/javascript" src="../../static/js/sidebar.js"></script>
+
+	<!-- JQuery JS -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@ def login():
         if user.type == 2:
             return redirect(url_for('main.index'))
         else:
-            return redirect(url_for('providers.index'))
+            return redirect(url_for('dashboard.index'))
 
 
 @auth.route('/register', methods=['GET', 'POST'])

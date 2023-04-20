@@ -1,14 +1,66 @@
 {% extends '/admin/base_admin.html' %}
 {% block content %}
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-8">
 			<div class="chart-container">
 				<canvas id="chartExample"></canvas>
 			</div>
 		</div>
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<div class="chart-container">
+				<canvas id="donutChart"></canvas>
+			</div>
+		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="../../static/js/charts.js"></script>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		const ctx = document.getElementById('chartExample');
+		const donutChart = document.getElementById('donutChart')
+
+		let chartExample = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: [{% for month in months %} '{{ month }}', {% endfor %}],
+				datasets: [{
+					label: 'Ventas',
+					data: [12, 19, 3, 5, 2, 3],
+					borderWidth: 1,
+					borderColor: 'rgb(75, 192, 192)',
+					tension: 0.1
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			}
+		});
+
+		new Chart(donutChart, {
+			type: 'doughnut',
+				data: {
+				labels: [
+				{% for product in products %}
+					'{{ product.name }}',
+				{% endfor %}
+				],
+				datasets: [{
+					label: 'My First Dataset',
+					data: [300, 50, 100],
+					backgroundColor: [
+					'rgb(255, 99, 132)',
+					'rgb(54, 162, 235)',
+					'rgb(255, 205, 86)'
+					],
+					hoverOffset: 4
+				}]
+			}
+		})
+
+	</script>
 {% endblock %}

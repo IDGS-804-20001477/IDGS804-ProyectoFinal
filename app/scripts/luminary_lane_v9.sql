@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : local_mysql
  Source Server Type    : MySQL
- Source Server Version : 80033 (8.0.33)
+ Source Server Version : 80028 (8.0.28)
  Source Host           : localhost:3306
  Source Schema         : luminary_lane
 
  Target Server Type    : MySQL
- Target Server Version : 80033 (8.0.33)
+ Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 19/04/2023 14:54:16
+ Date: 20/04/2023 00:27:35
 */
 
 SET NAMES utf8mb4;
@@ -100,9 +100,9 @@ CREATE TABLE `feedstock_details`  (
 -- ----------------------------
 -- Records of feedstock_details
 -- ----------------------------
-INSERT INTO `feedstock_details` VALUES (1, 42, 1);
+INSERT INTO `feedstock_details` VALUES (1, 36, 1);
 INSERT INTO `feedstock_details` VALUES (2, 400.25, 2);
-INSERT INTO `feedstock_details` VALUES (3, 80, 3);
+INSERT INTO `feedstock_details` VALUES (3, 520, 3);
 
 -- ----------------------------
 -- Table structure for feedstocks
@@ -167,7 +167,7 @@ CREATE TABLE `product_details`  (
 -- ----------------------------
 -- Records of product_details
 -- ----------------------------
-INSERT INTO `product_details` VALUES (1, 14, 1);
+INSERT INTO `product_details` VALUES (1, 28, 1);
 INSERT INTO `product_details` VALUES (2, 5, 2);
 
 -- ----------------------------
@@ -638,6 +638,23 @@ BEGIN
 	INNER JOIN providers
 		ON providers.id = feedstocks.provider_id
 	WHERE feedstocks.`status` = pStatus;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getFeedstocksByProvider
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getFeedstocksByProvider`;
+delimiter ;;
+CREATE PROCEDURE `getFeedstocksByProvider`(IN pId INT)
+BEGIN
+	SELECT feedstocks.id, CONCAT(feedstocks.`name`,' -' ,measurement_units.`name`)
+	FROM feedstocks
+	INNER JOIN measurement_units
+		ON measurement_units.id = feedstocks.measurement_unit_id
+	WHERE feedstocks.provider_id = pId
+		AND feedstocks.`status` = 1;
 END
 ;;
 delimiter ;
@@ -1173,10 +1190,10 @@ delimiter ;;
 CREATE PROCEDURE `refillProducts`(IN pRecipe_id INT,
 IN pQuantity INT)
 BEGIN
-	DECLARE product_id_, feedstock_id_ INT;
+	DECLARE feedstock_id_, product_id_ INT;
 	DECLARE quantity_ FLOAT;
 	DECLARE listo BOOLEAN DEFAULT FALSE;
-	DECLARE products_details CURSOR FOR SELECT recipes.product_id, recipe_details.feedstock_id, (recipe_details.quantity * pQuantity) AS quantity_feedstock
+	DECLARE products_details CURSOR FOR SELECT recipe_details.feedstock_id, (recipe_details.quantity * pQuantity) AS quantity_feedstock
 																			FROM recipes
 																			INNER JOIN recipe_details
 																				ON recipe_details.recipe_id = recipes.id
@@ -1184,17 +1201,19 @@ BEGIN
 	DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET listo = TRUE;
 																			
 	START TRANSACTION;
+		SELECT recipes.product_id FROM recipes WHERE recipes.id = pRecipe_id INTO product_id_;
+		
+		UPDATE product_details
+		SET quantity = quantity + pQuantity
+		WHERE product_id = product_id_;
+	
 		OPEN products_details;
 		products_details_loop: LOOP
-			FETCH products_details INTO product_id_, feedstock_id_, quantity_;
+			FETCH products_details INTO feedstock_id_, quantity_;
 			
 			IF listo THEN
 				LEAVE products_details_loop;
 			END IF;
-			
-			UPDATE product_details
-			SET quantity = quantity + pQuantity
-			WHERE product_id = product_id_;
 			
 			UPDATE feedstock_details
 			SET quantity = quantity - quantity_

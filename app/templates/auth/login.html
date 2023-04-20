@@ -23,9 +23,12 @@
 						<label for="txtEmail">Email:</label>
 						<input type="text" class="form-control" id="txtEmail" name="txtEmail" required>
 					</div>
-					<div class="form-group pb-3">
+					<div class="form-group">
 						<label for="txtPassword">Contraseña:</label>
 						<input type="password" class="form-control" id="txtPassword" name="txtPassword" required>
+					</div>
+					<div class="pb-3 pt-1">
+						<small class="w-100">¿A&uacute;n no tienes una cuenta? <a class="link-primary" href="{{ url_for('auth.register') }}">Crea una aqu&iacute;</a></small>
 					</div>
 					<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
 					<button type="submit" class="btn btn-primary btn-block">Acceder</button>

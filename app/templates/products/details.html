@@ -17,11 +17,20 @@
                 <p class="lead text-muted fs-6 mb-4">
                     {{ product.description }}
                 </p>
-                <p class="mb-4">
-                    Tamaño: {{ product.size }}
-                </p> 
 				{% if current_user.is_authenticated %}
-                <form action="{{ url_for('main.action_product_to_cart', product_id=product.id, action='add') }}" method="POST">
+                    <form action="{{ url_for('main.action_product_to_cart', product_id=product.id, action='add') }}" method="POST">
+                {% endif %}
+                    <p class="mb-4">
+                        <label class="form-label" for="slc-size">Tamaño</label>
+                        <select name="slc-size" id="slc-size" class="form-select" required>
+                            <option value="">Selecione una Talla</option>
+                            {% for detail in product.details %}
+                                <option value="{{ detail.product_size.size }}">{{ detail.product_size.size }}</option>
+                            {% endfor %}
+                        </select>
+                    </p> 
+
+				{% if current_user.is_authenticated %}
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" class="btn btn-primary w-100 py-2 mb-4"> 
                         Agregar al Carrito

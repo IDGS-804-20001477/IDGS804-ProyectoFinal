@@ -46,11 +46,18 @@ def product_detail(product_id):
 @main.post('/cart-resume/add-product/<int:product_id>/<string:action>')
 def action_product_to_cart(product_id, action):
     # if the product already exists only add more quantity of it
-    if session.get('cart', False) and len([product for product in session['cart'] if product['id'] == product_id]) > 0:
+    product_size = request.form.get('slc-size')
+
+    if session.get('cart', False) and len([product for product in session['cart'] if product['id'] == product_id and product['size'] == product_size]) > 0:
         cart_product = [
-            product for product in session['cart'] if product['id'] == product_id][0]
+            product for product in session['cart'] if product['id'] == product_id and product['size'] is product_size][0]
         products_filtered = [
-            product for product in session.get('cart', []) if product['id'] != product_id]
+            product for product in session.get('cart', []) if product['id'] != product_id or product['size'] != product_size]
+
+        print(f"cart productd {cart_product}")
+        print(f"product filtered {products_filtered}")
+        print(f"products in sesion {session.get('cart', [])}")
+        print(f"product size {product_size}")
 
         if action == 'add':
             cart_product['quantity'] = cart_product['quantity'] + 1
@@ -63,7 +70,7 @@ def action_product_to_cart(product_id, action):
         session['cart'] = products_filtered
     else:
         # search in database and add to the cart
-        product = ProductModel.query.get(product_id).to_dict()
+        product = ProductModel.query.get(product_id).to_dict(product_size)
         session['cart'] = [*session['cart'],
                            product] if session.get('cart', False) else [product]
 
@@ -117,7 +124,8 @@ def create_sale_order():
         quantity=item['quantity'],
         price=item['product']['price'],
         product_id=item['id'],
-        sale_orders=sale_order
+        sale_orders=sale_order,
+        product_size=item['size']
     ) for item in items]
 
     db.session.add(sale_order)
@@ -153,7 +161,8 @@ def profile():
 # @roles_accepted('admin', 'client')
 def my_orders():
     sale_orders = SaleOrder.query.filter_by(client_id=current_user.id).all()
-    return render_template('client/my_orders.html', sale_orders = sale_orders)
+    return render_template('client/my_orders.html', sale_orders=sale_orders)
+
 
 @main.route('/information')
 @login_required

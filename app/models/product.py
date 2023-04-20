@@ -53,10 +53,11 @@ class ProductModel(db.Model):
             total += detail.quantity
         return total
 
-    def to_dict(self):
+    def to_dict(self, size):
         return {
             'id': self.id,
-            'quantity': 1
+            'quantity': 1,
+            'size': size
         }
 
 

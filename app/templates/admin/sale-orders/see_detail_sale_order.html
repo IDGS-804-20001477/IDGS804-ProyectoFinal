@@ -7,16 +7,11 @@
 					<h3 class="text-center">Details to No. {{ form[0][1] }}</h3>
 				</div>
 				<div class="card-body">
-					<form action="/admin/sale-orders/sale-orders-update" method="post">
+					<form action="/admin/sale-orders/sale-orders-see-order" method="post">
 						<div class="form-group pb-2" hidden>
 							<label for="txtId">ID:</label>
 							<input type="text" class="form-control" id="txtId" name="txtId" placeholder="Enter reference number" value="{{ form[0][0] }}" />
 						</div>
-                        <div class="form-group pb-2" hidden>
-                            <label for="txtStatus">Status:</label>
-                            <input type="text" class="form-control" id="txtStatus" name="txtStatus"
-                                placeholder="Enter status" value="{{form[0][8]}}">
-                        </div>
 						<div class="form-group pb-2">
 							<label for="txtReferenceNumber">Reference Number:</label>
 							<input type="text" class="form-control" id="txtReferenceNumber" name="txtReferenceNumber" placeholder="Enter reference number" value="{{ form[0][1] }}" readonly />
@@ -53,7 +48,7 @@
 						</div>
 						<div class="form-group text-center">
 							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-							<button type="submit" class="btn btn-primary btn-block">Update status</button>
+							<button type="submit" class="btn btn-primary btn-block">Regresar</button>
 						</div>
 					</form>
 				</div>

@@ -1,11 +1,11 @@
 from ..database.config_db import get_connection
 
 
-def getSalesOrders():
+def getSalesOrders(status):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('CALL getSaleOrders()')
+            cursor.execute('CALL getSaleOrders(%s)', (status))
             return cursor.fetchall()
     except Exception as ex:
         return ex

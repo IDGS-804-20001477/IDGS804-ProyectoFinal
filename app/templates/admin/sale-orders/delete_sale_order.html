@@ -1,3 +1,63 @@
 {%extends '/admin/base_admin.html'%}
 {%block content%}
+<div class="row justify-content-center">
+    <div class="col-sm-7">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Delete No. {{ form[0][1] }}</h3>
+            </div>
+            <div class="card-body">
+                <form action="/admin/sale-orders/sale-orders-delete" method="post">
+                    <div class="form-group pb-2" hidden>
+                        <label for="txtId">ID:</label>
+                        <input type="text" class="form-control" id="txtId" name="txtId" placeholder="Enter reference number" value="{{ form[0][0] }}" />
+                    </div>
+                    <div class="form-group pb-2" hidden>
+                        <label for="txtStatus">Status:</label>
+                        <input type="text" class="form-control" id="txtStatus" name="txtStatus"
+                            placeholder="Enter status" value="{{form[0][8]}}">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtReferenceNumber">Reference Number:</label>
+                        <input type="text" class="form-control" id="txtReferenceNumber" name="txtReferenceNumber" placeholder="Enter reference number" value="{{ form[0][1] }}" readonly />
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtTotal">Total:</label>
+                        <input type="text" class="form-control" id="txtTotal" name="txtTotal" placeholder="Enter total" value="${{ form[0][2] }}" readonly />
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtClient">Client:</label>
+                        <input type="text" class="form-control" id="txtClient" name="txtClient" placeholder="Enter client" value="{{ form[0][3] }}" readonly />
+                    </div>
+                    <div class="form-group pb-3 pt-3">
+                        <table class="table" id="tblDetail" name="tblDetail">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tBodyDetails">
+                                {% for details in form %}
+                                    <tr>
+                                        <td>{{ details[4] }}</td>
+                                        <td>{{ details[5] }}</td>
+                                        <td>{{ details[6] }}</td>
+                                        <td>{{ details[7] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                        <button type="submit" class="btn btn-primary btn-block">Delete sale order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {%endblock%}

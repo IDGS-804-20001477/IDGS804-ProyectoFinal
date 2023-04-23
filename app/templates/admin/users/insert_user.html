@@ -41,11 +41,11 @@
                             placeholder="Enter phone" required>
                     </div>
                     <div class="form-group pb-2">
-                        <label for="cmbTypes">Type user:</label>
+                        <label for="cmbTypes">Role:</label>
                         <select name="cmbTypes" class="form-select" required>
                             <option value="N/A" selected disabled>Select an option</option>
-                            {%for id, name in user_types%}
-                            <option value="{{id}}">{{name}}</option>
+                            {%for role in roles %}
+                            <option value="{{ role.name }}">{{ role.name }}</option>
                             {%endfor%}
                         </select>
                     </div>

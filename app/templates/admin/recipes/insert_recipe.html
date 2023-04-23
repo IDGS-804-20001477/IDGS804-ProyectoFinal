@@ -21,6 +21,15 @@
 								{% endfor %}
 							</select>
 						</div>
+						<div class="pb-2">
+							<label for="cmbProductSize">Tamaño:</label>
+							<select name="cmbProductSize" id="cmbProductSize" class="form-select">
+								<option value="N/A" selected disabled>Select a option</option>
+								{% for product_size in product_sizes %}
+									<option value="{{ product_size.id }}">{{ product_size.size }}</option>
+								{% endfor %}
+							</select>
+						</div>
 						<div class="form-group pb-2">
 							<label>Description:</label>
 							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" required></textarea>
@@ -45,19 +54,23 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group pb-3 pt-3">
-							<table class="table" id="tblDetail" name="tblDetail">
-								<thead class="table-light">
+                        <div class="form-group pb-3 pt-3">
+                            <table class="table" id="tblDetail" name="tblDetail">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tBodyDetails">
 									<tr>
-										<th>ID</th>
-										<th>Name</th>
-										<th>Quantity</th>
-										<th>Actions</th>
+										<td class="text-center" colspan="4">No data</td>
 									</tr>
-								</thead>
-								<tbody id="tBodyDetails"></tbody>
-							</table>
-						</div>
+                                </tbody>
+                            </table>
+                        </div>
 						<div class="form-group text-center">
 							<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}" />
 							<button type="button" class="btn btn-primary btn-block" name="btnInsert" onclick="insertRecipe()">Insert Recipe</button>

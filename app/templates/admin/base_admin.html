@@ -11,13 +11,18 @@
 	<meta name="keywords" content="vestidos, elegantes, tienda en línea, Luminary Lane">
 	<meta name="author" content="Luminary Lane">
 
-	<!-- Favicon -->
-	<link rel="icon" href="../../static/assets/media/icon/favicon/favicon-32x32.png" type="image/x-icon">
-
 	<title>Luminary Lane</title>
 
+	<!-- Favicon -->
+	<link rel="icon" href="{{ url_for('static', filename='assets/media/icon/favicon/favicon-32x32.png') }}" type="image/x-icon">
 	<!-- Bootstrap CSS -->
-	<link href="../../static/assets/css/styles.css" rel="stylesheet" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+
+	<!-- Sidebar CSS -->
+	<link href="{{ url_for('static', filename='assets/css/layout.css') }}" rel="stylesheet" />
+
+	<!-- Boxicons CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
 
 	<!-- Sidebar CSS -->
 	<link href="../../static/assets/css/layout.css" rel="stylesheet" />
@@ -31,6 +36,8 @@
 		integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/recipes.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/purchase_order.js') }}"></script>
 	{%block head%}
 	
 	{%endblock%}
@@ -45,13 +52,13 @@
 		<nav class="custom-nav">
 			<div>
 				<a href="#" class="nav_logo">
-					<img src="../../static/assets/media/icon/logo_white_small.svg" class="p-0" width="20px" />
+					<img src="{{ url_for('static', filename='assets/media/icon/logo_medium.svg') }}" class="p-0" width="20px" />
 					<span class="nav_logo-name">Luminary Lane</span>
 				</a>
 				<div class="nav_list">
 					<a href="{{ url_for('dashboard.index') }}"
 						class="nav_link {{ 'active' if 'dashboard' in request.path else '' }}">
-						<i class="bi bi-box-seam nav_icon"></i>
+						<i class="bi bi-bar-chart-line nav_icon"></i>
 						<span class="nav_name">Dashboard</span>
 					</a>
 					<a href="{{ url_for('feedstocks.index') }}"
@@ -110,10 +117,12 @@
 	</script>
 
 	<!-- Sidebar JS -->
-	<script type="text/javascript" src="../../static/js/sidebar.js"></script>
-	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+
 	<!-- JQuery JS -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	{% block scripts %}
+	{% endblock %}
 </body>
 
 </html>

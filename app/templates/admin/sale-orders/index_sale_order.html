@@ -21,9 +21,9 @@
                 <button class="nav-link" id="canceled-tab" data-bs-toggle="tab" data-bs-target="#canceled" type="button" role="tab" aria-controls="canceled" aria-selected="false">Canceled</button>
             </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="requested" role="tabpanel" aria-labelledby="requested-tab">
-                <div class="table-responsive">
+        <div class="tab-content w-100" id="myTabContent">
+            <div class="w-100 tab-pane fade show active" id="requested" role="tabpanel" aria-labelledby="requested-tab">
+                <div class="table-responsive w-100">
                     <table class="table">
                         <thead class="table-light">
                             <tr>
@@ -38,14 +38,14 @@
                         <tbody>
                         {%for id, reference_number, total, name, phone in sale_orders_requested%}
                             <tr>
-                                <th>{{id}}</th>
-                                <th>{{reference_number}}</th>
-                                <th>{{name}}</th>
-                                <th>{{phone}}</th>
-                                <th>{{total}}</th>
-                                <th>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
                                     <span>
-                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
+                                        <a href="{{url_for('sale_orders.see_detail')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
                                         </a>
                                         <a href="{{url_for('sale_orders.update')}}?id={{id}}" type="button" class="pe-2">
@@ -55,14 +55,14 @@
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                     </span>
-                                </th>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="elaborating" role="tabpanel" aria-labelledby="elaborating-tab">
+            <div class="tab-pane fade w-100 w-100" id="elaborating" role="tabpanel" aria-labelledby="elaborating-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-light">
@@ -102,7 +102,7 @@
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="packing" role="tabpanel" aria-labelledby="packing-tab">
+            <div class="tab-pane fade w-100" id="packing" role="tabpanel" aria-labelledby="packing-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-light">
@@ -142,7 +142,7 @@
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="sending" role="tabpanel" aria-labelledby="sending-tab">
+            <div class="tab-pane fade w-100" id="sending" role="tabpanel" aria-labelledby="sending-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-light">
@@ -182,7 +182,7 @@
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
+            <div class="tab-pane fade w-100" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-light">
@@ -216,7 +216,7 @@
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="canceled" role="tabpanel" aria-labelledby="canceled-tab">
+            <div class="tab-pane fade w-100" id="canceled" role="tabpanel" aria-labelledby="canceled-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-light">

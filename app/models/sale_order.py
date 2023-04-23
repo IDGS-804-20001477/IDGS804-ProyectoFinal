@@ -39,3 +39,5 @@ class SaleOrdeDetail(db.Model):
     price = db.Column(db.Double())
     product_id = db.Column(db.Integer())
     sale_orders_id = db.Column(db.Integer(), db.ForeignKey('sale_orders.id'))
+    product_size = db.Column(
+        db.String(), db.ForeignKey('product_sizes.size'))

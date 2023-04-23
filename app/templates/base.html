@@ -11,13 +11,12 @@
 	<meta name="keywords" content="vestidos, elegantes, tienda en línea, Luminary Lane">
 	<meta name="author" content="Luminary Lane">
 
-	<!-- Favicon -->
-	<link rel="icon" href="../static/assets/media/icon/favicon/favicon-32x32.png" type="image/x-icon">
-
 	<title>Luminary Lane</title>
 
+	<!-- Favicon -->
+	<link rel="icon" href="{{ url_for('static', filename='assets/media/icon/favicon/favicon-32x32.png') }}" type="image/x-icon">
 	<!-- Bootstrap CSS -->
-	<link href="../static/assets/css/styles.css" rel="stylesheet" />
+	<link href="{{ url_for('static', filename='assets/css/styles.css') }}" rel="stylesheet" />
 
 	<!-- Icons -->
 	<link rel="stylesheet"
@@ -36,7 +35,7 @@
 
 			<div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
 				<a class="navbar-brand col-lg-3 me-0 py-0" href="{{ url_for('main.index') }}">
-					<img src="../static/assets/media/icon/logo_medium.svg" class="img-fluid py-0" width="130px" />
+					<img src="{{ url_for('static', filename='assets/media/icon/logo_medium.svg') }}" class="img-fluid py-0" width="130px" />
 				</a>
 				<ul class="navbar-nav col-lg-6 justify-content-lg-center">
 					<li class="nav-item">
@@ -66,7 +65,7 @@
 							</div>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-								<li><a class="dropdown-item" href="#">Mis Pedidos</a></li>
+								<li><a class="dropdown-item" href="{{ url_for('main.my_orders') }}">Mis Pedidos</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li>
 									<form action="{{ url_for('auth.logout') }}" method="POST">
@@ -104,6 +103,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
 	</script>
+
+	<!-- Lottie JS -->
+	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

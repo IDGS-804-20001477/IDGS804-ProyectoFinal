@@ -7,16 +7,12 @@
 					<h3 class="text-center text-primary fw-bold">Refill stock to {{ recipe[0][1] }}</h3>
 				</div>
 				<div class="card-body">
-					<form action="/admin/recipes/recipes-refill" method="post" enctype="multipart/form-data">
-						<div class="form-group pb-2" hidden>
-							<label for="txtId">ID:</label>
-							<input type="text" class="form-control" id="txtId" name="txtId" value="{{ recipe[0][0] }}" />
+					<form action="{{ url_for('recipes.refill', id = recipe[0][0]) }}" method="post">
+						<div class="form-group py-3 mb-4">
+							<label class="form-label" for="txtQuantity">Quantity:</label>
+							<input type="number" step="1" class="form-control" id="txtQuantity" name="txtQuantity" placeholder="Enter quantity" min="1" required />
 						</div>
-						<div class="form-group pb-2">
-							<label for="txtQuantity">Quantity:</label>
-							<input type="number" step="1" class="form-control" id="txtQuantity" name="txtQuantity" placeholder="Enter quantity" min="1" />
-						</div>
-						<div class="form-group text-center">
+						<div class="form-group text-center mb-4">
 							<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}" />
 							<button type="submit" class="btn btn-primary btn-block">Refill product</button>
 						</div>

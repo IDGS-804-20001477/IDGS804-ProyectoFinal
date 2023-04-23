@@ -25,8 +25,8 @@ def insertRecipe(Recipe):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('CALL insertRecipe(%s, %s, %s)',
-                           (Recipe.product_id, Recipe.description, Recipe.recipe_details))
+            cursor.execute('CALL insertRecipe(%s, %s, %s, %s)',
+                           (Recipe.product_id, Recipe.description, Recipe.recipe_details, Recipe.product_size_id))
         connection.commit()
         connection.close()
     except Exception as ex:

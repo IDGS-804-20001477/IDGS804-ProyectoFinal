@@ -25,7 +25,7 @@
 									alt="">
 								<div class="ms-3 ms-sm-5 p-2 d-flex flex-column">
 									<a class="text-uppercase text-decoration-none mb-2" href="">{{ product.product.name }}</a>
-									<span>Tamaño: {{ product.product.size }}</span>
+									<span>Tamaño: {{ product.size }}</span>
 									<a class="link-info" href="{{ url_for('main.remove_product_from_cart', product_id=product.id) }}">Quitar</a>
 								</div>
 							</div>
@@ -37,10 +37,12 @@
 							<div class="d-flex align-items-center justify-content-end gap-1">
 								<form action="{{ url_for('main.action_product_to_cart', product_id=product.id, action='add') }}" method="POST">
 									<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="slc-size" value="{{ product.size }}">
 									<button type="submit" style="width: 30px; height: 30px" class="btn btn-sm btn-primary">+</button>
 								</form>
 								<form action="{{ url_for('main.action_product_to_cart', product_id=product.id, action='remove') }}" method="POST">
 									<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="slc-size" value="{{ product.size }}">
 									<button type="submit" style="width: 30px; height: 30px" class="btn btn-sm btn-secondary me-3">-</button>
 								</form>
 								<input style="width: 60px" class="form-control text-center" min="1" max="10" disabled type="text" value="{{ product.quantity }}">

@@ -40,8 +40,6 @@ class ProductModel(db.Model):
     max_value = db.Column(db.Integer())
     details = db.relationship(
         'ProductDetail', backref='products')
-    sale_orders = db.relationship(
-        'SaleOrdeDetail', backref='products')
 
     def columns_to_dict(self):
         dict_ = {}

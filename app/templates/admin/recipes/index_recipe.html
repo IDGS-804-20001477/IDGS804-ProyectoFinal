@@ -1,0 +1,40 @@
+{%extends '/admin/base_admin.html'%}
+{%block content%}
+<div class="col-sm-12 text-end  py-3">
+    <a href="{{url_for('recipes.insert')}}" class="btn btn-primary"><i class="bi bi-plus"></i> Insert Recipe</a>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Tamaño</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for id, name, size in recipes %}
+            <tr>
+                <td class="align-middle">{{id}}</td>
+                <td class="align-middle">{{name}}</td>
+                <td class="align-middle">{{ size }}</td>
+                <td class="align-middle">
+                    <span>
+                        <a href="{{url_for('recipes.refill', id = id ) }}" type="button" class="btn btn-secondary rounded-circle p-2 lh-1 me-3">
+                            <i class="bi bi-gear"></i>
+                        </a>
+                        <a href="{{url_for('recipes.update')}}?id={{id}}" type="button" class="btn btn-success rounded-circle p-2 lh-1 me-3">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a href="{{url_for('recipes.delete')}}?id={{id}}" type="button" class="btn btn-danger rounded-circle p-2 lh-1">
+                            <i class="bi bi-trash3"></i>
+                        </a>
+                    </span>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{%endblock%}

@@ -1,0 +1,58 @@
+$primary: #F76C6F;
+$secondary: #aea79f;
+$success: #49ad85;
+$info: #17a2b8;
+$warning: #F9C22E;
+$danger: #fb3a3d;
+$light: #F2F2F2;
+$dark: #2C2E3E;
+
+$navbar-light-active-color: $primary;
+
+$font-family-sans-serif: 'Quicksand',
+sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
+@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.btn {
+    @include border-radius(50rem);
+}
+
+.btn-primary {
+    color: $light;
+}
+
+.btn-secondary {
+    color: $light;
+}
+
+.btn-success {
+    color: $light;
+}
+
+.btn-danger {
+    color: $light;
+}
+
+.square-shape-80 {
+    width: 80px;
+    height: 80px;
+}
+
+.square-shape-140 {
+    width: 140px;
+    height: 140px;
+}
+
+.fs-md {
+    font-size: calc(2.2rem + 1.5vw);
+}
+
+.card {
+    border-radius: calc($card-border-radius + 1rem);
+}
+
+.top-negative-40 {
+    top: -40px !important;
+}

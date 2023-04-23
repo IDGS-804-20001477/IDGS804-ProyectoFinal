@@ -21,6 +21,26 @@ def getFeedstockById(id):
         return ex
 
 
+def getFeedstocksForRecipe():
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL getFeedstocksForRecipe()')
+            return cursor.fetchall()
+    except Exception as ex:
+        return ex
+
+
+def getFeedstocksByProvider(id):
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL getFeedstocksByProvider(%s)', (id))
+            return cursor.fetchall()
+    except Exception as ex:
+        return ex
+
+
 def insertFeedstock(Feedstock):
     try:
         connection = get_connection()
@@ -39,6 +59,17 @@ def updateFeedstock(Feedstock):
         with connection.cursor() as cursor:
             cursor.execute('CALL updateFeedstock(%s, %s, %s, %s, %s, %s, %s, %s, %s)', (Feedstock.id, Feedstock.name, Feedstock.description,
                            Feedstock.price, Feedstock.min_value, Feedstock.max_value, Feedstock.measurement_unit_id, Feedstock.provider_id, Feedstock.quantity))
+        connection.commit()
+        connection.close()
+    except Exception as ex:
+        return ex
+
+
+def deleteFeedstock(id):
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL deleteFeedstock(%s)', (id))
         connection.commit()
         connection.close()
     except Exception as ex:

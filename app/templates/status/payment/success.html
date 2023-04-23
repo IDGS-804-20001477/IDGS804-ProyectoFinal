@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main>
+    <div class="row justify-content-center py-5 overflow-x-hidden">
+        <div class="col-lg-5">
+            <div class="card bg-body-tertiary rounded-card border-0 shadow-sm">
+                <div class="card-body px-lg-5 py-lg-5">
+                    <div class="row">
+                        <div class="col-12 py-2">
+                            <div class="d-flex align-content-center justify-content-center">
+                                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_s2lryxtd.json" mode="bounce" background="transparent"  speed="0.5"  style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center pt-2">
+                            <h1 class="display-6 text-success fw-bold pb-2">¡Pago exitoso!</h1>
+                            <p>Nos pondremos en contacto pronto para coordinar el envío de su mercancía</p>
+                            <div class="d-flex align-content-center justify-content-center pt-1 pb-5 pb-md-5 pb-sm-5 pb-lg-3 pb-xl-0">
+                                <button class="btn btn-success w-auto" onclick="window.location.href=`{{ url_for('main.index') }}`;">Regresar al inicio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 pb-0 my-4 border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 justify-content-start align-content-center d-flex mt-3">
+                <ul class="nav justify-content-end list-unstyled">
+                    <li class="ms-4">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi bi-twitter fs-4"></i>
+                        </a>
+                    </li>
+                    <li class="ms-4">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi bi-facebook fs-4"></i>
+                        </a>
+                    </li>
+                    <li class="ms-4">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi bi-instagram fs-4"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4 justify-content-end d-flex">
+                <a class="text-body-secondary" href="#">
+                    <img src="../static/assets/media/icon/logo_small.svg" class="img-fluid py-0" width="60px" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

@@ -25,8 +25,8 @@ def insertRecipe(Recipe):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('CALL insertRecipe(%s, %s, %s)',
-                           (Recipe.product_id, Recipe.description, Recipe.recipe_details))
+            cursor.execute('CALL insertRecipe(%s, %s, %s, %s)',
+                           (Recipe.product_id, Recipe.description, Recipe.recipe_details, Recipe.product_size_id))
         connection.commit()
         connection.close()
     except Exception as ex:
@@ -37,8 +37,8 @@ def updateRecipe(Recipe):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('CALL updateRecipe(%s, %s, %s, %s)', (Recipe.id,
-                           Recipe.product_id, Recipe.description, Recipe.recipe_details))
+            cursor.execute('CALL updateRecipe(%s, %s, %s)',
+                           (Recipe.id, Recipe.description, Recipe.recipe_details))
         connection.commit()
         connection.close()
     except Exception as ex:
@@ -50,6 +50,17 @@ def deleteRecipe(id):
         connection = get_connection()
         with connection.cursor() as cursor:
             cursor.execute('CALL deleteRecipe(%s)', id)
+        connection.commit()
+        connection.close()
+    except Exception as ex:
+        return ex
+
+
+def refillProductByRecipe(id, quantity):
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL refillProducts(%s, %s)', (id, quantity))
         connection.commit()
         connection.close()
     except Exception as ex:

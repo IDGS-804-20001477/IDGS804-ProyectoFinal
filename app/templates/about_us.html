@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main
+	style="background-image: url('../static/assets/media/img/about_us/background-first-section.jpg'); background-size: cover;">
+	<div class="position-relative overflow-hidden text-center text-light" style="backdrop-filter: blur(5px);">
+		<div class="col-md-5 p-lg-5 mx-auto my-5">
+			<h1 class="display-6 fw-bold">Sobre Nosotros</h1>
+		</div>
+		<div class="product-device shadow-sm d-none d-md-block"></div>
+		<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+	</div>
+</main>
+
+<div class="px-4 my-5 text-center">
+	<h1 class="display-5 fw-bold text-body-emphasis py-3">Historia</h1>
+	<div class="col-lg-6 mx-auto">
+		<p class="lead mb-4">Luminary Lane fue fundada en el año 2022 por cuatro compañeros de clase que tenían una meta
+			en común: crear algo impresionante. Querían crear una tienda en línea que ofreciera vestidos elegantes y
+			sofisticados para mujeres de todas las edades y tallas. Después de varios años de trabajo duro y dedicación,
+			Luminary Lane se ha convertido en una tienda líder en la industria de la moda en línea.</p>
+	</div>
+	<div class="overflow-hidden" style="max-height: 40vh;">
+		<div class="container px-5">
+			<img src="../static/assets/media/img/about_us/image-second-section.jpeg"
+				class="img-fluid border rounded-3 shadow-lg mb-4" alt="Luminary Lane Photo" width="700" height="500">
+		</div>
+	</div>
+</div>
+
+<div class="container px-4 py-5">
+	<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+		<div class="feature col">
+			<div
+				class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 square-shape-80 rounded-circle text-light">
+				<i class="bi bi-bullseye"></i>
+			</div>
+			<h3 class="fs-2 fw-bold">Misión</h3>
+			<p>En Luminary Lane, nuestra misión es ayudar a las mujeres a sentirse seguras y hermosas en cualquier
+				ocasión ofreciendo vestidos elegantes y de alta calidad. Nos esforzamos por brindar un excelente
+				servicio al cliente y garantizar que nuestras clientas se sientan bien atendidas y satisfechas con cada
+				compra.
+			</p>
+		</div>
+		<div class="feature col">
+			<div
+				class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 square-shape-80 rounded-circle text-light">
+				<i class="bi bi-rocket-takeoff-fill"></i>
+			</div>
+			<h3 class="fs-2 fw-bold">Visión</h3>
+			<p>Nuestra visión en Luminary Lane es convertirnos en la tienda en línea de vestidos más confiable y querida
+				por las mujeres de todo el mundo. Queremos ser conocidos por nuestra calidad y estilo excepcional, y
+				ofrecer una experiencia de compra en línea que sea fácil, conveniente y placentera.</p>
+		</div>
+		<div class="feature col">
+			<div
+				class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 square-shape-80 rounded-circle text-light">
+				<i class="bi bi-balloon-heart-fill"></i>
+			</div>
+			<h3 class="fs-2 fw-bold">Valores</h3>
+			<p>Nos comprometemos a ser éticos y responsables en todas nuestras operaciones, y a trabajar con proveedores
+				que compartan nuestros valores de sostenibilidad y justicia social. Nos enorgullecemos de ser inclusivos
+				y representativos de todas las mujeres, sin importar su edad, tamaño o estilo personal.</p>
+		</div>
+	</div>
+</div>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 pb-0 my-4 border-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-8 justify-content-start align-content-center d-flex mt-3">
+				<ul class="nav justify-content-end list-unstyled">
+					<li class="ms-4">
+						<a class="text-body-secondary" href="#">
+							<i class="bi bi-twitter fs-4"></i>
+						</a>
+					</li>
+					<li class="ms-4">
+						<a class="text-body-secondary" href="#">
+							<i class="bi bi-facebook fs-4"></i>
+						</a>
+					</li>
+					<li class="ms-4">
+						<a class="text-body-secondary" href="#">
+							<i class="bi bi-instagram fs-4"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-4 justify-content-end d-flex">
+				<a class="text-body-secondary" href="#">
+					<img src="../static/assets/media/icon/logo_small.svg" class="img-fluid py-0" width="60px" />
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>
+{% endblock %}

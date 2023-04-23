@@ -1,0 +1,85 @@
+{%extends '/admin/base_admin.html'%}
+{%block content%}
+<div class="row justify-content-center">
+    <div class="col-sm-7">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center text-primary fw-bold">
+                    Delete product
+                </h3>
+            </div>
+            <div class="card-body">
+                <form action="/admin/products/products-delete" method="post" enctype="multipart/form-data">
+                    <div class="form-group pb-2 text-center">
+                        <div class="d-flex align-content-center justify-content-center">
+                            <img id="photo_render" style="max-height: 80px;" src="data:image/png;base64,{{form[0][10]}}">
+                        </div>
+                    </div>
+                    <div class="form-group pb-2" hidden>
+                        <label for="txtId">ID:</label>
+                        <input type="text" class="form-control" id="txtId" name="txtId" value="{{form[0][0]}}">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtSku">Sku:</label>
+                        <input type="text" class="form-control" id="txtSku" name="txtSku" placeholder="Enter sku"
+                            value="{{form[0][1]}}" disabled>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtName">Name:</label>
+                        <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Enter name"
+                            value="{{form[0][2]}}" disabled>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtPrice">Price:</label>
+                        <input type="number" class="form-control" id="txtPrice" name="txtPrice"
+                            placeholder="Enter price" min="1" value="{{form[0][3]}}" disabled>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="cmbSize">Size:</label>
+                        <select name="cmbSize" class="form-select" disabled>
+                            <option value="N/A" selected disabled>Select an option</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtMinValue">Min value:</label>
+                        <input type="number" class="form-control" id="txtMinValue" name="txtMinValue"
+                            placeholder="Enter min value" min="1" value="{{form[0][6]}}" disabled>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtMaxValue">Max value:</label>
+                        <input type="number" class="form-control" id="txtMaxValue" name="txtMaxValue"
+                            placeholder="Enter max value" min="1" value="{{form[0][7]}}" disabled>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtQuantity">Quantity:</label>
+                        <input type="number" class="form-control" id="txtQuantity" name="txtQuantity"
+                            placeholder="Enter quantity" min="1" value="{{form[0][5]}}" disabled>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label>Description:</label>
+                        <textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;"
+                            disabled>{{form[0][8]}}</textarea>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="photo">Photo:</label>
+                        <input class="form-control" type="file" name="photo" id="photo" accept="image/*"
+                            onchange="document.getElementById('photo_render').src = window.URL.createObjectURL(this.files[0])"
+                            value="{{form[0][9]}}" disabled>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        <button type="submit" class="btn btn-primary btn-block">Delete Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

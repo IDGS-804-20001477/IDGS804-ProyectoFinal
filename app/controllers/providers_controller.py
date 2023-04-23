@@ -21,6 +21,16 @@ def getProviderById(id):
         return ex
 
 
+def getProvidersForFeedstock():
+    try:
+        connection = get_connection()
+        with connection.cursor() as cursor:
+            cursor.execute('CALL getProvidersForFeedstock()')
+            return cursor.fetchall()
+    except Exception as ex:
+        return ex
+
+
 def insertProvider(Provider):
     try:
         connection = get_connection()

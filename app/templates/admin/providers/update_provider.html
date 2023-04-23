@@ -1,0 +1,51 @@
+{%extends '/admin/base_admin.html'%}
+{%block content%}
+<div class="row justify-content-center">
+    <div class="col-sm-7">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center text-primary fw-bold">
+                    Update Provider
+                </h3>
+            </div>
+            <div class="card-body">
+                <form action="/admin/providers/providers-update" method="post">
+                    <div class="form-group pb-2" hidden>
+                        <label for="txtId">ID:</label>
+                        <input type="text" class="form-control" id="txtId" name="txtId" value="{{form[0][0]}}">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtBusinessName">Business Name:</label>
+                        <input type="text" class="form-control" id="txtBusinessName" name="txtBusinessName"
+                            placeholder="Enter business name" value="{{form[0][1]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtContactName">Contact Name:</label>
+                        <input type="text" class="form-control" id="txtContactName" name="txtContactName"
+                            placeholder="Enter contact name" value="{{form[0][2]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtContactEmail">Contact Email:</label>
+                        <input type="email" class="form-control" id="txtContactEmail" name="txtContactEmail"
+                            placeholder="Enter contact email" value="{{form[0][3]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtContactPhone">Contact Phone:</label>
+                        <input type="text" class="form-control" id="txtContactPhone" name="txtContactPhone"
+                            placeholder="Enter contact phone" maxlength="10" value="{{form[0][4]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtAddress">Address:</label>
+                        <input type="text" class="form-control" id="txtAddress" name="txtAddress"
+                            placeholder="Enter address" value="{{form[0][5]}}" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        <button type="submit" class="btn btn-primary btn-block">Update Provider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

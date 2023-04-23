@@ -1,0 +1,66 @@
+{%extends '/admin/base_admin.html'%}
+{%block content%}
+<div class="row justify-content-center">
+    <div class="col-sm-7">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center text-primary fw-bold">
+                    Update User
+                </h3>
+            </div>
+            <div class="card-body">
+                <form action="/admin/users/users-update" method="post">
+                    <div class="form-group pb-2" hidden>
+                        <label for="txtId">Id:</label>
+                        <input type="text" class="form-control" id="txtId" name="txtId"
+                            placeholder="Enter id" value="{{form[0][0]}}">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtName">Name:</label>
+                        <input type="text" class="form-control" id="txtName" name="txtName"
+                            placeholder="Enter name" value="{{form[0][2]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtLastname">Lastname:</label>
+                        <input type="text" class="form-control" id="txtLastname" name="txtLastname"
+                            placeholder="Enter lastname" value="{{form[0][3]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtEmail">Email:</label>
+                        <input type="email" class="form-control" id="txtEmail" name="txtEmail"
+                            placeholder="Enter email" value="{{form[0][1]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtPassword">Password:</label>
+                        <input type="password" class="form-control" id="txtPassword" name="txtPassword"
+                            placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtAddress">Address:</label>
+                        <input type="text" class="form-control" id="txtAddress" name="txtAddress"
+                            placeholder="Enter address" value="{{form[0][5]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="txtPhone">Phone:</label>
+                        <input type="text" class="form-control" id="txtPhone" name="txtPhone"
+                            placeholder="Enter phone" value="{{form[0][4]}}" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="cmbTypes">Type user:</label>
+                        <select name="cmbTypes" class="form-select" required>
+                            <option value="N/A" selected disabled>Select an option</option>
+                            {%for id, name in user_types%}
+                            <option value="{{id}}">{{name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        <button type="submit" class="btn btn-primary btn-block">Update User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

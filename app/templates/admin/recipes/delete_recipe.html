@@ -1,0 +1,81 @@
+{% extends '/admin/base_admin.html' %}
+{% block content %}
+	<div class="row justify-content-center">
+		<div class="col-sm-8">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="text-center text-primary fw-bold">Delete recipe to {{ recipe[0][1] }}</h3>
+				</div>
+				<div class="card-body">
+					<form action="/admin/recipes/recipes-delete" method="post" enctype="multipart/form-data">
+						<div class="form-group pb-2" hidden>
+							<label for="txtId">ID:</label>
+							<input type="text" class="form-control" id="txtId" name="txtId" value="{{ recipe[0][0] }}" />
+						</div>
+						<div class="form-group pb-2">
+							<label for="cmbProducts">Product:</label>
+							<select name="cmbProducts" id="cmbProducts" class="form-select" disabled>
+								<option value="N/A" selected disabled>Select an option</option>
+								{% for id, name in products %}
+									<option value="{{ id }}">{{ name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="form-group pb-2">
+							<label>Description:</label>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="90" rows="5" style="resize: none;" disabled>{{ recipe[0][2] }}</textarea>
+						</div>
+						<div class="form-group pb-2">
+							<div class="row">
+								<div class="col-sm-5">
+									<label for="cmbFeedstocks">Feedstock:</label>
+									<select name="cmbFeedstocks" id="cmbFeedstocks" class="form-select" disabled>
+										<option value="N/A" selected disabled>Select an option</option>
+										{% for id, name in feedstocks %}
+											<option value="{{ id }}">{{ name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="col-sm-5">
+									<label for="txtQuantity">Quantity:</label>
+									<input type="number" step="0.01" class="form-control" id="txtQuantity" name="txtQuantity" placeholder="Enter quantity" min="1" disabled />
+								</div>
+								<div class="col-sm-2 pt-4">
+									<button class="btn btn-primary" type="button" name="btnAdd" id="btnAdd" onclick="insertDataRecipeDetail()" disabled><i class="bi bi-arrow-down-square"></i> ADD</button>
+								</div>
+							</div>
+						</div>
+						<div class="form-group pb-3 pt-3">
+							<table class="table" id="tblDetail" name="tblDetail">
+								<thead class="table-light">
+									<tr>
+										<th>ID</th>
+										<th>Name</th>
+										<th>Quantity</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody id="tBodyDetails">
+									{% for recipe_details in recipe %}
+										<tr>
+											<td>{{ recipe_details[3] }}</td>
+											<td>{{ recipe_details[4] }}</td>
+											<td>{{ recipe_details[5] }}</td>
+											<td>
+												<input type="button" value="Delete" class="btn btn-danger" disabled/>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<div class="form-group text-center">
+							<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}" />
+							<button type="submit" class="btn btn-primary btn-block">Delete Recipe</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

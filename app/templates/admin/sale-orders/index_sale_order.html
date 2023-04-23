@@ -45,7 +45,7 @@
                                 <td>{{total}}</td>
                                 <td>
                                     <span>
-                                        <a href="{{url_for('sale_orders.see_detail')}}?id={{id}}" type="button" class="pe-2">
+                                        <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
                                         </a>
                                         <a href="{{url_for('sale_orders.update')}}?id={{id}}" type="button" class="pe-2">
@@ -78,12 +78,12 @@
                         <tbody>
                         {%for id, reference_number, total, name, phone in sale_orders_elaborating%}
                             <tr>
-                                <th>{{id}}</th>
-                                <th>{{reference_number}}</th>
-                                <th>{{name}}</th>
-                                <th>{{phone}}</th>
-                                <th>{{total}}</th>
-                                <th>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
                                     <span>
                                         <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
@@ -95,7 +95,7 @@
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                     </span>
-                                </th>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -118,12 +118,12 @@
                         <tbody>
                         {%for id, reference_number, total, name, phone in sale_orders_packing%}
                             <tr>
-                                <th>{{id}}</th>
-                                <th>{{reference_number}}</th>
-                                <th>{{name}}</th>
-                                <th>{{phone}}</th>
-                                <th>{{total}}</th>
-                                <th>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
                                     <span>
                                         <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
@@ -135,7 +135,7 @@
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                     </span>
-                                </th>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -158,12 +158,12 @@
                         <tbody>
                         {%for id, reference_number, total, name, phone in sale_orders_sending%}
                             <tr>
-                                <th>{{id}}</th>
-                                <th>{{reference_number}}</th>
-                                <th>{{name}}</th>
-                                <th>{{phone}}</th>
-                                <th>{{total}}</th>
-                                <th>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
                                     <span>
                                         <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
@@ -175,7 +175,7 @@
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                     </span>
-                                </th>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -198,18 +198,18 @@
                         <tbody>
                         {%for id, reference_number, total, name, phone in sale_orders_delivered%}
                             <tr>
-                                <th>{{id}}</th>
-                                <th>{{reference_number}}</th>
-                                <th>{{name}}</th>
-                                <th>{{phone}}</th>
-                                <th>{{total}}</th>
-                                <th>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
                                     <span>
                                         <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
                                         </a>
                                     </span>
-                                </th>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -232,18 +232,18 @@
                         <tbody>
                         {%for id, reference_number, total, name, phone in sale_orders_canceled%}
                             <tr>
-                                <th>{{id}}</th>
-                                <th>{{reference_number}}</th>
-                                <th>{{name}}</th>
-                                <th>{{phone}}</th>
-                                <th>{{total}}</th>
-                                <th>
+                                <td>{{id}}</td>
+                                <td>{{reference_number}}</td>
+                                <td>{{name}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{total}}</td>
+                                <td>
                                     <span>
                                         <a href="{{url_for('sale_orders.see_order')}}?id={{id}}" type="button" class="pe-2">
                                             <i class="bi bi-eye"></i>
                                         </a>
                                     </span>
-                                </th>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>

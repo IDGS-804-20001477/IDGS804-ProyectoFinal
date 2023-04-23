@@ -59,7 +59,7 @@ def update():
     if (request.method == 'POST'):
         id = request.form.get('txtId')
         new_status = int(request.form.get('txtStatus')) + 1
-        updateSaleOrder(id, new_status)
+        print(updateSaleOrder(id, new_status))
         logger.info('Se modifica orden de venta correctamente: %s', current_user.name)
         return redirect(url_for('sale_orders.index'))
 
@@ -83,7 +83,7 @@ def delete():
 @sale_orders.route('/sale-orders-see-detail', methods=['GET', 'POST'])
 @login_required
 @roles_required('admin')
-def see_detail():
+def see_order():
     if (request.method == 'GET'):
         id = request.args.get('id')
         response = getSaleOrderById(id)

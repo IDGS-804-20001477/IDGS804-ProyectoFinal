@@ -7,7 +7,6 @@ const insertDataDetail = () => {
     let table = $('table tbody');
 
     document.getElementById('tBodyDetails').innerHTML += "<tr><td>" + feedstock + "</td><td>" + text + "</td><td>" + quantity + "</td><td>" + price + "</td><td><input type='button' value='Delete' class='btn btn-danger'></td></tr>";
-
     document.getElementById('txtQuantity').value = '';
     document.getElementById('txtPrice').value = '';
     name.focus();
@@ -18,7 +17,7 @@ const insertDataDetail = () => {
             price = $tds.eq(3).text(),
             quantity = $tds.eq(2).text();
 
-        total = total + (parseInt(price) * parseInt(quantity));
+        total = total + (parseFloat(price) * parseFloat(quantity));
     });
 
     document.getElementById('txtTotal').value = total;
@@ -79,7 +78,6 @@ const getFeedstocksByProvider = (select) => {
         }
     }).then((response) => {
         response.json().then((data) => {
-
             data.forEach((object) => {
                 let opt = document.createElement('option')
                 opt.value = object.id;

@@ -31,7 +31,6 @@ def index():
 @login_required
 @roles_required('admin')
 def insert():
-
     if (request.method == 'POST'):
         data = request.get_json()
         product_id = int(data['product_id'])
@@ -61,19 +60,17 @@ def update():
     if (request.method == 'GET'):
         id = request.args.get('id')
         recipe = getRecipeById(id)
-        products = getProductsForRecipe()
         feedstocks = getFeedstocksForRecipe()
-        return render_template('/admin/recipes/update_recipe.html', recipe=recipe, products=products, feedstocks=feedstocks)
+        return render_template('/admin/recipes/update_recipe.html', recipe=recipe, feedstocks=feedstocks)
 
     if (request.method == 'POST'):
         data = request.get_json()
         id = int(data['id'])
-        product_id = int(data['product_id'])
         description = data['description']
         details = data['array']
-        recipe = Recipe(id, product_id, description, details)
-        logger.info('Se modifica receta correctamente: %s', current_user.name)
+        recipe = Recipe(id, 0, description, details, 0)
         print(updateRecipe(recipe))
+        logger.info('Se modifica receta correctamente: %s', current_user.name)
         return redirect(url_for('recipes.index'))
 
 

@@ -37,8 +37,8 @@ def updateRecipe(Recipe):
     try:
         connection = get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('CALL updateRecipe(%s, %s, %s, %s)', (Recipe.id,
-                           Recipe.product_id, Recipe.description, Recipe.recipe_details))
+            cursor.execute('CALL updateRecipe(%s, %s, %s)',
+                           (Recipe.id, Recipe.description, Recipe.recipe_details))
         connection.commit()
         connection.close()
     except Exception as ex:

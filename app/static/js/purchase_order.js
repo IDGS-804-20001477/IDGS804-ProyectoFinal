@@ -1,4 +1,3 @@
-/*
 const insertDataDetail = () => {
     let feedstock = document.getElementById('cmbFeedstocks').value;
     let name = document.getElementById('cmbFeedstocks');
@@ -118,4 +117,3 @@ const tableClick = (e) => {
 window.onload = function () {
     document.getElementById('tblDetail').addEventListener('click', tableClick, false);
 };
-*/

@@ -4,10 +4,7 @@ const insertDataRecipeDetail = () => {
     let text = name.options[name.selectedIndex].innerHTML;
     let quantity = document.getElementById('txtQuantity').value;
 
-    document.getElementById('tBodyDetails').innerHTML = "";
-
     document.getElementById('tBodyDetails').innerHTML += "<tr><td>" + feedstock + "</td><td>" + text + "</td><td>" + quantity + "</td><td><input type='button' value='Delete' class='btn btn-danger'></td></tr>";
-
     document.getElementById('txtQuantity').value = '';
     name.focus();
 };
@@ -19,7 +16,6 @@ const insertRecipe = () => {
     let product_size_id = document.getElementById('cmbProductSize').value;
     let description = document.getElementById('txtDescription').value;
     let token = document.getElementById('csrf_token').value;
-    console.log(token)
 
     table.find('tr').each(function (i) {
         let object = { "feedstock_id": 0, "quantity": 0.0 };
@@ -31,8 +27,7 @@ const insertRecipe = () => {
         object.quantity = parseFloat(quantity);
         data.push(object);
     });
-
-    console.log('works')
+    
     fetch('http://127.0.0.1:5000/admin/recipes/recipes-insert', {
         method: 'POST',
         body: JSON.stringify({
@@ -47,7 +42,6 @@ const insertRecipe = () => {
         }
     }).then((response) => {
         response.text().then((data) => {
-            console.log(data);
             window.location = 'http://127.0.0.1:5000/admin/recipes/recipes-index'
         });
     });
@@ -57,8 +51,6 @@ const updateRecipe = () => {
     let table = $('table tbody');
     let data = [];
     let id = document.getElementById('txtId').value;
-    let product_id = document.getElementById('cmbProducts').value;
-    //let product_size_id = document.getElementById('cmbProductSize').value;
     let description = document.getElementById('txtDescription').value;
     let token = document.getElementById('csrf_token').value;
 
@@ -77,8 +69,6 @@ const updateRecipe = () => {
         method: 'POST',
         body: JSON.stringify({
             id: id,
-            product_id: product_id,
-            //product_size_id,
             description: description,
             array: JSON.stringify(data)
         }),
@@ -86,6 +76,10 @@ const updateRecipe = () => {
             'Content-type': 'application/json; charset=UTF-8',
             'X-CSRF-Token': token
         }
+    }).then((response) => {
+        response.text().then((data) =>{
+            window.location = 'http://127.0.0.1:5000/admin/recipes/recipes-index'
+        })
     });
 };
 

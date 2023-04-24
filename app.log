@@ -220,3 +220,186 @@
 2023-04-23 17:25:01,543 - INFO - Arranque del sistema
 2023-04-23 17:25:18,386 - INFO - Arranque del sistema
 2023-04-23 17:25:37,953 - INFO - Arranque del sistema
+2023-04-23 20:55:20,406 - INFO - Arranque del sistema
+2023-04-23 20:55:22,441 - INFO - Arranque del sistema
+2023-04-23 20:56:14,642 - INFO - Se muestra el home
+2023-04-23 20:56:14,642 - INFO - Se muestra el home
+2023-04-23 20:56:43,201 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 20:56:43,201 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 20:56:50,626 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 20:56:50,626 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 20:56:53,108 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 20:56:53,108 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 20:57:00,464 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 20:57:00,464 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 20:57:22,607 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 20:57:22,607 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 20:57:24,842 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 20:57:24,842 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 20:57:29,641 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 20:57:29,641 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 20:57:30,899 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 20:57:30,899 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 20:57:33,551 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 20:57:33,551 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 20:57:36,022 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 20:57:36,022 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 20:57:38,444 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 20:57:38,444 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 21:03:41,789 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:03:41,789 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:03:43,154 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:03:43,154 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:03:45,219 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:03:45,219 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:03:50,467 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 21:03:50,467 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 21:03:51,687 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 21:03:51,687 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 21:03:56,764 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 21:03:56,764 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 21:03:58,657 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 21:03:58,657 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 21:04:00,169 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 21:04:00,169 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 21:04:01,354 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 21:04:01,354 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 21:04:03,938 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 21:04:03,938 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 21:04:06,145 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 21:04:06,145 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 21:04:08,787 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:04:08,787 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 21:04:11,509 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 21:04:11,509 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 21:09:13,336 - INFO - Arranque del sistema
+2023-04-23 21:09:58,555 - INFO - Se muestra el home
+2023-04-23 21:09:58,555 - INFO - Se muestra el home
+2023-04-23 21:10:36,890 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-23 21:10:36,890 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-23 21:10:36,907 - INFO - Se muestra el home
+2023-04-23 21:10:36,907 - INFO - Se muestra el home
+2023-04-23 21:10:42,491 - INFO - Se muestran las ordenes
+2023-04-23 21:10:42,491 - INFO - Se muestran las ordenes
+2023-04-23 21:14:33,320 - INFO - Se muestran las ordenes
+2023-04-23 21:14:33,320 - INFO - Se muestran las ordenes
+2023-04-23 21:15:07,359 - INFO - Se muestran las ordenes
+2023-04-23 21:15:07,359 - INFO - Se muestran las ordenes
+2023-04-23 21:15:23,171 - INFO - Se muestran las ordenes
+2023-04-23 21:15:23,171 - INFO - Se muestran las ordenes
+2023-04-23 21:16:17,896 - INFO - Se muestran las ordenes
+2023-04-23 21:16:17,896 - INFO - Se muestran las ordenes
+2023-04-23 21:16:29,748 - INFO - Se muestran las ordenes
+2023-04-23 21:16:29,748 - INFO - Se muestran las ordenes
+2023-04-23 21:16:46,025 - INFO - Se muestran las ordenes
+2023-04-23 21:16:46,025 - INFO - Se muestran las ordenes
+2023-04-23 21:18:22,112 - INFO - Se muestran las ordenes
+2023-04-23 21:18:22,112 - INFO - Se muestran las ordenes
+2023-04-23 21:18:28,493 - INFO - Se muestran las ordenes
+2023-04-23 21:18:28,493 - INFO - Se muestran las ordenes
+2023-04-23 21:18:29,823 - INFO - Se muestran las ordenes
+2023-04-23 21:18:29,823 - INFO - Se muestran las ordenes
+2023-04-23 21:18:38,392 - INFO - Se muestran las ordenes
+2023-04-23 21:18:38,392 - INFO - Se muestran las ordenes
+2023-04-23 21:19:27,647 - INFO - Se muestran las ordenes
+2023-04-23 21:19:27,647 - INFO - Se muestran las ordenes
+2023-04-23 21:19:29,947 - INFO - Se muestran las ordenes
+2023-04-23 21:19:29,947 - INFO - Se muestran las ordenes
+2023-04-23 21:21:13,101 - INFO - Arranque del sistema
+2023-04-23 21:23:59,968 - INFO - Arranque del sistema
+2023-04-23 21:29:00,283 - INFO - Arranque del sistema
+2023-04-23 21:29:35,621 - INFO - Arranque del sistema
+2023-04-23 21:31:41,517 - INFO - Arranque del sistema
+2023-04-23 21:35:37,936 - INFO - Arranque del sistema
+2023-04-23 21:35:41,397 - INFO - Se muestra el home
+2023-04-23 21:35:41,397 - INFO - Se muestra el home
+2023-04-23 21:36:07,201 - INFO - Arranque del sistema
+2023-04-23 21:36:25,741 - INFO - Arranque del sistema
+2023-04-23 21:38:37,836 - INFO - Arranque del sistema
+2023-04-23 21:38:42,380 - INFO - Arranque del sistema
+2023-04-23 21:39:09,165 - INFO - Arranque del sistema
+2023-04-23 21:39:29,571 - INFO - Arranque del sistema
+2023-04-23 21:40:03,873 - INFO - Arranque del sistema
+2023-04-23 21:41:54,415 - INFO - Arranque del sistema
+2023-04-23 21:41:56,802 - INFO - Arranque del sistema
+2023-04-23 21:42:10,916 - INFO - Arranque del sistema
+2023-04-23 21:43:20,403 - INFO - Arranque del sistema
+2023-04-23 21:43:30,427 - INFO - Arranque del sistema
+2023-04-23 21:43:42,571 - INFO - Arranque del sistema
+2023-04-23 21:44:21,142 - INFO - Arranque del sistema
+2023-04-23 21:44:27,370 - INFO - Se muestra la parte de productos
+2023-04-23 21:44:27,370 - INFO - Se muestra la parte de productos
+2023-04-23 21:44:34,898 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-23 21:44:34,898 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-23 21:44:34,946 - INFO - Se muestra el home
+2023-04-23 21:44:34,946 - INFO - Se muestra el home
+2023-04-23 21:44:39,239 - INFO - Se muestran las ordenes
+2023-04-23 21:44:39,239 - INFO - Se muestran las ordenes
+2023-04-23 21:45:08,642 - INFO - Se muestran las ordenes
+2023-04-23 21:45:08,642 - INFO - Se muestran las ordenes
+2023-04-23 21:45:29,142 - INFO - Se muestran las ordenes
+2023-04-23 21:45:29,142 - INFO - Se muestran las ordenes
+2023-04-23 21:45:39,558 - INFO - Se muestran las ordenes
+2023-04-23 21:45:39,558 - INFO - Se muestran las ordenes
+2023-04-23 21:45:50,354 - INFO - Se muestran las ordenes
+2023-04-23 21:45:50,354 - INFO - Se muestran las ordenes
+2023-04-23 21:45:55,998 - INFO - Se muestran las ordenes
+2023-04-23 21:45:55,998 - INFO - Se muestran las ordenes
+2023-04-23 21:46:04,538 - INFO - Se muestran las ordenes
+2023-04-23 21:46:04,538 - INFO - Se muestran las ordenes
+2023-04-23 21:46:20,628 - INFO - Se muestran las ordenes
+2023-04-23 21:46:20,628 - INFO - Se muestran las ordenes
+2023-04-23 21:46:21,405 - INFO - Se muestran las ordenes
+2023-04-23 21:46:21,405 - INFO - Se muestran las ordenes
+2023-04-23 21:46:30,910 - INFO - Se muestran las ordenes
+2023-04-23 21:46:30,910 - INFO - Se muestran las ordenes
+2023-04-23 21:47:39,094 - INFO - Se muestran las ordenes
+2023-04-23 21:47:39,094 - INFO - Se muestran las ordenes
+2023-04-23 21:48:18,582 - INFO - Se muestran las ordenes
+2023-04-23 21:48:18,582 - INFO - Se muestran las ordenes
+2023-04-23 21:48:34,634 - INFO - Se muestran las ordenes
+2023-04-23 21:48:34,634 - INFO - Se muestran las ordenes
+2023-04-23 21:48:47,941 - INFO - Se muestran las ordenes
+2023-04-23 21:48:47,941 - INFO - Se muestran las ordenes
+2023-04-23 21:48:59,026 - INFO - Se muestran las ordenes
+2023-04-23 21:48:59,026 - INFO - Se muestran las ordenes
+2023-04-23 21:49:22,789 - INFO - Se muestran las ordenes
+2023-04-23 21:49:22,789 - INFO - Se muestran las ordenes
+2023-04-23 21:51:25,402 - INFO - Se muestran las ordenes
+2023-04-23 21:51:25,402 - INFO - Se muestran las ordenes
+2023-04-23 21:52:21,938 - INFO - Se muestran las ordenes
+2023-04-23 21:52:21,938 - INFO - Se muestran las ordenes
+2023-04-23 21:54:15,911 - INFO - Arranque del sistema
+2023-04-23 21:54:33,167 - INFO - Arranque del sistema
+2023-04-23 21:54:44,206 - INFO - Arranque del sistema
+2023-04-23 21:55:15,407 - INFO - Arranque del sistema
+2023-04-23 21:55:40,319 - INFO - Arranque del sistema
+2023-04-23 21:55:59,806 - INFO - Arranque del sistema
+2023-04-23 21:56:18,647 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-23 21:56:18,647 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-23 21:56:18,939 - INFO - Se muestra el home
+2023-04-23 21:56:18,939 - INFO - Se muestra el home
+2023-04-23 21:56:22,248 - INFO - Se muestran las ordenes
+2023-04-23 21:56:22,248 - INFO - Se muestran las ordenes
+2023-04-23 21:58:01,029 - INFO - Se muestran las ordenes
+2023-04-23 21:58:01,029 - INFO - Se muestran las ordenes
+2023-04-23 21:58:05,651 - INFO - Se muestra el home
+2023-04-23 21:58:05,651 - INFO - Se muestra el home
+2023-04-23 21:58:10,412 - INFO - Se muestra la parte de productos
+2023-04-23 21:58:10,412 - INFO - Se muestra la parte de productos
+2023-04-23 21:58:12,055 - INFO - Se muestran detalles de productos
+2023-04-23 21:58:12,055 - INFO - Se muestran detalles de productos
+2023-04-23 21:58:19,867 - INFO - Se muestran detalles de productos
+2023-04-23 21:58:19,867 - INFO - Se muestran detalles de productos
+2023-04-23 21:58:20,875 - INFO - Se muestran detalles de productos
+2023-04-23 21:58:20,875 - INFO - Se muestran detalles de productos
+2023-04-23 21:58:44,265 - INFO - Salio del sistema
+2023-04-23 21:58:44,265 - INFO - Salio del sistema
+2023-04-23 21:58:44,273 - INFO - Se muestra el home
+2023-04-23 21:58:44,273 - INFO - Se muestra el home
+2023-04-23 21:58:56,753 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 21:58:56,753 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 21:59:01,018 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 21:59:01,018 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 21:59:03,538 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 21:59:03,538 - INFO - Se muestran los productos activos: Mauricio

@@ -2,7 +2,7 @@
 {%block content%}
 
 <div class="row justify-content-center py-5 overflow-x-hidden">
-    <div class="col-lg-10">
+    <div class="col-lg-8">
         <div class="card bg-body-tertiary rounded-card border-0 shadow-sm">
             <div class="card-body px-lg-5 py-lg-5">
                 <div class="d-flex align-items-center justify-content-start pb-2">
@@ -10,11 +10,20 @@
                 </div>
                 <ul class="d-grid gap-4 my-3 list-unstyled small border-top pt-4">
                     {% for item in sale_orders %}
-                    <li class="d-flex gap-4 border-bottom pb-4">
-                        <i class="bi bi-twitter fs-4"></i>
+                    <li class="d-flex justify-content-between gap-4 border-bottom pb-4">
                         <div>
-                            <h5 class="mb-0 text-primary fw-bold">{{ item.reference_number }}</h5>
-                            {{ item.total }}
+                            <h5 class="mb-3 text-primary fw-bold text-uppercase">PEDIDO: {{ item.reference_number }}</h5>
+                            <p class="text-muted mb-1">{{ item.created_at.strftime('%Y-%m-%d') }}</p>
+                            <p class="text-muted mb-1">$ {{ item.total }}</p>
+                            <p class="text-muted mb-1">Artículos {{ item.sale_order_details|length }}</p>
+                            <p class="text-muted">{{ item.status.name }}</p>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-end gap-2 pe-4 pe-lg-5">
+                            {% for item_detail in item.sale_order_details %}
+                                <div class="shadow">
+                                    <img class="rounded-2" style="width: 80px; height: 80px; object-fit: cover" src="data:image/png;base64,{{ item_detail.product.photo }}" alt="{{ item_detail.product.name}}">   
+                                </div>
+                            {% endfor %}
                         </div>
                     </li>
                     {% endfor %}

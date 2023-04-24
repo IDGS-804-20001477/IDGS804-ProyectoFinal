@@ -6,7 +6,6 @@ from flask_security import login_required, current_user
 from ... import userDataStore
 import logging
 
-
 auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 logger = logging.getLogger(__name__)

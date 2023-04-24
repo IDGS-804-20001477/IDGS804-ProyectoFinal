@@ -40,9 +40,9 @@ const updateQuantity = () => {
     }
     else{
         txtQuantity.disabled = false;
-        txtQuantity.value = txtMinValue;
+        txtQuantity.value = txtMinValue.value;
         txtQuantity.setAttribute('min', txtMinValue.value);
         txtQuantity.setAttribute('max', txtMaxValue.value);
-        txtQuantity.setAttribute('step', txtMaxValue.value);
+        txtQuantity.setAttribute('step', txtMaxValue.step);
     }
 };

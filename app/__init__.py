@@ -20,7 +20,7 @@ def create_app():
     app.config['SECURITY_LOGIN_USER_TEMPLATE'] = '/auth/login.html'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = os.urandom(24)
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@127.0.0.1/luminary_lane"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://luminary_lane:root@127.0.0.1/luminary_lane"
     app.config['SECURITY_PASSWORD_HASH'] = 'pbkdf2_sha512'
     app.config['SECURITY_PASSWORD_SALT'] = 'thisissecretsalt'
 

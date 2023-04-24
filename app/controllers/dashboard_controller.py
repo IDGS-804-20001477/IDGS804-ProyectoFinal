@@ -19,8 +19,8 @@ def getPurchasesPerMonth(month):
             return cursor.fetchall()
     except Exception as ex:
         return ex
-    
-    
+
+
 def getLeadingProduct(month):
     try:
         connection = get_connection()

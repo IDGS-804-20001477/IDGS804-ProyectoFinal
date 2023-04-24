@@ -23,26 +23,26 @@ const updateMaxValue = () => {
     }
     else{
         txtMaxValue.disabled = false;
-        txtMaxValue.min = txtMinValue.min;
         txtMaxValue.value = txtMinValue.value;
-        txtMaxValue.step = txtMinValue.step;
+        txtMaxValue.setAttribute('min', txtMinValue.value);
+        txtMaxValue.setAttribute('step', txtMinValue.step);
     }
 };
 
 const updateQuantity = () => {
-    let txtMinValue = document.getElementById('txtMinValue').value;
+    let txtMinValue = document.getElementById('txtMinValue');
     let txtMaxValue = document.getElementById('txtMaxValue');
     let txtQuantity = document.getElementById('txtQuantity');
 
-    if(txtMinValue === '' && txtMaxValue.value === ''){
+    if(txtMinValue.value === '' && txtMaxValue.value === ''){
         txtQuantity.value = '';
         txtQuantity.disabled = true;
     }
     else{
         txtQuantity.disabled = false;
-        txtQuantity.min = txtMinValue;
-        txtQuantity.max = txtMaxValue
         txtQuantity.value = txtMinValue;
-        txtQuantity.step = txtMaxValue.step;
+        txtQuantity.setAttribute('min', txtMinValue.value);
+        txtQuantity.setAttribute('max', txtMaxValue.value);
+        txtQuantity.setAttribute('step', txtMaxValue.value);
     }
 };

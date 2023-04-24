@@ -5,3 +5,4 @@ db_data/
 *__pycache__
 package-lock.json
 package.json
+*app.log

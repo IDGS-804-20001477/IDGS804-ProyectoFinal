@@ -25,8 +25,12 @@
 			data: {
 				labels: [{% for month in months %} '{{ month }}', {% endfor %}],
 				datasets: [{
-					label: 'Ventas',
-					data: [12, 19, 3, 5, 2, 3],
+					label: 'Ventas por mes',
+					data: [
+					{% for sale in earnings %}	
+						{{ sale }},
+					{% endfor %}
+					],
 					borderWidth: 1,
 					borderColor: 'rgb(75, 192, 192)',
 					tension: 0.1
@@ -50,12 +54,19 @@
 				{% endfor %}
 				],
 				datasets: [{
-					label: 'My First Dataset',
-					data: [300, 50, 100],
+					label: 'Productos Ventidos',
+					data: [
+					{% for product in products %}
+						{{ product.get_sales_quantity() }},
+					{% endfor %}
+					],
 					backgroundColor: [
 					'rgb(255, 99, 132)',
 					'rgb(54, 162, 235)',
-					'rgb(255, 205, 86)'
+					'rgb(255, 205, 86)',
+					'rgb(35, 205, 86)',
+					'rgb(215, 15, 86)',
+					'rgb(15, 15, 86)'
 					],
 					hoverOffset: 4
 				}]

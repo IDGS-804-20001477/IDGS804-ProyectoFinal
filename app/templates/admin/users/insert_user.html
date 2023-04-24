@@ -9,6 +9,17 @@
                 </h3>
             </div>
             <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<div class="notification">
+					<div class="w-100">
+						<div class="alert alert-danger rounded-pill text-dark text-center" role="alert">
+							{{ messages[0] }}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endwith %}
                 <form action="/admin/users/users-insert" method="post">
                     <div class="form-group pb-2">
                         <label for="txtName">Name:</label>

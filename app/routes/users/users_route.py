@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, render_template
+from flask import Blueprint, request, redirect, url_for, render_template, flash
 from ...models.auth import User, Role
 from ...models.db import db
 from ...controllers.users_controllers import getUsers, getUserById, getUserTypes, insertUser, updateUser, deleteUser
@@ -16,6 +16,7 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler = logging.FileHandler('app.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+
 
 @users.route('/users-index')
 @login_required
@@ -43,6 +44,12 @@ def insert():
         # user = User(0, email, generate_password_hash(
         #    password, method='sha256'), type, name, lastname, address, phone)
         # insertUser(user)
+        user_found = User.query.filter_by(email=email).all()
+
+        if user_found:
+            flash('Ya existe un usuario con este email')
+            return redirect(url_for('users.insert'))
+
         user = userDataStore.create_user(
             email=email,
             password=generate_password_hash(password, method='sha256'),

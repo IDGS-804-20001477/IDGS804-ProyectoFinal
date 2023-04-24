@@ -18,6 +18,7 @@ file_handler = logging.FileHandler('app.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
+
 @main.route('/')
 def index():
     logger.info('Se muestra el home')
@@ -123,7 +124,7 @@ def create_sale_order():
     sale_order = SaleOrder(
         reference_number=f"{uuid.uuid4()}"[2:10],
         total=total,
-        client_id=1,
+        client_id=current_user.id,
         sale_orders_status_id=1,
         created_at=date.today()
     )
@@ -139,7 +140,8 @@ def create_sale_order():
     db.session.add(sale_order)
     db.session.add_all(sale_order_details)
 
-    logger.info('Se muestra detalladamente el carrito de producto para la compra')
+    logger.info(
+        'Se muestra detalladamente el carrito de producto para la compra')
     db.session.commit()
 
     preference_data = get_preference_body([*items, {
@@ -162,7 +164,8 @@ def create_sale_order():
 @login_required
 @roles_accepted('admin', 'client')
 def profile():
-    logger.info('Se muestra el sistema dependiendo el perfil: %s', current_user.name)
+    logger.info('Se muestra el sistema dependiendo el perfil: %s',
+                current_user.name)
     return render_template('profile.html', name=current_user.email)
 
 

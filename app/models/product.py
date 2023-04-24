@@ -40,6 +40,15 @@ class ProductModel(db.Model):
     max_value = db.Column(db.Integer())
     details = db.relationship(
         'ProductDetail', backref='products')
+    sale_order_details = db.relationship(
+        'SaleOrdeDetail', backref='products'
+    )
+
+    def get_sales_quantity(self):
+        total = 0
+        for detail in self.sale_order_details:
+            total += detail.quantity
+        return total
 
     def columns_to_dict(self):
         dict_ = {}

@@ -1,55 +1,54 @@
-{%extends '/admin/base_admin.html'%}
-{%block content%}
-<div class="row justify-content-center">
-    <div class="col-sm-7">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="text-center text-primary fw-bold">
-                    New Product
-                </h3>
-            </div>
-            <div class="card-body">
-                <form action="/admin/products/products-insert" method="post" enctype="multipart/form-data">
-                    <div class="form-group pb-2 text-center pt-1">
-                        <div class="d-flex align-content-center justify-content-center">
-                            <img id="photo_render" style="max-height: 80px;">
-                        </div>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="txtName">Name:</label>
-                        <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Enter name" required>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="txtPrice">Price:</label>
-                        <input type="number" class="form-control" id="txtPrice" name="txtPrice"
-                            placeholder="Enter price" min="1" required>
-                    </div>
-                    <input type="hidden" name="cmbSize">
-                    <div class="form-group pb-2">
-                        <label for="txtMinValue">Min value:</label>
-                        <input type="number" class="form-control" id="txtMinValue" name="txtMinValue"
-                            placeholder="Enter min value" min="1" required>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="txtMaxValue">Max value:</label>
-                        <input type="number" class="form-control" id="txtMaxValue" name="txtMaxValue"
-                            placeholder="Enter max value" min="1" required>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label>Description:</label>
-                        <textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;" required></textarea>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="photo">Photo:</label>
-                        <input class="form-control" type="file" name="photo" id="photo" accept="image/*" onchange="document.getElementById('photo_render').src = window.URL.createObjectURL(this.files[0])">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
-                        <button type="submit" class="btn btn-primary btn-block">Update Product</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-{%endblock%}
+{% extends '/admin/base_admin.html' %}
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript" src="../../static/js/product.js"></script>
+{% endblock %}
+{% block content %}
+	<div class="row justify-content-center">
+		<div class="col-sm-7">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="text-center text-primary fw-bold">New Product</h3>
+				</div>
+				<div class="card-body">
+					<form action="/admin/products/products-insert" method="post" enctype="multipart/form-data">
+						<div class="form-group pb-2 text-center pt-1">
+							<div class="d-flex align-content-center justify-content-center">
+								<img id="photo_render" style="max-height: 80px;" />
+							</div>
+						</div>
+						<div class="form-group pb-2">
+							<label for="txtName">Name:</label>
+							<input type="text" class="form-control" id="txtName" name="txtName" placeholder="Enter name" required />
+						</div>
+						<div class="form-group pb-2">
+							<label for="txtPrice">Price:</label>
+							<input type="number" step="0.01" class="form-control" id="txtPrice" name="txtPrice" placeholder="Enter price" min="1" required />
+						</div>
+						<input type="hidden" name="cmbSize" />
+						<div class="form-group pb-2">
+							<label for="txtMinValue">Min value:</label>
+							<input type="number" class="form-control" id="txtMinValue" name="txtMinValue" placeholder="Enter min value" min="1" required onchange="updateMaxValue()" />
+						</div>
+						<div class="form-group pb-2">
+							<label for="txtMaxValue">Max value:</label>
+							<input type="number" class="form-control" id="txtMaxValue" name="txtMaxValue" placeholder="Enter max value" required disabled />
+						</div>
+						<div class="form-group pb-2">
+							<label>Description:</label>
+							<textarea class="form-control" name="txtDescription" id="txtDescription" cols="80" rows="5" style="resize: none;" required></textarea>
+						</div>
+						<div class="form-group pb-2">
+							<label for="photo">Photo:</label>
+							<input class="form-control" type="file" name="photo" id="photo" accept="image/*" onchange="document.getElementById('photo_render').src = window.URL.createObjectURL(this.files[0])" />
+						</div>
+						<div class="form-group text-center">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+							<button type="submit" class="btn btn-primary btn-block">Insert Product</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

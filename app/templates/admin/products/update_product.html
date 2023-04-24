@@ -1,5 +1,8 @@
 {%extends '/admin/base_admin.html'%}
-
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript" src="../../static/js/product.js"></script>
+{% endblock %}
 {%block content%}
 <div class="row justify-content-center">
     <div class="col-sm-7">
@@ -24,18 +27,18 @@
                     <div class="form-group pb-2">
                         <label for="txtPrice">Price:</label>
                         <input type="number" class="form-control" id="txtPrice" name="txtPrice"
-                            placeholder="Enter price" min="1" value="{{ product.price }}" required>
+                            placeholder="Enter price" step="0.01" min="1" value="{{ product.price }}" required>
                     </div>
                     <input type="hidden" name="cmbSize" value="L">
                     <div class="form-group pb-2">
                         <label for="txtMinValue">Min value:</label>
                         <input type="number" class="form-control" id="txtMinValue" name="txtMinValue"
-                            placeholder="Enter min value" min="1" value="{{ product.min_value }}" required>
+                            placeholder="Enter min value" min="1" value="{{ product.min_value }}" required onchange="updateMaxValue()">
                     </div>
                     <div class="form-group pb-2">
                         <label for="txtMaxValue">Max value:</label>
                         <input type="number" class="form-control" id="txtMaxValue" name="txtMaxValue"
-                            placeholder="Enter max value" min="1" value="{{ product.max_value }}" required>
+                            placeholder="Enter max value" min="1" value="{{ product.max_value }}" required disabled>
                     </div>
                     <div class="form-group pb-2">
                         <label>Description:</label>

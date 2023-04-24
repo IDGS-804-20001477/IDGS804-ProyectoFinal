@@ -8,8 +8,8 @@ const updateMaxValue = () => {
     }
     else{
         txtMaxValue.disabled = false;
-        txtMaxValue.min = txtMinValue.min;
         txtMaxValue.value = txtMinValue.value;
-        txtMaxValue.step = txtMinValue.step;
+        txtMaxValue.setAttribute('min', txtMinValue.value);
+        txtMaxValue.setAttribute('step', txtMinValue.step);
     }
 };

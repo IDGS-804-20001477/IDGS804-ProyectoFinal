@@ -262,282 +262,56 @@
 2023-04-23 21:35:11,839 - INFO - Se muestran los productos activos: Mauricio
 2023-04-23 21:35:20,871 - INFO - Se muestran los productos activos: Mauricio
 2023-04-23 21:35:20,871 - INFO - Se muestran los productos activos: Mauricio
-2023-04-23 22:01:55,421 - INFO - Arranque del sistema
-2023-04-23 22:01:56,578 - INFO - Arranque del sistema
-2023-04-23 22:01:58,297 - INFO - Se muestra el home
-2023-04-23 22:01:58,297 - INFO - Se muestra el home
-2023-04-23 22:02:06,581 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:02:06,581 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:02:09,968 - INFO - Listado de materia prima para: Mauricio
-2023-04-23 22:02:09,968 - INFO - Listado de materia prima para: Mauricio
-2023-04-23 22:02:15,108 - INFO - Se muestran los productos activos: Mauricio
-2023-04-23 22:02:15,108 - INFO - Se muestran los productos activos: Mauricio
-2023-04-23 22:02:25,445 - INFO - Se muestran los proveedores activos: Mauricio
-2023-04-23 22:02:25,445 - INFO - Se muestran los proveedores activos: Mauricio
-2023-04-23 22:02:27,430 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 22:02:27,430 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 22:02:29,536 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 22:02:29,536 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 22:02:30,800 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 22:02:30,800 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 22:02:31,931 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 22:02:31,931 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 22:02:38,958 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 22:02:38,958 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 22:02:47,058 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 22:02:47,058 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 22:02:53,791 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:02:53,791 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:02:58,446 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:02:58,446 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:03:06,043 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:03:06,043 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:07:03,833 - INFO - Se inserta usuario correctamente: Mauricio
-2023-04-23 22:07:03,833 - INFO - Se inserta usuario correctamente: Mauricio
-2023-04-23 22:07:09,135 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:07:09,135 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:09:46,125 - INFO - Arranque del sistema
-2023-04-23 22:09:55,983 - INFO - Arranque del sistema
-2023-04-23 22:53:26,653 - INFO - Arranque del sistema
-2023-04-23 22:53:47,404 - INFO - Arranque del sistema
-2023-04-23 22:53:50,021 - INFO - Arranque del sistema
-2023-04-23 22:53:53,652 - INFO - Arranque del sistema
-2023-04-23 22:53:58,381 - INFO - Arranque del sistema
-2023-04-23 22:54:06,746 - WARNING - Datos erroneos al ingresar al sistema
-2023-04-23 22:54:06,746 - WARNING - Datos erroneos al ingresar al sistema
-2023-04-23 22:54:13,908 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:54:13,908 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:54:16,414 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:54:16,414 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:54:31,286 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:54:31,286 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:54:43,502 - INFO - Arranque del sistema
-2023-04-23 22:56:07,909 - INFO - Arranque del sistema
-2023-04-23 22:56:12,553 - INFO - Arranque del sistema
-2023-04-23 22:56:55,526 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:56:55,526 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:56:57,538 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:56:57,538 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:57:23,094 - INFO - Arranque del sistema
-2023-04-23 22:57:33,054 - INFO - Arranque del sistema
-2023-04-23 22:57:57,803 - INFO - Arranque del sistema
-2023-04-23 22:58:02,596 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:58:02,596 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 22:58:04,596 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:58:04,596 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:58:20,117 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 22:58:20,117 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 23:00:10,049 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:00:10,049 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:00:12,598 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:00:12,598 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:00:23,770 - INFO - Salio del sistema
-2023-04-23 23:00:23,770 - INFO - Salio del sistema
-2023-04-23 23:00:23,781 - INFO - Se muestra el home
-2023-04-23 23:00:23,781 - INFO - Se muestra el home
-2023-04-23 23:00:30,618 - INFO - Se ingreso al sistema como cliente: Test
-2023-04-23 23:00:30,618 - INFO - Se ingreso al sistema como cliente: Test
-2023-04-23 23:00:30,635 - INFO - Se muestra el home
-2023-04-23 23:00:30,635 - INFO - Se muestra el home
-2023-04-23 23:00:32,281 - INFO - Se muestra la parte de productos
-2023-04-23 23:00:32,281 - INFO - Se muestra la parte de productos
-2023-04-23 23:00:34,731 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:34,731 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:37,349 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:37,349 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:39,767 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:39,767 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:42,581 - INFO - Se modifica el carrito de productos
-2023-04-23 23:00:42,581 - INFO - Se modifica el carrito de productos
-2023-04-23 23:00:42,618 - INFO - Se muestra el carro de productos
-2023-04-23 23:00:42,618 - INFO - Se muestra el carro de productos
-2023-04-23 23:00:44,413 - INFO - Se muestra la parte de productos
-2023-04-23 23:00:44,413 - INFO - Se muestra la parte de productos
-2023-04-23 23:00:45,544 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:45,544 - INFO - Se muestran detalles de productos
-2023-04-23 23:00:47,751 - INFO - Se modifica el carrito de productos
-2023-04-23 23:00:47,751 - INFO - Se modifica el carrito de productos
-2023-04-23 23:00:47,809 - INFO - Se muestra el carro de productos
-2023-04-23 23:00:47,809 - INFO - Se muestra el carro de productos
-2023-04-23 23:00:50,493 - INFO - Se modifica el carrito de productos
-2023-04-23 23:00:50,493 - INFO - Se modifica el carrito de productos
-2023-04-23 23:00:50,549 - INFO - Se muestra el carro de productos
-2023-04-23 23:00:50,549 - INFO - Se muestra el carro de productos
-2023-04-23 23:00:55,955 - INFO - Se muestra detalladamente el carrito de producto para la compra
-2023-04-23 23:00:55,955 - INFO - Se muestra detalladamente el carrito de producto para la compra
-2023-04-23 23:01:02,275 - INFO - Se muestra el home
-2023-04-23 23:01:02,275 - INFO - Se muestra el home
-2023-04-23 23:01:05,567 - INFO - Se muestra la parte de productos
-2023-04-23 23:01:05,567 - INFO - Se muestra la parte de productos
-2023-04-23 23:01:33,471 - INFO - Se muestran las ordenes
-2023-04-23 23:01:33,471 - INFO - Se muestran las ordenes
-2023-04-23 23:01:40,149 - INFO - Se muestran las ordenes
-2023-04-23 23:01:40,149 - INFO - Se muestran las ordenes
-2023-04-23 23:01:46,979 - INFO - Salio del sistema
-2023-04-23 23:01:46,979 - INFO - Salio del sistema
-2023-04-23 23:01:47,281 - INFO - Se muestra el home
-2023-04-23 23:01:47,281 - INFO - Se muestra el home
-2023-04-23 23:02:00,002 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:02:00,002 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:02:04,247 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:02:04,247 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:02:05,733 - INFO - Se muestran los proveedores activos: Mauricio
-2023-04-23 23:02:05,733 - INFO - Se muestran los proveedores activos: Mauricio
-2023-04-23 23:02:14,084 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:02:14,084 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:02:21,392 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:02:21,392 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:03:17,018 - INFO - Arranque del sistema
-2023-04-23 23:03:26,793 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:03:26,793 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:03:29,069 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 23:03:29,069 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 23:03:30,709 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:03:30,709 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:03:53,021 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 23:03:53,021 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 23:03:55,695 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:03:55,695 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:03:56,943 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:03:56,943 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:04:03,349 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 23:04:03,349 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 23:04:05,266 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:04:05,266 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:04:06,400 - INFO - Se muestran los proveedores activos: Mauricio
-2023-04-23 23:04:06,400 - INFO - Se muestran los proveedores activos: Mauricio
-2023-04-23 23:04:08,855 - INFO - Se muestran los productos activos: Mauricio
-2023-04-23 23:04:08,855 - INFO - Se muestran los productos activos: Mauricio
-2023-04-23 23:04:10,663 - INFO - Listado de materia prima para: Mauricio
-2023-04-23 23:04:10,663 - INFO - Listado de materia prima para: Mauricio
-2023-04-23 23:04:12,600 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:04:12,600 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:04:44,975 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:04:44,975 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:04:45,808 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 23:04:45,808 - INFO - Se muestra el usuario: Mauricio
-2023-04-23 23:04:50,267 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:04:50,267 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:12:13,494 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:12:13,494 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:14:30,872 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:14:30,872 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:14:48,002 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:14:48,002 - INFO - Se muestran las ordenes de compra: Mauricio
-2023-04-23 23:14:49,854 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 23:14:49,854 - INFO - Se muestran las recetas activas: Mauricio
-2023-04-23 23:14:52,869 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:14:52,869 - INFO - Se muestra las ordenes de venta: Mauricio
-2023-04-23 23:14:58,944 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:14:58,944 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:15:05,959 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:15:05,959 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:15:08,083 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:15:08,083 - INFO - Se muestran los detalles de la orden de venta: Mauricio
-2023-04-23 23:15:10,096 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:15:10,096 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:15:12,714 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:15:12,714 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:16:32,508 - INFO - Arranque del sistema
-2023-04-23 23:17:07,007 - WARNING - Datos erroneos al ingresar al sistema
-2023-04-23 23:17:07,007 - WARNING - Datos erroneos al ingresar al sistema
-2023-04-23 23:17:13,851 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:17:13,851 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:20:20,098 - INFO - Arranque del sistema
-2023-04-23 23:20:46,526 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:20:46,526 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:21:59,175 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:21:59,175 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:22:28,832 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:22:28,832 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:22:46,258 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:22:46,258 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:22:55,559 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:22:55,559 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:23:02,028 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:23:02,028 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:23:05,706 - INFO - Salio del sistema
-2023-04-23 23:23:05,706 - INFO - Salio del sistema
-2023-04-23 23:23:06,000 - INFO - Se muestra el home
-2023-04-23 23:23:06,000 - INFO - Se muestra el home
-2023-04-23 23:23:11,680 - INFO - Se ingreso al sistema como cliente: Test
-2023-04-23 23:23:11,680 - INFO - Se ingreso al sistema como cliente: Test
-2023-04-23 23:23:11,697 - INFO - Se muestra el home
-2023-04-23 23:23:11,697 - INFO - Se muestra el home
-2023-04-23 23:23:13,446 - INFO - Se muestran las ordenes
-2023-04-23 23:23:13,446 - INFO - Se muestran las ordenes
-2023-04-23 23:23:15,384 - INFO - Se muestra la parte de productos
-2023-04-23 23:23:15,384 - INFO - Se muestra la parte de productos
-2023-04-23 23:23:17,497 - INFO - Se muestran detalles de productos
-2023-04-23 23:23:17,497 - INFO - Se muestran detalles de productos
-2023-04-23 23:23:21,567 - INFO - Se modifica el carrito de productos
-2023-04-23 23:23:21,567 - INFO - Se modifica el carrito de productos
-2023-04-23 23:23:21,623 - INFO - Se muestra el carro de productos
-2023-04-23 23:23:21,623 - INFO - Se muestra el carro de productos
-2023-04-23 23:23:35,613 - INFO - Se modifica el carrito de productos
-2023-04-23 23:23:35,613 - INFO - Se modifica el carrito de productos
-2023-04-23 23:23:35,646 - INFO - Se muestra el carro de productos
-2023-04-23 23:23:35,646 - INFO - Se muestra el carro de productos
-2023-04-23 23:23:36,826 - INFO - Se modifica el carrito de productos
-2023-04-23 23:23:36,826 - INFO - Se modifica el carrito de productos
-2023-04-23 23:23:36,863 - INFO - Se muestra el carro de productos
-2023-04-23 23:23:36,863 - INFO - Se muestra el carro de productos
-2023-04-23 23:23:39,165 - INFO - Se muestra detalladamente el carrito de producto para la compra
-2023-04-23 23:23:39,165 - INFO - Se muestra detalladamente el carrito de producto para la compra
-2023-04-23 23:23:43,685 - INFO - Se muestra el home
-2023-04-23 23:23:43,685 - INFO - Se muestra el home
-2023-04-23 23:23:46,437 - INFO - Salio del sistema
-2023-04-23 23:23:46,437 - INFO - Salio del sistema
-2023-04-23 23:23:46,446 - INFO - Se muestra el home
-2023-04-23 23:23:46,446 - INFO - Se muestra el home
-2023-04-23 23:23:53,429 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:23:53,429 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:24:20,624 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:24:20,624 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:24:37,733 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:24:37,733 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:26:13,237 - INFO - Arranque del sistema
-2023-04-23 23:27:06,633 - INFO - Arranque del sistema
-2023-04-23 23:27:35,819 - INFO - Arranque del sistema
-2023-04-23 23:30:07,929 - INFO - Arranque del sistema
-2023-04-23 23:30:14,605 - INFO - Arranque del sistema
-2023-04-23 23:31:02,735 - INFO - Arranque del sistema
-2023-04-23 23:31:13,778 - INFO - Arranque del sistema
-2023-04-23 23:31:23,677 - INFO - Arranque del sistema
-2023-04-23 23:32:36,248 - INFO - Arranque del sistema
-2023-04-23 23:33:00,035 - INFO - Arranque del sistema
-2023-04-23 23:33:05,906 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:33:05,906 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:33:08,575 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:33:08,575 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:34:12,739 - INFO - Arranque del sistema
-2023-04-23 23:34:30,920 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:34:30,920 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:35:40,357 - INFO - Arranque del sistema
-2023-04-23 23:36:17,850 - INFO - Arranque del sistema
-2023-04-23 23:38:19,277 - INFO - Arranque del sistema
-2023-04-23 23:38:28,202 - INFO - Arranque del sistema
-2023-04-23 23:38:45,371 - INFO - Arranque del sistema
-2023-04-23 23:39:09,912 - INFO - Arranque del sistema
-2023-04-23 23:39:37,808 - INFO - Arranque del sistema
-2023-04-23 23:39:45,372 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:39:45,372 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:40:26,160 - INFO - Arranque del sistema
-2023-04-23 23:40:40,422 - INFO - Arranque del sistema
-2023-04-23 23:43:04,338 - INFO - Arranque del sistema
-2023-04-23 23:43:18,550 - INFO - Arranque del sistema
-2023-04-23 23:43:25,378 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:43:25,378 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:43:52,969 - INFO - Arranque del sistema
-2023-04-23 23:43:57,161 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:43:57,161 - INFO - Se muestra el dashboard: Mauricio
-2023-04-23 23:44:07,352 - INFO - Salio del sistema
-2023-04-23 23:44:07,352 - INFO - Salio del sistema
-2023-04-23 23:44:07,655 - INFO - Se muestra el home
-2023-04-23 23:44:07,655 - INFO - Se muestra el home
-2023-04-23 23:44:09,861 - INFO - Se muestra la parte de productos
-2023-04-23 23:44:09,861 - INFO - Se muestra la parte de productos
-2023-04-23 23:44:47,618 - INFO - Se muestran detalles de productos
-2023-04-23 23:44:47,618 - INFO - Se muestran detalles de productos
-2023-04-23 23:45:01,994 - INFO - Se muestran detalles de productos
-2023-04-23 23:45:01,994 - INFO - Se muestran detalles de productos
+2023-04-23 23:06:44,705 - INFO - Se muestra el home
+2023-04-23 23:06:44,705 - INFO - Se muestra el home
+2023-04-23 23:06:44,902 - INFO - Se muestra el home
+2023-04-23 23:06:44,902 - INFO - Se muestra el home
+2023-04-23 23:06:49,320 - INFO - Salio del sistema
+2023-04-23 23:06:49,320 - INFO - Salio del sistema
+2023-04-23 23:06:49,328 - INFO - Se muestra el home
+2023-04-23 23:06:49,328 - INFO - Se muestra el home
+2023-04-23 23:06:55,379 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 23:06:55,379 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 23:06:57,445 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:06:57,445 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:08:05,850 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:08:05,850 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:12:25,044 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 23:12:25,044 - INFO - Se muestran los productos activos: Mauricio
+2023-04-23 23:15:44,826 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:15:44,826 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:16:26,550 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 23:16:26,550 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 23:20:09,295 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:20:09,295 - INFO - Listado de materia prima para: Mauricio
+2023-04-23 23:29:23,135 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 23:29:23,135 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 23:29:27,547 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 23:29:27,547 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 23:29:40,479 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-23 23:29:40,479 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-23 23:32:06,638 - INFO - Arranque del sistema
+2023-04-23 23:32:26,265 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 23:32:26,265 - INFO - Se muestra el dashboard: Mauricio
+2023-04-23 23:32:37,733 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 23:32:37,733 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-23 23:32:41,051 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 23:32:41,051 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 23:32:43,647 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 23:32:43,647 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 23:32:45,161 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-23 23:32:45,161 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-23 23:32:46,472 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 23:32:46,472 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-23 23:32:49,944 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 23:32:49,944 - INFO - Se muestra el usuario: Mauricio
+2023-04-23 23:32:59,114 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 23:32:59,114 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-23 23:33:30,904 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 23:33:30,904 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-23 23:33:38,766 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-23 23:33:38,766 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-23 23:33:38,766 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-23 23:33:38,766 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-23 23:33:38,766 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-23 23:33:38,766 - INFO - Listado de materia prima por proveedor: Mauricio

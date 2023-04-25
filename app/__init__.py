@@ -44,6 +44,8 @@ def create_app():
     from .routes.recipes.recipes_route import recipes as recipes_blueprint
     from .routes.sale_orders.sale_orders_route import sale_orders as sale_orders_blueprint
     from .routes.users.users_route import users as users_blueprint
+    from .routes.errors.errors_route import errors as errors_blueprint
+
 
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(dashboard_blueprint)
@@ -55,5 +57,6 @@ def create_app():
     app.register_blueprint(recipes_blueprint)
     app.register_blueprint(sale_orders_blueprint)
     app.register_blueprint(users_blueprint)
+    app.register_blueprint(errors_blueprint)
 
     return app

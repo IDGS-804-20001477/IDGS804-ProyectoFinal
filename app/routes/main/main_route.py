@@ -64,7 +64,7 @@ def action_product_to_cart(product_id, action):
 
     if session.get('cart', False) and len([product for product in session['cart'] if product['id'] == product_id and product['size'] == product_size]) > 0:
         cart_product = [
-            product for product in session['cart'] if product['id'] == product_id and product['size'] is product_size][0]
+            product for product in session['cart'] if product['id'] == product_id and product['size'] == product_size][0]
         products_filtered = [
             product for product in session.get('cart', []) if product['id'] != product_id or product['size'] != product_size]
 

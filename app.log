@@ -609,3 +609,452 @@
 2023-04-24 14:00:50,578 - INFO - Salio del sistema
 2023-04-24 14:00:50,587 - INFO - Se muestra el home
 2023-04-24 14:00:50,587 - INFO - Se muestra el home
+2023-04-25 16:04:46,628 - INFO - Arranque del sistema
+2023-04-25 16:04:47,745 - INFO - Arranque del sistema
+2023-04-25 16:06:14,942 - INFO - Se muestra el home
+2023-04-25 16:06:14,942 - INFO - Se muestra el home
+2023-04-25 16:06:57,355 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 16:06:57,355 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 16:07:31,704 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:07:31,704 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:07:37,968 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:07:37,968 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:08:13,732 - INFO - Se modifica la orden de compra correctamente: Mauricio
+2023-04-25 16:08:13,732 - INFO - Se modifica la orden de compra correctamente: Mauricio
+2023-04-25 16:08:13,756 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:08:13,756 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:21:36,425 - INFO - Salio del sistema
+2023-04-25 16:21:36,425 - INFO - Salio del sistema
+2023-04-25 16:21:36,437 - INFO - Se muestra el home
+2023-04-25 16:21:36,437 - INFO - Se muestra el home
+2023-04-25 16:23:13,161 - INFO - Se muestra la parte de productos
+2023-04-25 16:23:13,161 - INFO - Se muestra la parte de productos
+2023-04-25 16:23:19,192 - INFO - Se muestran detalles de productos
+2023-04-25 16:23:19,192 - INFO - Se muestran detalles de productos
+2023-04-25 16:23:35,788 - INFO - Se muestra información sobre nosotros
+2023-04-25 16:23:35,788 - INFO - Se muestra información sobre nosotros
+2023-04-25 16:23:37,523 - INFO - Se muestra la parte de productos
+2023-04-25 16:23:37,523 - INFO - Se muestra la parte de productos
+2023-04-25 16:23:40,596 - INFO - Se muestran detalles de productos
+2023-04-25 16:23:40,596 - INFO - Se muestran detalles de productos
+2023-04-25 16:24:06,807 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 16:24:06,807 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 16:24:10,997 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:24:10,997 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:25:47,851 - INFO - Se inserta receta correctamente: Mauricio
+2023-04-25 16:25:47,851 - INFO - Se inserta receta correctamente: Mauricio
+2023-04-25 16:25:47,898 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:25:47,898 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:25:47,962 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:25:47,962 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:26:06,127 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 16:26:06,127 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 16:26:06,137 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:26:06,137 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:28:34,339 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 16:28:34,339 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 16:28:34,350 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:28:34,350 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:29:53,187 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 16:29:53,187 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 16:29:53,210 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:29:53,210 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:30:15,825 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 16:30:15,825 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 16:35:22,595 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:35:22,595 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 16:35:24,310 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-25 16:35:24,310 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-25 16:35:27,571 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:35:27,571 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:35:31,360 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-25 16:35:31,360 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-25 16:35:31,360 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-25 16:35:31,360 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-25 16:35:31,360 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-25 16:35:31,360 - INFO - Listado de materia prima por proveedor: Mauricio
+2023-04-25 16:36:39,674 - INFO - Se inserta una orden de compra correctamente: Mauricio
+2023-04-25 16:36:39,674 - INFO - Se inserta una orden de compra correctamente: Mauricio
+2023-04-25 16:36:39,748 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:36:39,748 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:36:39,816 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:36:39,816 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:37:07,978 - INFO - Se modifica la orden de compra correctamente: Mauricio
+2023-04-25 16:37:07,978 - INFO - Se modifica la orden de compra correctamente: Mauricio
+2023-04-25 16:37:08,055 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:37:08,055 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:37:11,163 - INFO - Se modifica la orden de compra correctamente: Mauricio
+2023-04-25 16:37:11,163 - INFO - Se modifica la orden de compra correctamente: Mauricio
+2023-04-25 16:37:11,239 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:37:11,239 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:38:55,872 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:38:55,872 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:39:55,010 - INFO - Se inserto correctamente la materia prima: Mauricio
+2023-04-25 16:39:55,010 - INFO - Se inserto correctamente la materia prima: Mauricio
+2023-04-25 16:39:55,048 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:39:55,048 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:41:10,458 - INFO - Se inserto correctamente la materia prima: Mauricio
+2023-04-25 16:41:10,458 - INFO - Se inserto correctamente la materia prima: Mauricio
+2023-04-25 16:41:10,491 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:41:10,491 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:41:27,209 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-25 16:41:27,209 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-25 16:41:28,285 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:41:28,285 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 16:41:34,045 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:41:34,045 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 16:41:34,887 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 16:41:34,887 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 16:41:35,930 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-25 16:41:35,930 - INFO - Se muestran los proveedores activos: Mauricio
+2023-04-25 16:41:36,493 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 16:41:36,493 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 16:41:42,522 - INFO - Salio del sistema
+2023-04-25 16:41:42,522 - INFO - Salio del sistema
+2023-04-25 16:41:42,530 - INFO - Se muestra el home
+2023-04-25 16:41:42,530 - INFO - Se muestra el home
+2023-04-25 16:41:45,434 - INFO - Se muestra la parte de productos
+2023-04-25 16:41:45,434 - INFO - Se muestra la parte de productos
+2023-04-25 16:41:51,465 - INFO - Se muestran detalles de productos
+2023-04-25 16:41:51,465 - INFO - Se muestran detalles de productos
+2023-04-25 16:43:46,924 - INFO - Se muestran detalles de productos
+2023-04-25 16:43:46,924 - INFO - Se muestran detalles de productos
+2023-04-25 16:43:50,175 - INFO - Se muestra el home
+2023-04-25 16:43:50,175 - INFO - Se muestra el home
+2023-04-25 16:44:23,111 - INFO - Se muestra el home
+2023-04-25 16:44:23,111 - INFO - Se muestra el home
+2023-04-25 17:18:16,822 - INFO - Se muestra el home
+2023-04-25 17:18:16,822 - INFO - Se muestra el home
+2023-04-25 17:35:31,872 - INFO - Arranque del sistema
+2023-04-25 17:37:27,278 - INFO - Se muestra la parte de productos
+2023-04-25 17:37:27,278 - INFO - Se muestra la parte de productos
+2023-04-25 17:37:37,987 - INFO - Se muestra el home
+2023-04-25 17:37:37,987 - INFO - Se muestra el home
+2023-04-25 17:37:44,149 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 17:37:44,149 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 17:37:49,438 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 17:37:49,438 - INFO - Listado de materia prima para: Mauricio
+2023-04-25 17:37:55,697 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:37:55,697 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:39:04,718 - INFO - Se inserta receta correctamente: Mauricio
+2023-04-25 17:39:04,718 - INFO - Se inserta receta correctamente: Mauricio
+2023-04-25 17:39:04,745 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:39:04,745 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:39:04,802 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:39:04,802 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:39:48,655 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 17:39:48,655 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 17:39:48,665 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:39:48,665 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:40:39,641 - INFO - Salio del sistema
+2023-04-25 17:40:39,641 - INFO - Salio del sistema
+2023-04-25 17:40:39,648 - INFO - Se muestra el home
+2023-04-25 17:40:39,648 - INFO - Se muestra el home
+2023-04-25 17:40:53,045 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 17:40:53,045 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 17:40:53,052 - INFO - Se muestra el home
+2023-04-25 17:40:53,052 - INFO - Se muestra el home
+2023-04-25 17:40:55,340 - INFO - Se muestra la parte de productos
+2023-04-25 17:40:55,340 - INFO - Se muestra la parte de productos
+2023-04-25 17:40:59,687 - INFO - Se muestran detalles de productos
+2023-04-25 17:40:59,687 - INFO - Se muestran detalles de productos
+2023-04-25 17:41:03,545 - INFO - Se modifica el carrito de productos
+2023-04-25 17:41:03,545 - INFO - Se modifica el carrito de productos
+2023-04-25 17:41:03,565 - INFO - Se muestra el carro de productos
+2023-04-25 17:41:03,565 - INFO - Se muestra el carro de productos
+2023-04-25 17:41:15,348 - INFO - Se muestra detalladamente el carrito de producto para la compra
+2023-04-25 17:41:15,348 - INFO - Se muestra detalladamente el carrito de producto para la compra
+2023-04-25 17:43:01,800 - INFO - Se muestra el home
+2023-04-25 17:43:01,800 - INFO - Se muestra el home
+2023-04-25 17:43:04,308 - INFO - Salio del sistema
+2023-04-25 17:43:04,308 - INFO - Salio del sistema
+2023-04-25 17:43:04,320 - INFO - Se muestra el home
+2023-04-25 17:43:04,320 - INFO - Se muestra el home
+2023-04-25 17:43:15,203 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 17:43:15,203 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 17:43:19,428 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 17:43:19,428 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 17:43:21,891 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:43:21,891 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:43:47,611 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-25 17:43:47,611 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-25 17:43:57,800 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:43:57,800 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:44:06,215 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:44:06,215 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:44:06,329 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:44:06,329 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:44:47,001 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:44:47,001 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:44:47,083 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:44:47,083 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:44:59,424 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:44:59,424 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:44:59,462 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:44:59,462 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:45:28,670 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:45:28,670 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 17:45:28,731 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:45:28,731 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:46:14,988 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 17:46:14,988 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 17:46:35,093 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 17:46:35,093 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 17:46:36,981 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:46:36,981 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:46:42,338 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-25 17:46:42,338 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-25 17:46:44,673 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:46:44,673 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 17:46:46,254 - INFO - Salio del sistema
+2023-04-25 17:46:46,254 - INFO - Salio del sistema
+2023-04-25 17:46:46,265 - INFO - Se muestra el home
+2023-04-25 17:46:46,265 - INFO - Se muestra el home
+2023-04-25 17:46:51,616 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 17:46:51,616 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 17:46:51,624 - INFO - Se muestra el home
+2023-04-25 17:46:51,624 - INFO - Se muestra el home
+2023-04-25 17:46:57,453 - INFO - Se muestran las ordenes
+2023-04-25 17:46:57,453 - INFO - Se muestran las ordenes
+2023-04-25 17:49:43,201 - INFO - Se muestra el home
+2023-04-25 17:49:43,201 - INFO - Se muestra el home
+2023-04-25 17:49:45,889 - INFO - Salio del sistema
+2023-04-25 17:49:45,889 - INFO - Salio del sistema
+2023-04-25 17:49:45,901 - INFO - Se muestra el home
+2023-04-25 17:49:45,901 - INFO - Se muestra el home
+2023-04-25 17:51:48,372 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 17:51:48,372 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 17:52:06,700 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:52:06,700 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:52:12,512 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 17:52:12,512 - INFO - Se recargan los productos por receta: Mauricio
+2023-04-25 17:52:12,520 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:52:12,520 - INFO - Se muestran las recetas activas: Mauricio
+2023-04-25 17:52:18,570 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 17:52:18,570 - INFO - Se muestran los productos activos: Mauricio
+2023-04-25 17:56:55,183 - INFO - Salio del sistema
+2023-04-25 17:56:55,183 - INFO - Salio del sistema
+2023-04-25 17:56:55,192 - INFO - Se muestra el home
+2023-04-25 17:56:55,192 - INFO - Se muestra el home
+2023-04-25 17:57:01,753 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 17:57:01,753 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 17:57:01,763 - INFO - Se muestra el home
+2023-04-25 17:57:01,763 - INFO - Se muestra el home
+2023-04-25 17:57:03,171 - INFO - Se muestra la parte de productos
+2023-04-25 17:57:03,171 - INFO - Se muestra la parte de productos
+2023-04-25 17:57:04,870 - INFO - Se muestran detalles de productos
+2023-04-25 17:57:04,870 - INFO - Se muestran detalles de productos
+2023-04-25 17:57:12,908 - INFO - Se modifica el carrito de productos
+2023-04-25 17:57:12,908 - INFO - Se modifica el carrito de productos
+2023-04-25 17:57:12,928 - INFO - Se muestra el carro de productos
+2023-04-25 17:57:12,928 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:48,984 - INFO - Se elimina del carrito de productos
+2023-04-25 18:00:48,984 - INFO - Se elimina del carrito de productos
+2023-04-25 18:00:49,016 - INFO - Se muestra el home
+2023-04-25 18:00:49,016 - INFO - Se muestra el home
+2023-04-25 18:00:51,252 - INFO - Se muestra la parte de productos
+2023-04-25 18:00:51,252 - INFO - Se muestra la parte de productos
+2023-04-25 18:00:52,376 - INFO - Se muestran detalles de productos
+2023-04-25 18:00:52,376 - INFO - Se muestran detalles de productos
+2023-04-25 18:00:55,498 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:55,498 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:55,511 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:55,511 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:57,047 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:57,047 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:57,062 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:57,062 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:58,038 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:58,038 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:58,053 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:58,053 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:58,663 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:58,663 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:58,676 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:58,676 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:59,480 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:59,480 - INFO - Se modifica el carrito de productos
+2023-04-25 18:00:59,493 - INFO - Se muestra el carro de productos
+2023-04-25 18:00:59,493 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:00,111 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:00,111 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:00,125 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:00,125 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:01,111 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:01,111 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:01,130 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:01,130 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:01,584 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:01,584 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:01,594 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:01,594 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:02,178 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:02,178 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:02,191 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:02,191 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:02,574 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:02,574 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:02,582 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:02,582 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:03,195 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:03,195 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:03,215 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:03,215 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:05,232 - INFO - Se elimina del carrito de productos
+2023-04-25 18:01:05,232 - INFO - Se elimina del carrito de productos
+2023-04-25 18:01:05,262 - INFO - Se muestra el home
+2023-04-25 18:01:05,262 - INFO - Se muestra el home
+2023-04-25 18:01:07,136 - INFO - Se muestra la parte de productos
+2023-04-25 18:01:07,136 - INFO - Se muestra la parte de productos
+2023-04-25 18:01:12,414 - INFO - Se muestran detalles de productos
+2023-04-25 18:01:12,414 - INFO - Se muestran detalles de productos
+2023-04-25 18:01:15,347 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:15,347 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:15,361 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:15,361 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:17,042 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:17,042 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:17,060 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:17,060 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:17,805 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:17,805 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:17,824 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:17,824 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:18,212 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:18,212 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:18,222 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:18,222 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:18,550 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:18,550 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:18,561 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:18,561 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:19,419 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:19,419 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:19,438 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:19,438 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:19,781 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:19,781 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:19,792 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:19,792 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:20,074 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:20,074 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:20,082 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:20,082 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:20,478 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:20,478 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:20,491 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:20,491 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:20,943 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:20,943 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:20,958 - INFO - Se muestra el home
+2023-04-25 18:01:20,958 - INFO - Se muestra el home
+2023-04-25 18:01:22,532 - INFO - Se muestra la parte de productos
+2023-04-25 18:01:22,532 - INFO - Se muestra la parte de productos
+2023-04-25 18:01:23,435 - INFO - Se muestran detalles de productos
+2023-04-25 18:01:23,435 - INFO - Se muestran detalles de productos
+2023-04-25 18:01:26,421 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:26,421 - INFO - Se modifica el carrito de productos
+2023-04-25 18:01:26,432 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:26,432 - INFO - Se muestra el carro de productos
+2023-04-25 18:01:46,311 - INFO - Arranque del sistema
+2023-04-25 18:01:51,921 - INFO - Se muestra el home
+2023-04-25 18:01:51,921 - INFO - Se muestra el home
+2023-04-25 18:01:59,027 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 18:01:59,027 - INFO - Se ingreso al sistema como cliente: Test
+2023-04-25 18:01:59,035 - INFO - Se muestra el home
+2023-04-25 18:01:59,035 - INFO - Se muestra el home
+2023-04-25 18:02:00,872 - INFO - Se muestra la parte de productos
+2023-04-25 18:02:00,872 - INFO - Se muestra la parte de productos
+2023-04-25 18:02:02,199 - INFO - Se muestran detalles de productos
+2023-04-25 18:02:02,199 - INFO - Se muestran detalles de productos
+2023-04-25 18:02:04,778 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:04,778 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:04,792 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:04,792 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:05,841 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:05,841 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:05,856 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:05,856 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:06,738 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:06,738 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:06,759 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:06,759 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:07,401 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:07,401 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:07,419 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:07,419 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:07,797 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:07,797 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:07,806 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:07,806 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:08,149 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:08,149 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:08,159 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:08,159 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:08,962 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:08,962 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:08,973 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:08,973 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:09,274 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:09,274 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:09,282 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:09,282 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:09,633 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:09,633 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:09,644 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:09,644 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:10,012 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:10,012 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:10,021 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:10,021 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:11,051 - INFO - Se elimina del carrito de productos
+2023-04-25 18:02:11,051 - INFO - Se elimina del carrito de productos
+2023-04-25 18:02:11,108 - INFO - Se muestra el home
+2023-04-25 18:02:11,108 - INFO - Se muestra el home
+2023-04-25 18:02:18,213 - INFO - Se muestra la parte de productos
+2023-04-25 18:02:18,213 - INFO - Se muestra la parte de productos
+2023-04-25 18:02:19,513 - INFO - Se muestran detalles de productos
+2023-04-25 18:02:19,513 - INFO - Se muestran detalles de productos
+2023-04-25 18:02:23,001 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:23,001 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:23,014 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:23,014 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:24,457 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:24,457 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:24,475 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:24,475 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:25,956 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:25,956 - INFO - Se modifica el carrito de productos
+2023-04-25 18:02:25,978 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:25,978 - INFO - Se muestra el carro de productos
+2023-04-25 18:02:27,529 - INFO - Se muestra detalladamente el carrito de producto para la compra
+2023-04-25 18:02:27,529 - INFO - Se muestra detalladamente el carrito de producto para la compra
+2023-04-25 18:02:41,796 - INFO - Se muestra el home
+2023-04-25 18:02:41,796 - INFO - Se muestra el home
+2023-04-25 18:02:43,552 - INFO - Salio del sistema
+2023-04-25 18:02:43,552 - INFO - Salio del sistema
+2023-04-25 18:02:43,564 - INFO - Se muestra el home
+2023-04-25 18:02:43,564 - INFO - Se muestra el home
+2023-04-25 18:02:50,127 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 18:02:50,127 - INFO - Se muestra el dashboard: Mauricio
+2023-04-25 18:03:00,003 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 18:03:00,003 - INFO - Se muestran las ordenes de compra: Mauricio
+2023-04-25 18:03:01,474 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:01,474 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:09,308 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-25 18:03:09,308 - INFO - Se muestran los detalles de la orden de venta: Mauricio
+2023-04-25 18:03:13,954 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:13,954 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:16,718 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 18:03:16,718 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 18:03:16,766 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:16,766 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:20,955 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 18:03:20,955 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 18:03:20,984 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:20,984 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:32,578 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 18:03:32,578 - INFO - Se modifica orden de venta correctamente: Mauricio
+2023-04-25 18:03:32,666 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-25 18:03:32,666 - INFO - Se muestra las ordenes de venta: Mauricio
+2023-04-28 15:42:17,399 - INFO - Arranque del sistema
